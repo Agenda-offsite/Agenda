@@ -1,681 +1,131 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agenda – WD Leadership Offsite 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-:root{
-  --navy-deep:#0a1a3a;
-  --navy:#12275a;
-  --accent:#1a4fd6;
-  --pin-red:#e53e3e;
-  --grad:linear-gradient(90deg,#2168FD 0%,#1E71FA 22%,#37B1D3 55%,#39D6CB 78%,#3AE4C9 100%);
-  --grad-d:linear-gradient(135deg,#2168FD 0%,#37B1D3 50%,#3AE4C9 100%);
+in edit mode) ── */
+.cfg-panel{
+display:none;
+background:linear-gradient(90deg,rgba(33,104,253,.18),rgba(58,228,201,.08));
+border-bottom:1px solid rgba(33,104,253,.3);
+padding:14px 20px;
+align-items:center;gap:14px;flex-wrap:wrap;
 }
-*{box-sizing:border-box;}
-html,body{margin:0;padding:0;}
-body{
-  font-family:'Manrope','Arial',sans-serif;
-  background:#050d20;
-  color:#fff;
-  min-height:100vh;
-  -webkit-font-smoothing:antialiased;
-}
-.bg-art{
-  position:fixed;inset:0;z-index:-1;
-  background:
-    radial-gradient(circle at 85% 0%,rgba(120,170,255,0.35),transparent 45%),
-    linear-gradient(160deg,#061029 0%,#0d1f4d 35%,#163a7a 65%,#1f4d94 100%);
-}
-.bg-art svg{position:absolute;inset:0;width:100%;height:100%;opacity:0.15;}
-
-/* ── CONFIG BANNER ── */
-.cfg-banner{
-  background:linear-gradient(90deg,rgba(33,104,253,.18),rgba(58,228,201,.08));
-  border-bottom:1px solid rgba(33,104,253,.3);
-  padding:14px 20px;
-  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
-}
-.cfg-banner.hidden{display:none;}
+.cfg-panel.show{display:flex;}
 .cfg-fields{display:flex;gap:10px;flex:1;flex-wrap:wrap;}
 .cfg-input{
-  flex:1;min-width:160px;padding:9px 13px;
-  background:rgba(255,255,255,0.07);
-  border:1px solid rgba(255,255,255,0.2);
-  border-radius:8px;color:#fff;font-size:13px;
-  font-family:'Manrope',sans-serif;outline:none;
-  transition:border-color .2s;
+flex:1;min-width:160px;padding:9px 13px;
+background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.2);
+border-radius:8px;color:#fff;font-size:13px;
+font-family:'Manrope',sans-serif;outline:none;transition:border-color .2s;
 }
-.cfg-input:focus{border-color:#3AE4C9;}
+.cfg-input:focus
 .cfg-input::placeholder{color:rgba(255,255,255,0.35);}
 .cfg-label{font-size:12px;font-weight:700;color:#93C5FD;letter-spacing:1px;white-space:nowrap;align-self:center;}
-.btn-cfg{
-  background:var(--grad);color:#fff;border:none;
-  border-radius:8px;padding:9px 18px;font-size:13px;font-weight:700;
-  cursor:pointer;white-space:nowrap;font-family:'Manrope',sans-serif;
-}
-.btn-cfg-skip{
-  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);
-  color:#aaa;border-radius:8px;padding:9px 14px;font-size:12px;
-  font-weight:600;cursor:pointer;font-family:'Manrope',sans-serif;
-}
+.btn-cfg{background:var(--grad);color:#fff;border:none;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:'Manrope',sans-serif;}
 
-/* ── TABS ── */
 .tabs{display:flex;justify-content:center;gap:10px;padding:22px 16px 4px;flex-wrap:wrap;}
-.tab-btn{
-  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.25);
-  color:#fff;padding:10px 22px;border-radius:999px;font-weight:700;
-  letter-spacing:0.5px;cursor:pointer;font-size:14px;
-  transition:all .2s;font-family:'Manrope',sans-serif;
-}
+.tab-btn{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.25);color:#fff;padding:10px 22px;border-radius:999px;font-weight:700;letter-spacing:0.5px;cursor:pointer;font-size:14px;transition:all .2s;font-family:'Manrope',sans-serif;}
 .tab-btn:hover{background:rgba(255,255,255,0.16);}
 .tab-btn.active{background:#fff;color:var(--navy-deep);border-color:#fff;}
 
 .page{max-width:920px;margin:0 auto;padding:18px 16px 100px;display:none;}
 .page.active{display:block;}
 
-/* ── HEADER CARD ── */
-.header-card{
-  background:linear-gradient(120deg,#f4f7fc 0%,#dbe6f5 100%);
-  border-radius:8px;padding:26px 30px;
-  display:flex;justify-content:space-between;align-items:flex-start;
-  flex-wrap:wrap;gap:14px;box-shadow:0 10px 30px rgba(0,0,0,0.3);
-}
+.header-card{background:linear-gradient(120deg,#f4f7fc 0%,#dbe6f5 100%);border-radius:8px;padding:26px 30px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;box-shadow:0 10px 30px rgba(0,0,0,0.3);}
 .agenda-title{font-size:44px;font-weight:900;color:var(--accent);letter-spacing:1px;line-height:1;margin:0;}
 .day-title{font-size:34px;font-weight:900;color:#1c2b4a;line-height:1.1;margin:6px 0 0;}
 .header-right{text-align:right;color:#2a3a5c;font-size:15px;line-height:1.5;padding-top:6px;}
 .header-right .weekday{font-size:18px;font-weight:700;text-transform:uppercase;}
 
-/* ── COL LABELS ── */
-.col-labels{
-  display:flex;background:#fff;color:#1c2b4a;font-weight:800;font-size:12.5px;
-  text-transform:uppercase;border-radius:4px;margin-top:14px;padding:14px 20px;
-  box-shadow:0 4px 14px rgba(0,0,0,0.15);
-}
+.col-labels{display:flex;background:#fff;color:#1c2b4a;font-weight:800;font-size:12.5px;text-transform:uppercase;border-radius:4px;margin-top:14px;padding:14px 20px;box-shadow:0 4px 14px rgba(0,0,0,0.15);}
 .col-labels .c-time{width:22%;}
 .col-labels .c-details{flex:1;}
 .col-labels .c-att{width:26%;text-align:right;}
 
-/* ── LOCATION ROW ── */
-.location-row{
-  display:flex;align-items:center;gap:8px;margin:16px 0 6px;
-  font-weight:800;font-size:15px;color:#dfe8ff;letter-spacing:0.5px;
-}
+.location-row{display:flex;align-items:center;gap:8px;margin:16px 0 6px;font-weight:800;font-size:15px;color:#dfe8ff;letter-spacing:0.5px;}
 .location-row .pin{color:var(--pin-red);font-size:16px;}
 .loc-text{background:rgba(10,20,50,0.35);padding:6px 14px;border-radius:4px;color:#eaf0ff;}
 
-/* ── ITEM ROW ── */
-.item-row{
-  display:flex;margin:8px 0;border-radius:4px;overflow:hidden;
-  min-height:56px;box-shadow:0 4px 12px rgba(0,0,0,0.18);
-}
-.item-row .c-time{
-  width:22%;background:rgba(240,245,255,0.94);color:#12275a;
-  padding:12px 14px;font-weight:800;font-size:14px;
-  display:flex;flex-direction:column;justify-content:center;
-}
+.item-row{display:flex;margin:8px 0;border-radius:4px;overflow:hidden;min-height:56px;box-shadow:0 4px 12px rgba(0,0,0,0.18);}
+.item-row .c-time{width:22%;background:rgba(240,245,255,0.94);color:#12275a;padding:12px 14px;font-weight:800;font-size:14px;display:flex;flex-direction:column;justify-content:center;}
 .item-row .c-time .dur{font-weight:600;font-size:11.5px;color:#5a6b8c;margin-top:3px;}
-.item-row .c-details{
-  flex:1;background:rgba(210,225,250,0.5);color:#0e1f42;
-  padding:12px 16px;font-weight:700;font-size:14.5px;
-  display:flex;align-items:center;white-space:pre-line;line-height:1.45;
-}
-.item-row .c-att{
-  width:26%;background:rgba(10,25,60,0.28);color:#fff;
-  padding:12px 16px;font-size:13.5px;text-align:right;
-  display:flex;align-items:center;justify-content:flex-end;
-  white-space:pre-line;line-height:1.4;
-}
+.item-row .c-details{flex:1;background:rgba(210,225,250,0.5);color:#0e1f42;padding:12px 16px;font-weight:700;font-size:14.5px;display:flex;align-items:center;white-space:pre-line;line-height:1.45;}
+.item-row .c-att{width:26%;background:rgba(10,25,60,0.28);color:#fff;padding:12px 16px;font-size:13.5px;text-align:right;display:flex;align-items:center;justify-content:flex-end;white-space:pre-line;line-height:1.4;}
 
-/* ── EDIT MODE ── */
-.editable[contenteditable="true"]{
-  outline:2px dashed rgba(58,228,201,0.7);outline-offset:2px;
-  cursor:text;min-width:20px;border-radius:3px;
-}
+.editable[contenteditable="true"]{outline:2px dashed rgba(58,228,201,0.7);outline-offset:2px;cursor:text;min-width:20px;border-radius:3px;}
 .row-controls{display:none;gap:6px;align-items:center;padding-left:8px;flex-shrink:0;}
 .edit-on .row-controls{display:flex;}
-.row-controls button,.loc-controls button{
-  border:none;border-radius:4px;padding:4px 8px;font-size:12px;
-  cursor:pointer;font-weight:700;font-family:'Manrope',sans-serif;
-}
+.row-controls button,.loc-controls button{border:none;border-radius:4px;padding:4px 8px;font-size:12px;cursor:pointer;font-weight:700;font-family:'Manrope',sans-serif;}
 .btn-del{background:#e53e3e;color:#fff;}
 .btn-add{background:#2f9e44;color:#fff;}
 .loc-controls{display:none;}
 .edit-on .loc-controls{display:inline-flex;gap:6px;margin-left:8px;}
 
-/* ── STATUS BAR ── */
-.status-bar{
-  position:fixed;top:0;left:0;right:0;height:3px;z-index:200;
-  background:var(--grad);transform:scaleX(0);transform-origin:left;
-  transition:transform .3s ease;
-}
+.status-bar{position:fixed;top:0;left:0;right:0;height:3px;z-index:200;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .3s ease;}
 .status-bar.loading{transform:scaleX(0.7);}
 .status-bar.done{transform:scaleX(1);transition:transform .15s ease;}
 
-/* ── FAB ── */
-.fab{
-  position:fixed;bottom:80px;right:18px;width:44px;height:44px;border-radius:50%;
-  background:rgba(33,104,253,0.15);border:1px solid rgba(33,104,253,0.35);
-  color:#93C5FD;font-size:18px;display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:all .2s;z-index:50;
-}
-.fab:hover{background:rgba(33,104,253,0.3);border-color:rgba(58,228,201,0.5);color:#3AE4C9;transform:scale(1.08);}
+.fab{position:fixed;bottom:80px;right:18px;width:44px;height:44px;border-radius:50%;background:rgba(33,104,253,0.15);border:1px solid rgba(33,104,253,0.35);color:#93C5FD;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;z-index:50;}
+.fab:hover{background:rgba(33,104,253,0.3);color:#3AE4C9;transform:scale(1.08);}
 
-/* ── TOOLBAR ── */
-.edit-toolbar{
-  position:fixed;bottom:0;left:0;right:0;
-  background:rgba(6,16,41,0.97);
-  border-top:1px solid rgba(33,104,253,0.3);
-  padding:12px 16px;display:none;
-  justify-content:center;gap:10px;z-index:60;
-  backdrop-filter:blur(12px);
-}
+.edit-toolbar{position:fixed;bottom:0;left:0;right:0;background:rgba(6,16,41,0.97);border-top:1px solid rgba(33,104,253,0.3);padding:12px 16px;display:none;justify-content:center;gap:10px;z-index:60;backdrop-filter:blur(12px);}
 body.editing .edit-toolbar{display:flex;}
-.edit-toolbar button{
-  border:none;border-radius:8px;padding:10px 20px;
-  font-weight:700;font-size:14px;cursor:pointer;
-  font-family:'Manrope',sans-serif;transition:opacity .2s;
-}
+.edit-toolbar button{border:none;border-radius:8px;padding:10px 20px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Manrope',sans-serif;transition:opacity .2s;}
 .edit-toolbar button:hover{opacity:0.85;}
 .btn-save{background:var(--grad);color:#fff;}
 .btn-cancel{background:rgba(255,255,255,0.1);color:#ccc;border:1px solid rgba(255,255,255,0.15)!important;}
 .btn-addloc{background:rgba(33,104,253,0.2);color:#93C5FD;border:1px solid rgba(33,104,253,0.35)!important;}
 .btn-chpass{background:rgba(255,255,255,0.07);color:#aaa;border:1px solid rgba(255,255,255,0.12)!important;}
+.btn-cfg-toggle{background:rgba(58,228,201,0.1);color:#3AE4C9;border:1px solid rgba(58,228,201,0.3)!important;}
 
-/* ── TOAST ── */
-.toast{
-  position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-10px);
-  padding:11px 22px;border-radius:8px;font-size:14px;font-weight:600;
-  z-index:300;box-shadow:0 8px 24px rgba(0,0,0,0.4);
-  opacity:0;transition:all .3s ease;pointer-events:none;
-  font-family:'Manrope',sans-serif;
-}
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-10px);padding:11px 22px;border-radius:8px;font-size:14px;font-weight:600;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,0.4);opacity:0;transition:all .3s ease;pointer-events:none;font-family:'Manrope',sans-serif;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 .toast.ok{background:rgba(47,158,68,0.95);color:#fff;border:1px solid rgba(74,222,128,0.3);}
-.toast.err{background:rgba(229,62,62,0.95);color:#fff;border:1px solid rgba(229,62,62,0.4);}
-.toast.info{background:rgba(33,104,253,0.95);color:#fff;border:1px solid rgba(58,228,201,0.3);}
+.toast.err{background:rgba(229,62,62,0.95);color:#fff;}
+.toast.info{background:rgba(33,104,253,0.95);color:#fff;}
 
-/* ── MODAL ── */
-.modal-overlay{
-  display:none;position:fixed;inset:0;
-  background:rgba(2,5,18,0.85);backdrop-filter:blur(8px);
-  z-index:400;align-items:center;justify-content:center;padding:20px;
-}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(2,5,18,0.85);backdrop-filter:blur(8px);z-index:400;align-items:center;justify-content:center;padding:20px;}
 .modal-overlay.show{display:flex;}
-.modal-box{
-  background:#0d1b3e;border:1px solid rgba(33,104,253,0.35);
-  border-radius:16px;padding:28px 26px;width:100%;max-width:360px;
-  box-shadow:0 30px 70px rgba(0,0,0,0.6);
-  animation:modalIn .25s ease;
-}
+.modal-box{background:#0d1b3e;border:1px solid rgba(33,104,253,0.35);border-radius:16px;padding:28px 26px;width:100%;max-width:360px;box-shadow:0 30px 70px rgba(0,0,0,0.6);animation:modalIn .25s ease;}
 @keyframes modalIn{from{opacity:0;transform:scale(.95) translateY(8px);}to{opacity:1;transform:none;}}
-.modal-title{
-  font-size:18px;font-weight:800;color:#fff;margin:0 0 6px;letter-spacing:-.3px;
-}
+.modal-title{font-size:18px;font-weight:800;color:#fff;margin:0 0 6px;letter-spacing:-.3px;}
 .modal-msg{font-size:14px;color:#93C5FD;margin:0 0 18px;line-height:1.55;}
-.modal-input{
-  width:100%;padding:12px 14px;
-  background:rgba(255,255,255,0.06);
-  border:1.5px solid rgba(255,255,255,0.15);
-  border-radius:8px;font-size:15px;color:#fff;
-  outline:none;transition:border-color .2s;margin-bottom:18px;
-  font-family:'Manrope',sans-serif;
-}
-.modal-input:focus{border-color:#3AE4C9;}
+.modal-input{width:100%;padding:12px 14px;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.15);border-radius:8px;font-size:15px;color:#fff;outline:none;transition:border-color .2s;margin-bottom:18px;font-family:'Manrope',sans-serif;}
+.modal-input:focus
 .modal-input::placeholder{color:rgba(255,255,255,0.3);}
 .modal-input.hidden{display:none;}
 .modal-btns{display:flex;gap:10px;justify-content:flex-end;}
-.modal-btns button{
-  border:none;border-radius:8px;padding:10px 20px;
-  font-weight:700;font-size:14px;cursor:pointer;
-  font-family:'Manrope',sans-serif;transition:opacity .2s;
-}
-.modal-btns button:hover{opacity:.85;}
+.modal-btns button{border:none;border-radius:8px;padding:10px 20px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Manrope',sans-serif;}
 .modal-ok{background:var(--grad);color:#fff;}
 .modal-cancel-btn{background:rgba(255,255,255,0.08);color:#aaa;}
 .modal-cancel-btn.hidden{display:none;}
 
-.edit-badge{
-  position:fixed;top:12px;right:12px;
-  background:rgba(58,228,201,0.15);border:1px solid rgba(58,228,201,0.4);
-  color:#3AE4C9;font-weight:700;font-size:11px;
-  padding:5px 12px;border-radius:999px;z-index:70;
-  display:none;letter-spacing:1px;text-transform:uppercase;
-}
+.edit-badge{position:fixed;top:12px;right:12px;background:rgba(58,228,201,0.15);border:1px solid rgba(58,228,201,0.4);color:#3AE4C9;font-weight:700;font-size:11px;padding:5px 12px;border-radius:999px;z-index:70;display:none;letter-spacing:1px;text-transform:uppercase;}
 body.editing .edit-badge{display:block;}
 
-/* ── RESPONSIVE ── */
+/* loading screen */
+.loading-screen{position:fixed;inset:0;background:#050d20;z-index:500;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:opacity .4s ease;}
+.loading-screen.hidden{opacity:0;pointer-events:none;}
+.loading-logo{font-size:32px;font-weight:900;color:#fff;letter-spacing:-1px;}
+.loading-logo span{background:var(--grad-d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.loading-bar{width:200px;height:3px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;}
+.loading-bar-inner{height:100%;background:var(--grad);border-radius:2px;animation:loadBar 1.2s ease forwards;}
+@keyframes loadBar{from{width:0%;}to{width:100%;}}
+.loading-sub{font-size:13px;color:rgba(255,255,255,0.4);font-weight:500;}
+
 @media(max-width:640px){
-  .tabs{padding:14px 10px 2px;gap:6px;}
-  .tab-btn{padding:8px 14px;font-size:12.5px;}
-  .page{padding:10px 8px 100px;}
-  .header-card{padding:16px 14px;gap:8px;}
-  .agenda-title{font-size:clamp(24px,7vw,32px)!important;}
-  .day-title{font-size:clamp(18px,5.5vw,24px)!important;}
-  .header-right{font-size:12px;text-align:left;padding-top:0;}
-  .header-right .weekday{font-size:14px;}
-  .col-labels{display:none;}
-  .location-row{margin:10px 0 4px;font-size:12px;}
-  .item-row{flex-direction:row;margin:5px 0;min-height:auto;align-items:stretch;}
-  .item-row .c-time{width:26%;padding:7px 6px;font-size:10.5px;line-height:1.25;}
-  .item-row .c-time .dur{font-size:9px;}
-  .item-row .c-details{width:42%;padding:7px 6px;font-size:10.5px;line-height:1.25;align-items:flex-start;}
-  .item-row .c-att{width:32%;padding:7px 6px;font-size:9.5px;line-height:1.25;text-align:right;justify-content:flex-end;align-items:flex-start;}
-  .fab{bottom:70px;right:12px;width:38px;height:38px;font-size:16px;}
-  .cfg-fields{flex-direction:column;}
+.tabs{padding:14px 10px 2px;gap:6px;}
+.tab-btn{padding:8px 14px;font-size:12.5px;}
+.page{padding:10px 8px 100px;}
+.header-card{padding:16px 14px;gap:8px;}
+.agenda-title{font-size:clamp(24px,7vw,32px)!important;}
+.day-title{font-size:clamp(18px,5.5vw,24px)!important;}
+.header-right{font-size:12px;text-align:left;padding-top:0;}
+.col-labels{display:none;}
+.item-row{flex-direction:row;margin:5px 0;min-height:auto;align-items:stretch;}
+.item-row .c-time{width:26%;padding:7px 6px;font-size:10.5px;line-height:1.25;}
+.item-row .c-time .dur{font-size:9px;}
+.item-row .c-details{width:42%;padding:7px 6px;font-size:10.5px;line-height:1.25;align-items:flex-start;}
+.item-row .c-att{width:32%;padding:7px 6px;font-size:9.5px;line-height:1.25;text-align:right;justify-content:flex-end;align-items:flex-start;}
+.fab{bottom:70px;right:12px;width:38px;height:38px;}
+.cfg-fields{flex-direction:column;}
 }
 </style>
-</head>
-<body>
 
-<div class="bg-art">
-  <svg viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice">
-    <defs>
-      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(8)">
-        <path d="M40 0 L0 0 0 40" fill="none" stroke="#ffffff" stroke-width="1"/>
-      </pattern>
-    </defs>
-    <rect width="800" height="800" fill="url(#grid)"/>
-  </svg>
-</div>
-
-<div class="status-bar" id="statusBar"></div>
-
-<!-- CONFIG BANNER -->
-<div class="cfg-banner" id="cfgBanner">
-  <span class="cfg-label">⚙ ตั้งค่า JSONBin</span>
-  <div class="cfg-fields">
-    <input class="cfg-input" id="cfgBinId" placeholder="BIN ID  (เช่น  6849ab1ce41b4d34e8a1b2c3)" spellcheck="false">
-    <input class="cfg-input" id="cfgApiKey" placeholder="Master Key  (เช่น  $2a$10$xxxx...)" spellcheck="false">
-  </div>
-  <button class="btn-cfg" onclick="saveConfig()">บันทึก &amp; โหลด</button>
-  <button class="btn-cfg-skip" onclick="hideBanner()">ซ่อน</button>
-</div>
-
-<div class="tabs" id="tabs"></div>
-<div id="pages"></div>
-
-<div class="edit-badge">✦ Edit Mode</div>
-<div class="fab" id="fabEdit" title="แก้ไข">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-  </svg>
-</div>
-
-<div class="edit-toolbar">
-  <button class="btn-addloc" id="btnAddLoc">+ โซนสถานที่</button>
-  <button class="btn-save" id="btnSave">💾 บันทึกขึ้น Cloud</button>
-  <button class="btn-cancel" id="btnCancel">ยกเลิก</button>
-  <button class="btn-chpass" id="btnChPass">🔑 เปลี่ยนรหัส</button>
-</div>
-
-<div class="toast" id="toast"></div>
-
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal-box">
-    <p class="modal-title" id="modalTitle"></p>
-    <p class="modal-msg" id="modalMsg"></p>
-    <input type="password" class="modal-input hidden" id="modalInput" autocomplete="off">
-    <div class="modal-btns">
-      <button class="modal-cancel-btn" id="modalCancel">ยกเลิก</button>
-      <button class="modal-ok" id="modalOk">ตกลง</button>
-    </div>
-  </div>
-</div>
-
-<script>
-/* ═══════════════════════════════════════════
-   CONFIG  —  แก้ 2 บรรทัดนี้หลังได้ค่าจาก JSONBin
-═══════════════════════════════════════════ */
-const CFG_KEY   = "agenda_cfg_v1";
-const PASS_KEY  = "agenda_pass_v3";
-
-/* ── default data ── */
-const DEFAULT = {
-  day1:{dayLabel:"DAY 1",weekday:"MONDAY",date:"SEPTEMBER.28.2026",time:"09:00 AM - 09:30 PM",rows:[
-    {type:"loc",text:"GRAND BALLROOM"},
-    {type:"item",time:"9:00-9:15 AM",dur:"15 MINS",details:"MC Greeting – Greeting and welcome by P' Sawai & P' Mam",att:"Emcee: Kannika, Monthon"},
-    {type:"item",time:"9:15-9:45 AM",dur:"30 MINS",details:"Opening Speech & FY27 Playbook",att:"Philip"},
-    {type:"item",time:"9:45-10:30 AM",dur:"45 MINS",details:"Innovation talk – Guest speaker",att:""},
-    {type:"item",time:"10:30AM-12:45 PM",dur:"135 MINS",details:"Break + Innovation workshop and exchange",att:""},
-    {type:"loc",text:"FLOW INDOOR"},
-    {type:"item",time:"12:45-1:30 PM",dur:"45 MINS",details:"Lunch",att:""},
-    {type:"loc",text:"GRAND BALLROOM"},
-    {type:"item",time:"1:30-2:00 PM",dur:"30 MINS",details:"Breakaway Leadership",att:"Sridhar\nEmcee: Supaporn, Eakarat"},
-    {type:"item",time:"2:00-2:50 PM",dur:"50 MINS",details:"5 Years Strategy, Factory Master Plan & Exabyte Growth\n(Key message only, 15 mins each)",att:"Dalwinder, Kitamura San, Takahashi San, Vincent, Ragu, Nathalita, Prakash and Aunna"},
-    {type:"item",time:"2:50-3:50 PM",dur:"60 MINS",details:"Breakout session – 3 pillars, 7 groups\n*Exabyte Growth\n  1.Colin / Ishibashi San\n  2.Paweena / Atthaphol\n  3.Kamalam / Sridar\n*Factory Master Plan\n  4.Nathalita, Sawai\n*5 Years Strategy\n  5.Kitamura San, Itou San\n  6.Vincent, Takahashi San\n  7.Ragu",att:""},
-    {type:"item",time:"3:50-5:05 PM",dur:"75 MINS",details:"Break + Presentation, 15 mins per group",att:""},
-    {type:"item",time:"5:05-7:00 PM",dur:"115 MINS",details:"Presentation continued",att:"Group 1,2,3,4 and 7"},
-    {type:"item",time:"7:00-9:00 PM",dur:"120 MINS",details:"Dinner & Engagement Activity",att:""}
-  ]},
-  day2:{dayLabel:"DAY 2",weekday:"TUESDAY",date:"SEPTEMBER.29.2026",time:"08:30 AM - 10:00 PM",rows:[
-    {type:"loc",text:"GRAND BALLROOM"},
-    {type:"item",time:"8:30-8:35 AM",dur:"5 MINS",details:"AI Song / MC Greeting",att:"Emcee: Sanan, Sawai T."},
-    {type:"item",time:"8:35-9:05 AM",dur:"30 MINS",details:"Accelerating AI usage in the factory – how senior leaders can enable.",att:"Amit, Dalwinder"},
-    {type:"item",time:"9:05-9:35 AM",dur:"30 MINS",details:"People strategy – especially for the IDL group over the next 5 years.",att:"CW Mak and all HODs"},
-    {type:"item",time:"9:35AM-12:05 PM",dur:"150 MINS",details:"Leadership Training",att:"Sasin\n(coordinated by Nion/Mak)"},
-    {type:"loc",text:"FLOW INDOOR"},
-    {type:"item",time:"12:05-1:05 PM",dur:"60 MINS",details:"Lunch",att:""},
-    {type:"loc",text:"GRAND BALLROOM"},
-    {type:"item",time:"1:05-4:35 PM",dur:"210 MINS",details:"Team Building Activity",att:"Emcee: Monteera, Krongthip"},
-    {type:"item",time:"4:35-7:15 PM",dur:"160 MINS",details:"Break / Personal / Prepare for Dinner",att:""},
-    {type:"loc",text:"NOAH CRUISE"},
-    {type:"item",time:"7:15-10:00 PM",dur:"165 MINS",details:"Dinner on Cruise",att:""}
-  ]},
-  day3:{dayLabel:"DAY 3",weekday:"WEDNESDAY",date:"SEPTEMBER.30.2026",time:"08:30 AM - 1:00 PM",rows:[
-    {type:"loc",text:"GRAND BALLROOM"},
-    {type:"item",time:"8:30-9:00 AM",dur:"30 MINS",details:"AI Song / MC Greeting",att:"Emcee: Saowalak, Ekawat"},
-    {type:"item",time:"9:00-9:30 AM",dur:"30 MINS",details:"Presentation, 15 mins per group (2 groups)",att:"Group 5 & 6"},
-    {type:"item",time:"9:30-11:30 AM",dur:"120 MINS",details:"Breakaway in Health & Well Being Inspiration Talk",att:"TBD"},
-    {type:"item",time:"11:30-11:45 AM",dur:"15 MINS",details:"Reflection",att:""},
-    {type:"item",time:"11:45AM-12:00 PM",dur:"15 MINS",details:"Closing by Nathalita and Sawai",att:""},
-    {type:"loc",text:"FLOW INDOOR"},
-    {type:"item",time:"12:00-1:00 PM",dur:"60 MINS",details:"Lunch",att:""}
-  ]}
-};
-
-const DAY_KEYS = ["day1","day2","day3"];
-let appData = null;
-let editing = false;
-let cfgBinId = "";
-let cfgApiKey = "";
-
-/* ═══════════════ HELPERS ═══════════════ */
-function hashStr(s){
-  let h=5381;
-  for(let i=0;i<s.length;i++) h=((h<<5)+h)+s.charCodeAt(i);
-  return (h>>>0).toString(36);
-}
-function getPassHash(){ return localStorage.getItem(PASS_KEY); }
-function setPassHash(r){ localStorage.setItem(PASS_KEY,hashStr(r)); }
-function checkPass(r){ return hashStr(r)===getPassHash(); }
-
-function loadCfg(){
-  try{
-    const c=JSON.parse(localStorage.getItem(CFG_KEY)||"{}");
-    cfgBinId = c.binId||"";
-    cfgApiKey = c.apiKey||"";
-    if(cfgBinId) document.getElementById('cfgBinId').value=cfgBinId;
-    if(cfgApiKey) document.getElementById('cfgApiKey').value=cfgApiKey;
-  }catch(e){}
-}
-function saveCfgLocal(){
-  localStorage.setItem(CFG_KEY,JSON.stringify({binId:cfgBinId,apiKey:cfgApiKey}));
-}
-
-/* ═══════════════ STATUS BAR ═══════════════ */
-function barLoading(){ const b=document.getElementById('statusBar'); b.className='status-bar loading'; }
-function barDone(){ const b=document.getElementById('statusBar'); b.className='status-bar done'; setTimeout(()=>{ b.className='status-bar'; },600); }
-
-/* ═══════════════ TOAST ═══════════════ */
-let toastTid=null;
-function showToast(msg,type){
-  const t=document.getElementById('toast');
-  t.textContent=msg;
-  t.className='toast '+(type||'ok');
-  void t.offsetWidth;
-  t.classList.add('show');
-  clearTimeout(toastTid);
-  toastTid=setTimeout(()=>t.classList.remove('show'),2800);
-}
-
-/* ═══════════════ MODAL ═══════════════ */
-function openModal({title,msg,hasInput,okLabel,cancelLabel,placeholder}){
-  return new Promise(resolve=>{
-    const ov=document.getElementById('modalOverlay');
-    document.getElementById('modalTitle').textContent=title||'';
-    document.getElementById('modalMsg').textContent=msg||'';
-    const inp=document.getElementById('modalInput');
-    inp.value=''; inp.placeholder=placeholder||'รหัสผ่าน';
-    hasInput ? inp.classList.remove('hidden') : inp.classList.add('hidden');
-    const ok=document.getElementById('modalOk');
-    const ca=document.getElementById('modalCancel');
-    ok.textContent=okLabel||'ตกลง';
-    cancelLabel===false ? ca.classList.add('hidden') : (ca.classList.remove('hidden'), ca.textContent=cancelLabel||'ยกเลิก');
-    ov.classList.add('show');
-    if(hasInput) setTimeout(()=>inp.focus(),80);
-    function cleanup(v){ ov.classList.remove('show'); ok.removeEventListener('click',onOk); ca.removeEventListener('click',onCa); inp.removeEventListener('keydown',onKey); resolve(v); }
-    function onOk(){ cleanup(hasInput?inp.value:true); }
-    function onCa(){ cleanup(null); }
-    function onKey(e){ if(e.key==='Enter')onOk(); if(e.key==='Escape')onCa(); }
-    ok.addEventListener('click',onOk); ca.addEventListener('click',onCa); inp.addEventListener('keydown',onKey);
-  });
-}
-
-/* ═══════════════ JSONBIN API ═══════════════ */
-async function fetchFromBin(){
-  if(!cfgBinId||!cfgApiKey) return null;
-  barLoading();
-  try{
-    const r=await fetch(`https://api.jsonbin.io/v3/b/${cfgBinId}/latest`,{
-      headers:{'X-Master-Key':cfgApiKey,'X-Bin-Meta':'false'}
-    });
-    barDone();
-    if(!r.ok) throw new Error('fetch failed: '+r.status);
-    return await r.json();
-  }catch(e){ barDone(); return null; }
-}
-
-async function saveToBin(d){
-  if(!cfgBinId||!cfgApiKey) throw new Error('no config');
-  barLoading();
-  const r=await fetch(`https://api.jsonbin.io/v3/b/${cfgBinId}`,{
-    method:'PUT',
-    headers:{'Content-Type':'application/json','X-Master-Key':cfgApiKey},
-    body:JSON.stringify(d)
-  });
-  barDone();
-  if(!r.ok) throw new Error('save failed: '+r.status);
-  return true;
-}
-
-/* ═══════════════ CONFIG BANNER ═══════════════ */
-async function saveConfig(){
-  const bid=document.getElementById('cfgBinId').value.trim();
-  const akey=document.getElementById('cfgApiKey').value.trim();
-  if(!bid||!akey){ showToast('กรุณาใส่ BIN ID และ Master Key','err'); return; }
-  cfgBinId=bid; cfgApiKey=akey;
-  saveCfgLocal();
-  showToast('กำลังโหลดข้อมูลจาก Cloud...','info');
-  const remote=await fetchFromBin();
-  if(remote && remote.day1){
-    appData=remote;
-    showToast('โหลดข้อมูลจาก Cloud สำเร็จ','ok');
-  } else {
-    // first time: push default
-    await saveToBin(JSON.parse(JSON.stringify(DEFAULT)));
-    appData=JSON.parse(JSON.stringify(DEFAULT));
-    showToast('สร้างข้อมูลใหม่บน Cloud เรียบร้อย','ok');
-  }
-  document.getElementById('cfgBanner').classList.add('hidden');
-  render();
-}
-function hideBanner(){ document.getElementById('cfgBanner').classList.add('hidden'); }
-
-/* ═══════════════ RENDER ═══════════════ */
-function esc(s){
-  s=s||''; const d=document.createElement('div'); d.innerText=s; return d.innerHTML;
-}
-function renderPage(key,d){
-  let rows='';
-  d.rows.forEach((r,i)=>{
-    if(r.type==='loc'){
-      rows+=`<div class="location-row" data-idx="${i}">
-        <span class="pin">📍</span>
-        <span class="loc-text editable" data-key="${key}" data-idx="${i}" data-field="text" ${editing?'contenteditable="true"':''}>${esc(r.text)}</span>
-        <span class="loc-controls">
-          <button class="btn-del" data-action="del" data-key="${key}" data-idx="${i}">ลบโซน</button>
-        </span>
-      </div>`;
-    } else {
-      rows+=`<div class="item-row" data-idx="${i}">
-        <div class="c-time">
-          <span class="editable" data-key="${key}" data-idx="${i}" data-field="time" ${editing?'contenteditable="true"':''}>${esc(r.time)}</span>
-          <span class="dur editable" data-key="${key}" data-idx="${i}" data-field="dur" ${editing?'contenteditable="true"':''}>${esc(r.dur)}</span>
-        </div>
-        <div class="c-details editable" data-key="${key}" data-idx="${i}" data-field="details" ${editing?'contenteditable="true"':''}>${esc(r.details)}</div>
-        <div class="c-att editable" data-key="${key}" data-idx="${i}" data-field="att" ${editing?'contenteditable="true"':''}>${esc(r.att)}</div>
-        <div class="row-controls">
-          <button class="btn-add" data-action="addAfter" data-key="${key}" data-idx="${i}">+</button>
-          <button class="btn-del" data-action="del" data-key="${key}" data-idx="${i}">✕</button>
-        </div>
-      </div>`;
-    }
-  });
-  return `<div class="header-card">
-    <div class="header-left">
-      <p class="agenda-title">AGENDA</p>
-      <p class="day-title">${esc(d.dayLabel)}</p>
-    </div>
-    <div class="header-right">
-      <div class="weekday editable" data-key="${key}" data-field="weekday" ${editing?'contenteditable="true"':''}>${esc(d.weekday)}</div>
-      <div class="editable" data-key="${key}" data-field="date" ${editing?'contenteditable="true"':''}>${esc(d.date)}</div>
-      <div class="editable" data-key="${key}" data-field="time" ${editing?'contenteditable="true"':''}>${esc(d.time)}</div>
-    </div>
-  </div>
-  <div class="col-labels">
-    <div class="c-time">Time / Duration</div>
-    <div class="c-details">Details</div>
-    <div class="c-att">Attendee / Presenter & Emcee</div>
-  </div>${rows}`;
-}
-
-function render(){
-  const activeKey = document.querySelector('.tab-btn.active')?.dataset?.key || DAY_KEYS[0];
-  const tabsEl=document.getElementById('tabs');
-  const pagesEl=document.getElementById('pages');
-  tabsEl.innerHTML=''; pagesEl.innerHTML='';
-  DAY_KEYS.forEach((key,idx)=>{
-    const d=(appData||DEFAULT)[key];
-    const btn=document.createElement('button');
-    btn.className='tab-btn'+(key===activeKey?' active':'');
-    btn.textContent=d.dayLabel; btn.dataset.key=key;
-    btn.onclick=()=>switchTab(key);
-    tabsEl.appendChild(btn);
-    const page=document.createElement('div');
-    page.className='page'+(key===activeKey?' active':'');
-    page.id='page-'+key;
-    page.innerHTML=renderPage(key,d);
-    pagesEl.appendChild(page);
-  });
-  document.body.classList.toggle('editing',editing);
-  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('edit-on',editing));
-  attachHandlers();
-}
-
-function switchTab(key){
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.key===key));
-  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-'+key));
-}
-
-function attachHandlers(){
-  document.querySelectorAll('.editable').forEach(el=>el.addEventListener('blur',onBlur));
-  document.querySelectorAll('[data-action]').forEach(el=>el.addEventListener('click',onAction));
-}
-
-function onBlur(e){
-  const el=e.target;
-  const key=el.dataset.key; const field=el.dataset.field; const idx=el.dataset.idx;
-  const val=el.innerText;
-  if(!appData) return;
-  if(idx===undefined){ appData[key][field]=val; } else { appData[key].rows[parseInt(idx,10)][field]=val; }
-}
-
-function onAction(e){
-  const btn=e.currentTarget;
-  const action=btn.dataset.action; const key=btn.dataset.key; const idx=parseInt(btn.dataset.idx,10);
-  if(!appData) return;
-  if(action==='del'){ appData[key].rows.splice(idx,1); }
-  else if(action==='addAfter'){ appData[key].rows.splice(idx+1,0,{type:'item',time:'00:00-00:00',dur:'0 MINS',details:'หัวข้อใหม่',att:''}); }
-  render();
-}
-
-/* ═══════════════ EDIT FLOW ═══════════════ */
-async function enterEdit(){
-  const stored=getPassHash();
-  if(!stored){
-    const p1=await openModal({title:'ตั้งรหัสผ่านแก้ไข',msg:'ยังไม่มีรหัสผ่าน กรุณาตั้งครั้งแรก',hasInput:true,placeholder:'รหัสผ่านใหม่'});
-    if(!p1) return;
-    const p2=await openModal({title:'ยืนยันรหัสผ่าน',msg:'กรอกรหัสผ่านอีกครั้ง',hasInput:true,placeholder:'ยืนยันรหัสผ่าน'});
-    if(!p2) return;
-    if(p1!==p2){ showToast('รหัสผ่านไม่ตรงกัน','err'); return; }
-    setPassHash(p1);
-    showToast('ตั้งรหัสผ่านเรียบร้อย','ok');
-  } else {
-    const p=await openModal({title:'เข้าสู่โหมดแก้ไข',msg:'กรอกรหัสผ่านเพื่อแก้ไข Agenda',hasInput:true,placeholder:'รหัสผ่าน'});
-    if(p===null) return;
-    if(!checkPass(p)){ showToast('รหัสผ่านไม่ถูกต้อง','err'); return; }
-  }
-  if(!appData){
-    showToast('โหลดข้อมูลก่อน — ใส่ BIN ID และ API Key ด้านบน','err');
-    document.getElementById('cfgBanner').classList.remove('hidden');
-    return;
-  }
-  editing=true; render();
-  showToast('เข้าสู่โหมดแก้ไข — คลิกข้อความเพื่อแก้ไข','info');
-}
-
-async function saveCloud(){
-  if(!appData){ showToast('ไม่มีข้อมูล','err'); return; }
-  if(!cfgBinId||!cfgApiKey){ showToast('ยังไม่ได้ตั้งค่า JSONBin','err'); document.getElementById('cfgBanner').classList.remove('hidden'); return; }
-  try{
-    await saveToBin(appData);
-    editing=false; render();
-    showToast('บันทึกขึ้น Cloud เรียบร้อยแล้ว 🎉','ok');
-  }catch(e){ showToast('บันทึกไม่สำเร็จ: '+e.message,'err'); }
-}
-
-function cancelEdit(){
-  editing=false;
-  // reload from bin to discard changes
-  if(cfgBinId&&cfgApiKey){
-    fetchFromBin().then(remote=>{ if(remote&&remote.day1) appData=remote; render(); });
-  } else { render(); }
-}
-
-async function changePassword(){
-  const p=await openModal({title:'ยืนยันตัวตน',msg:'กรอกรหัสผ่านปัจจุบัน',hasInput:true,placeholder:'รหัสผ่านปัจจุบัน'});
-  if(p===null) return;
-  if(!checkPass(p)){ showToast('รหัสผ่านไม่ถูกต้อง','err'); return; }
-  const np1=await openModal({title:'รหัสผ่านใหม่',msg:'กรอกรหัสผ่านใหม่',hasInput:true,placeholder:'รหัสผ่านใหม่'});
-  if(!np1) return;
-  const np2=await openModal({title:'ยืนยันรหัสผ่านใหม่',msg:'กรอกอีกครั้ง',hasInput:true,placeholder:'ยืนยันรหัสผ่านใหม่'});
-  if(!np2) return;
-  if(np1!==np2){ showToast('รหัสผ่านใหม่ไม่ตรงกัน','err'); return; }
-  setPassHash(np1);
-  showToast('เปลี่ยนรหัสผ่านเรียบร้อย','ok');
-}
-
-/* ═══════════════ EVENTS ═══════════════ */
-document.getElementById('fabEdit').addEventListener('click',enterEdit);
-document.getElementById('btnSave').addEventListener('click',saveCloud);
-document.getElementById('btnCancel').addEventListener('click',cancelEdit);
-document.getElementById('btnChPass').addEventListener('click',changePassword);
-document.getElementById('btnAddLoc').addEventListener('click',()=>{
-  if(!appData) return;
-  const key=document.querySelector('.tab-btn.active').dataset.key;
-  appData[key].rows.push({type:'loc',text:'สถานที่ใหม่'});
-  render();
-});
-
-/* ═══════════════ INIT ═══════════════ */
-async function init(){
-  loadCfg();
-  if(cfgBinId&&cfgApiKey){
-    document.getElementById('cfgBanner').classList.add('hidden');
-    showToast('กำลังโหลดข้อมูลจาก Cloud...','info');
-    const remote=await fetchFromBin();
-    if(remote&&remote.day1){ appData=remote; showToast('โหลดข้อมูลสำเร็จ','ok'); }
-    else { appData=JSON.parse(JSON.stringify(DEFAULT)); showToast('โหลด Cloud ไม่สำเร็จ ใช้ข้อมูล default','err'); }
-  } else {
-    appData=JSON.parse(JSON.stringify(DEFAULT));
-  }
-  render();
-}
-init();
-</script>
-</body>
-</html>
+</head> <body> <div class="bg-art"> <svg viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice"> <defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(8)"><path d="M40 0 L0 0 0 40" fill="none" stroke="#ffffff" stroke-width="1"/></pattern></defs> <rect width="800" height="800" fill="url(#grid)"/> </svg> </div> <!-- Loading Screen --> <div class="loading-screen" id="loadingScreen"> <div class="loading-logo">AGENDA <span>2026</span></div> <div class="loading-bar"><div class="loading-bar-inner"></div></div> <div class="loading-sub">WD Leadership Offsite · กำลังโหลด...</div> </div> <div class="status-bar" id="statusBar"></div> <!-- Config Panel (hidden — only shown in edit mode) --> <div class="cfg-panel" id="cfgPanel"> <span class="cfg-label">⚙ JSONBin</span> <div class="cfg-fields"> <input class="cfg-input" id="cfgBinId" placeholder="BIN ID" spellcheck="false"> <input class="cfg-input" id="cfgApiKey" placeholder="Master Key" spellcheck="false" type="password"> </div> <button class="btn-cfg" onclick="saveConfig()">บันทึก &amp; โหลด</button> </div> <div class="tabs" id="tabs"></div> <div id="pages"></div> <div class="edit-badge">✦ Edit Mode</div> <div class="fab" id="fabEdit" title="แก้ไข"> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/> <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/> </svg> </div> <div class="edit-toolbar"> <button class="btn-cfg-toggle" id="btnCfgToggle">⚙ JSONBin</button> <button class="btn-addloc" id="btnAddLoc">+ โซนสถานที่</button> <button class="btn-save" id="btnSave">💾 บันทึกขึ้น Cloud</button> <button class="btn-cancel" id="btnCancel">ยกเลิก</button> <button class="btn-chpass" id="btnChPass">🔑 เปลี่ยนรหัส</button> </div> <div class="toast" id="toast"></div> <div class="modal-overlay" id="modalOverlay"> <div class="modal-box"> <p class="modal-title" id="modalTitle"></p> <p class="modal-msg" id="modalMsg"></p> <input type="password" class="modal-input hidden" id="modalInput" autocomplete="off"> <div class="modal-btns"> <button class="modal-cancel-btn" id="modalCancel">ยกเลิก</button> <button class="modal-ok" id="modalOk">ตกลง</button> </div> </div> </div> <script> const CFG_KEY = "agenda_cfg_v1"; const PASS_KEY = "agenda_pass_v3"; const DEFAULT = { day1:{dayLabel:"DAY 1",weekday:"MONDAY",date:"SEPTEMBER.28.2026",time:"09:00 AM - 09:30 PM",rows:[ {type:"loc",text:"GRAND BALLROOM"}, {type:"item",time:"9:00-9:15 AM",dur:"15 MINS",details:"MC Greeting – Greeting and welcome by P' Sawai & P' Mam",att:"Emcee: Kannika, Monthon"}, {type:"item",time:"9:15-9:45 AM",dur:"30 MINS",details:"Opening Speech & FY27 Playbook",att:"Philip"}, {type:"item",time:"9:45-10:30 AM",dur:"45 MINS",details:"Innovation talk – Guest speaker",att:""}, {type:"item",time:"10:30AM-12:45 PM",dur:"135 MINS",details:"Break + Innovation workshop and exchange",att:""}, {type:"loc",text:"FLOW INDOOR"}, {type:"item",time:"12:45-1:30 PM",dur:"45 MINS",details:"Lunch",att:""}, {type:"loc",text:"GRAND BALLROOM"}, {type:"item",time:"1:30-2:00 PM",dur:"30 MINS",details:"Breakaway Leadership",att:"Sridhar\nEmcee: Supaporn, Eakarat"}, {type:"item",time:"2:00-2:50 PM",dur:"50 MINS",details:"5 Years Strategy, Factory Master Plan & Exabyte Growth\n(Key message only, 15 mins each)",att:"Dalwinder, Kitamura San, Takahashi San, Vincent, Ragu, Nathalita, Prakash and Aunna"}, {type:"item",time:"2:50-3:50 PM",dur:"60 MINS",details:"Breakout session – 3 pillars, 7 groups\n*Exabyte Growth\n 1.Colin / Ishibashi San\n 2.Paweena / Atthaphol\n 3.Kamalam / Sridar\n*Factory Master Plan\n 4.Nathalita, Sawai\n*5 Years Strategy\n 5.Kitamura San, Itou San\n 6.Vincent, Takahashi San\n 7.Ragu",att:""}, {type:"item",time:"3:50-5:05 PM",dur:"75 MINS",details:"Break + Presentation, 15 mins per group",att:""}, {type:"item",time:"5:05-7:00 PM",dur:"115 MINS",details:"Presentation continued",att:"Group 1,2,3,4 and 7"}, {type:"item",time:"7:00-9:00 PM",dur:"120 MINS",details:"Dinner & Engagement Activity",att:""} ]}, day2:{dayLabel:"DAY 2",weekday:"TUESDAY",date:"SEPTEMBER.29.2026",time:"08:30 AM - 10:00 PM",rows:[ {type:"loc",text:"GRAND BALLROOM"}, {type:"item",time:"8:30-8:35 AM",dur:"5 MINS",details:"AI Song / MC Greeting",att:"Emcee: Sanan, Sawai T."}, {type:"item",time:"8:35-9:05 AM",dur:"30 MINS",details:"Accelerating AI usage in the factory – how senior leaders can enable.",att:"Amit, Dalwinder"}, {type:"item",time:"9:05-9:35 AM",dur:"30 MINS",details:"People strategy – especially for the IDL group over the next 5 years.",att:"CW Mak and all HODs"}, {type:"item",time:"9:35AM-12:05 PM",dur:"150 MINS",details:"Leadership Training",att:"Sasin\n(coordinated by Nion/Mak)"}, {type:"loc",text:"FLOW INDOOR"}, {type:"item",time:"12:05-1:05 PM",dur:"60 MINS",details:"Lunch",att:""}, {type:"loc",text:"GRAND BALLROOM"}, {type:"item",time:"1:05-4:35 PM",dur:"210 MINS",details:"Team Building Activity",att:"Emcee: Monteera, Krongthip"}, {type:"item",time:"4:35-7:15 PM",dur:"160 MINS",details:"Break / Personal / Prepare for Dinner",att:""}, {type:"loc",text:"NOAH CRUISE"}, {type:"item",time:"7:15-10:00 PM",dur:"165 MINS",details:"Dinner on Cruise",att:""} ]}, day3:{dayLabel:"DAY 3",weekday:"WEDNESDAY",date:"SEPTEMBER.30.2026",time:"08:30 AM - 1:00 PM",rows:[ {type:"loc",text:"GRAND BALLROOM"}, {type:"item",time:"8:30-9:00 AM",dur:"30 MINS",details:"AI Song / MC Greeting",att:"Emcee: Saowalak, Ekawat"}, {type:"item",time:"9:00-9:30 AM",dur:"30 MINS",details:"Presentation, 15 mins per group (2 groups)",att:"Group 5 & 6"}, {type:"item",time:"9:30-11:30 AM",dur:"120 MINS",details:"Breakaway in Health & Well Being Inspiration Talk",att:"TBD"}, {type:"item",time:"11:30-11:45 AM",dur:"15 MINS",details:"Reflection",att:""}, {type:"item",time:"11:45AM-12:00 PM",dur:"15 MINS",details:"Closing by Nathalita and Sawai",att:""}, {type:"loc",text:"FLOW INDOOR"}, {type:"item",time:"12:00-1:00 PM",dur:"60 MINS",details:"Lunch",att:""} ]} }; const DAY_KEYS=["day1","day2","day3"]; let appData=null, editing=false, cfgBinId="", cfgApiKey=""; function hashStr(s){let h=5381;for(let i=0;i<s.length;i++)h=((h<<5)+h)+s.charCodeAt(i);return(h>>>0).toString(36);} function getPassHash(){return localStorage.getItem(PASS_KEY);} function setPassHash(r){localStorage.setItem(PASS_KEY,hashStr(r));} function checkPass(r){return hashStr(r)===getPassHash();} function loadCfg(){ try{const c=JSON.parse(localStorage.getItem(CFG_KEY)||"{}");cfgBinId=c.binId||"";cfgApiKey=c.apiKey||"";}catch(e){} } function saveCfgLocal(){localStorage.setItem(CFG_KEY,JSON.stringify({binId:cfgBinId,apiKey:cfgApiKey}));} function barLoading(){const b=document.getElementById('statusBar');b.className='status-bar loading';} function barDone(){const b=document.getElementById('statusBar');b.className='status-bar done';setTimeout(()=>{b.className='status-bar';},600);} let toastTid=null; function showToast(msg,type){ const t=document.getElementById('toast'); t.textContent=msg;t.className='toast '+(type||'ok'); void t.offsetWidth;t.classList.add('show'); clearTimeout(toastTid);toastTid=setTimeout(()=>t.classList.remove('show'),2800); } function openModal({title,msg,hasInput,okLabel,cancelLabel,placeholder}){ return new Promise(resolve=>{ const ov=document.getElementById('modalOverlay'); document.getElementById('modalTitle').textContent=title||''; document.getElementById('modalMsg').textContent=msg||''; const inp=document.getElementById('modalInput'); inp.value='';inp.placeholder=placeholder||'รหัสผ่าน'; hasInput?inp.classList.remove('hidden'):inp.classList.add('hidden'); const ok=document.getElementById('modalOk'); const ca=document.getElementById('modalCancel'); ok.textContent=okLabel||'ตกลง'; cancelLabel===false?ca.classList.add('hidden'):(ca.classList.remove('hidden'),ca.textContent=cancelLabel||'ยกเลิก'); ov.classList.add('show'); if(hasInput)setTimeout(()=>inp.focus(),80); function cleanup(v){ov.classList.remove('show');ok.removeEventListener('click',onOk);ca.removeEventListener('click',onCa);inp.removeEventListener('keydown',onKey);resolve(v);} function onOk(){cleanup(hasInput?inp.value:true);} function onCa(){cleanup(null);} function onKey(e){if(e.key==='Enter')onOk();if(e.key==='Escape')onCa();} ok.addEventListener('click',onOk);ca.addEventListener('click',onCa);inp.addEventListener('keydown',onKey); }); } async function fetchFromBin(){ if(!cfgBinId||!cfgApiKey)return null; barLoading(); try{ const r=await fetch(`https://api.jsonbin.io/v3/b/${cfgBinId}/latest`,{headers:{'X-Master-Key':cfgApiKey,'X-Bin-Meta':'false'}}); barDone(); if(!r.ok)throw new Error('fetch failed'); return await r.json(); }catch(e){barDone();return null;} } async function saveToBin(d){ if(!cfgBinId||!cfgApiKey)throw new Error('no config'); barLoading(); const r=await fetch(`https://api.jsonbin.io/v3/b/${cfgBinId}`,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':cfgApiKey},body:JSON.stringify(d)}); barDone(); if(!r.ok)throw new Error('save failed: '+r.status); return true; } async function saveConfig(){ const bid=document.getElementById('cfgBinId').value.trim(); const akey=document.getElementById('cfgApiKey').value.trim(); if(!bid||!akey){showToast('กรุณาใส่ BIN ID และ Master Key','err');return;} cfgBinId=bid;cfgApiKey=akey;saveCfgLocal(); showToast('กำลังเชื่อมต่อ Cloud...','info'); const remote=await fetchFromBin(); if(remote&&remote.day1){ appData=remote;render(); showToast('เชื่อมต่อสำเร็จ','ok'); } else { await saveToBin(JSON.parse(JSON.stringify(DEFAULT))); appData=JSON.parse(JSON.stringify(DEFAULT));render(); showToast('สร้างข้อมูลใหม่บน Cloud สำเร็จ','ok'); } document.getElementById('cfgPanel').classList.remove('show'); } function esc(s){s=s||'';const d=document.createElement('div');d.innerText=s;return d.innerHTML;} function renderPage(key,d){ let rows=''; d.rows.forEach((r,i)=>{ if(r.type==='loc'){ rows+=`<div class="location-row" data-idx="${i}"><span class="pin">📍</span><span class="loc-text editable" data-key="${key}" data-idx="${i}" data-field="text" ${editing?'contenteditable="true"':''}>${esc(r.text)}</span><span class="loc-controls"><button class="btn-del" data-action="del" data-key="${key}" data-idx="${i}">ลบโซน</button></span></div>`; } else { rows+=`<div class="item-row" data-idx="${i}"><div class="c-time"><span class="editable" data-key="${key}" data-idx="${i}" data-field="time" ${editing?'contenteditable="true"':''}>${esc(r.time)}</span><span class="dur editable" data-key="${key}" data-idx="${i}" data-field="dur" ${editing?'contenteditable="true"':''}>${esc(r.dur)}</span></div><div class="c-details editable" data-key="${key}" data-idx="${i}" data-field="details" ${editing?'contenteditable="true"':''}>${esc(r.details)}</div><div class="c-att editable" data-key="${key}" data-idx="${i}" data-field="att" ${editing?'contenteditable="true"':''}>${esc(r.att)}</div><div class="row-controls"><button class="btn-add" data-action="addAfter" data-key="${key}" data-idx="${i}">+</button><button class="btn-del" data-action="del" data-key="${key}" data-idx="${i}">✕</button></div></div>`; } }); return `<div class="header-card"><div class="header-left"><p class="agenda-title">AGENDA</p><p class="day-title">${esc(d.dayLabel)}</p></div><div class="header-right"><div class="weekday editable" data-key="${key}" data-field="weekday" ${editing?'contenteditable="true"':''}>${esc(d.weekday)}</div><div class="editable" data-key="${key}" data-field="date" ${editing?'contenteditable="true"':''}>${esc(d.date)}</div><div class="editable" data-key="${key}" data-field="time" ${editing?'contenteditable="true"':''}>${esc(d.time)}</div></div></div><div class="col-labels"><div class="c-time">Time / Duration</div><div class="c-details">Details</div><div class="c-att">Attendee / Presenter & Emcee</div></div>${rows}`; } function render(){ const activeKey=document.querySelector('.tab-btn.active')?.dataset?.key||DAY_KEYS[0]; const tabsEl=document.getElementById('tabs');const pagesEl=document.getElementById('pages'); tabsEl.innerHTML='';pagesEl.innerHTML=''; DAY_KEYS.forEach((key,idx)=>{ const d=(appData||DEFAULT)[key]; const btn=document.createElement('button'); btn.className='tab-btn'+(key===activeKey?' active':''); btn.textContent=d.dayLabel;btn.dataset.key=key;btn.onclick=()=>switchTab(key); tabsEl.appendChild(btn); const page=document.createElement('div'); page.className='page'+(key===activeKey?' active':''); page.id='page-'+key;page.innerHTML=renderPage(key,d); pagesEl.appendChild(page); }); document.body.classList.toggle('editing',editing); document.querySelectorAll('.page').forEach(p=>p.classList.toggle('edit-on',editing)); attachHandlers(); } function switchTab(key){ document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.key===key)); document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-'+key)); } function attachHandlers(){ document.querySelectorAll('.editable').forEach(el=>el.addEventListener('blur',onBlur)); document.querySelectorAll('[data-action]').forEach(el=>el.addEventListener('click',onAction)); } function onBlur(e){ const el=e.target;const key=el.dataset.key;const field=el.dataset.field;const idx=el.dataset.idx; if(!appData)return; if(idx===undefined){appData[key][field]=el.innerText;}else{appData[key].rows[parseInt(idx,10)][field]=el.innerText;} } function onAction(e){ const btn=e.currentTarget;const action=btn.dataset.action;const key=btn.dataset.key;const idx=parseInt(btn.dataset.idx,10); if(!appData)return; if(action==='del'){appData[key].rows.splice(idx,1);} else if(action==='addAfter'){appData[key].rows.splice(idx+1,0,{type:'item',time:'00:00-00:00',dur:'0 MINS',details:'หัวข้อใหม่',att:''});} render(); } async function enterEdit(){ const stored=getPassHash(); if(!stored){ const p1=await openModal({title:'ตั้งรหัสผ่านแก้ไข',msg:'ยังไม่มีรหัสผ่าน กรุณาตั้งครั้งแรก',hasInput:true,placeholder:'รหัสผ่านใหม่'}); if(!p1)return; const p2=await openModal({title:'ยืนยันรหัสผ่าน',msg:'กรอกรหัสผ่านอีกครั้ง',hasInput:true,placeholder:'ยืนยันรหัสผ่าน'}); if(!p2)return; if(p1!==p2){showToast('รหัสผ่านไม่ตรงกัน','err');return;} setPassHash(p1);showToast('ตั้งรหัสผ่านเรียบร้อย','ok'); } else { const p=await openModal({title:'เข้าสู่โหมดแก้ไข',msg:'กรอกรหัสผ่านเพื่อแก้ไข Agenda',hasInput:true,placeholder:'รหัสผ่าน'}); if(p===null)return; if(!checkPass(p)){showToast('รหัสผ่านไม่ถูกต้อง','err');return;} } editing=true;render(); showToast('เข้าสู่โหมดแก้ไข','info'); } async function saveCloud(){ if(!appData){showToast('ไม่มีข้อมูล','err');return;} if(!cfgBinId||!cfgApiKey){ showToast('กรุณาตั้งค่า JSONBin ก่อน','err'); document.getElementById('cfgPanel').classList.add('show');return; } try{await saveToBin(appData);editing=false;render();showToast('บันทึกขึ้น Cloud เรียบร้อย','ok');} catch(e){showToast('บันทึกไม่สำเร็จ: '+e.message,'err');} } function cancelEdit(){ editing=false; if(cfgBinId&&cfgApiKey){fetchFromBin().then(r=>{if(r&&r.day1)appData=r;render();});} else render(); document.getElementById('cfgPanel').classList.remove('show'); } async function changePassword(){ const p=await openModal({title:'ยืนยันตัวตน',msg:'กรอกรหัสผ่านปัจจุบัน',hasInput:true}); if(p===null)return; if(!checkPass(p)){showToast('รหัสผ่านไม่ถูกต้อง','err');return;} const np1=await openModal({title:'รหัสผ่านใหม่',msg:'',hasInput:true,placeholder:'รหัสผ่านใหม่'}); if(!np1)return; const np2=await openModal({title:'ยืนยัน',msg:'',hasInput:true,placeholder:'ยืนยันรหัสผ่านใหม่'}); if(np1!==np2){showToast('รหัสผ่านไม่ตรงกัน','err');return;} setPassHash(np1);showToast('เปลี่ยนรหัสผ่านสำเร็จ','ok'); } document.getElementById('fabEdit').addEventListener('click',enterEdit); document.getElementById('btnSave').addEventListener('click',saveCloud); document.getElementById('btnCancel').addEventListener('click',cancelEdit); document.getElementById('btnChPass').addEventListener('click',changePassword); document.getElementById('btnCfgToggle').addEventListener('click',()=>{ const p=document.getElementById('cfgPanel'); p.classList.toggle('show'); if(p.classList.contains('show')){ if(cfgBinId)document.getElementById('cfgBinId').value=cfgBinId; if(cfgApiKey)document.getElementById('cfgApiKey').value=cfgApiKey; } }); document.getElementById('btnAddLoc').addEventListener('click',()=>{ if(!appData)return; const key=document.querySelector('.tab-btn.active').dataset.key; appData[key].rows.push({type:'loc',text:'สถานที่ใหม่'});render(); }); async function init(){ loadCfg(); if(cfgBinId&&cfgApiKey){ const remote=await fetchFromBin(); if(remote&&remote.day1){appData=remote;} else{appData=JSON.parse(JSON.stringify(DEFAULT));} } else { appData=JSON.parse(JSON.stringify(DEFAULT)); } render(); setTimeout(()=>{ const ls=document.getElementById('loadingScreen'); ls.classList.add('hidden'); setTimeout(()=>ls.remove(),500); },1200); } init(); </script> </body> </html> ``` :::
