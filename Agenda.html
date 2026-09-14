@@ -6,345 +6,289 @@
 <title>Agenda – WD Leadership Offsite 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--navy-deep:#0a1a3a;--navy:#12275a;--accent:#1a4fd6;--pin-red:#e53e3e;--grad:linear-gradient(90deg,#2168FD 0%,#1E71FA 22%,#37B1D3 55%,#39D6CB 78%,#3AE4C9 100%);--grad-d:linear-gradient(135deg,#2168FD 0%,#37B1D3 50%,#3AE4C9 100%);}
+:root{--navy-deep:#0a1a3a;--navy:#12275a;--accent:#1a4fd6;--pin-red:#e53e3e;--grad:linear-gradient(90deg,#2168FD 0%,#1E71FA 22%,#37B1D3 55%,#39D6CB 78%,#3AE4C9 100%);--grad-d:linear-gradient(135deg,#2168FD 0%,#37B1D3 50%,#3AE4C9 100%);--border:rgba(255,255,255,0.1);--muted:rgba(255,255,255,0.55);}
 *{box-sizing:border-box;}html,body{margin:0;padding:0;}
 body{font-family:'Manrope','Arial',sans-serif;background:#050d20;color:#fff;min-height:100vh;-webkit-font-smoothing:antialiased;}
-.bg-art{position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 85% 0%,rgba(120,170,255,0.35),transparent 45%),linear-gradient(160deg,#061029 0%,#0d1f4d 35%,#163a7a 65%,#1f4d94 100%);}
+.bg-art{position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 85% 0%,rgba(120,170,255,0.35),transparent 45%),linear-gradient(160deg,#060e22 0%,#0a1a3a 60%,#091530 100%);}
 .bg-art svg{position:absolute;inset:0;width:100%;height:100%;opacity:0.15;}
-.cfg-panel{display:none;background:linear-gradient(90deg,rgba(33,104,253,.18),rgba(58,228,201,.08));border-bottom:1px solid rgba(33,104,253,.3);padding:14px 20px;align-items:center;gap:14px;flex-wrap:wrap;}
+
+/* Config panel */
+.cfg-panel{display:none;background:linear-gradient(90deg,rgba(33,104,253,.18),rgba(58,228,201,.08));border-bottom:1px solid rgba(33,104,253,.3);padding:12px 20px 14px;}
 .cfg-panel.show{display:flex;}
 .cfg-fields{display:flex;gap:10px;flex:1;flex-wrap:wrap;}
-.cfg-input{flex:1;min-width:160px;padding:9px 13px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.2);border-radius:8px;color:#fff;font-size:13px;font-family:'Manrope',sans-serif;outline:none;transition:border-color .2s;}
-.cfg-input:focus{border-color:#3AE4C9;}
+.cfg-input{flex:1;min-width:160px;padding:9px 13px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.2);border-radius:8px;color:#fff;font-family:'Manrope',sans-serif;font-size:13px;}
+.cfg-input:focus{outline:none;border-color:#3AE4C9;}
 .cfg-input::placeholder{color:rgba(255,255,255,0.35);}
 .cfg-label{font-size:12px;font-weight:700;color:#93C5FD;letter-spacing:1px;white-space:nowrap;align-self:center;}
 .btn-cfg{background:var(--grad);color:#fff;border:none;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:'Manrope',sans-serif;}
-.tabs{display:flex;justify-content:center;gap:10px;padding:22px 16px 4px;flex-wrap:wrap;}
-.tab-btn{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.25);color:#fff;padding:10px 22px;border-radius:999px;font-weight:700;letter-spacing:0.5px;cursor:pointer;font-size:14px;transition:all .2s;font-family:'Manrope',sans-serif;}
-.tab-btn:hover{background:rgba(255,255,255,0.16);}
-.tab-btn.active{background:#fff;color:var(--navy-deep);border-color:#fff;}
-.page{max-width:920px;margin:0 auto;padding:18px 16px 100px;display:none;}
-.page.active{display:block;}
-.header-card{background:linear-gradient(120deg,#f4f7fc 0%,#dbe6f5 100%);border-radius:8px;padding:26px 30px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;box-shadow:0 10px 30px rgba(0,0,0,0.3);}
-.agenda-title{font-size:44px;font-weight:900;color:var(--accent);letter-spacing:1px;line-height:1;margin:0;}
-.day-title{font-size:34px;font-weight:900;color:#1c2b4a;line-height:1.1;margin:6px 0 0;}
-.header-right{text-align:right;color:#2a3a5c;font-size:15px;line-height:1.5;padding-top:6px;}
-.header-right .weekday{font-size:18px;font-weight:700;text-transform:uppercase;}
+.btn-cfg:hover{opacity:0.85;}
 
-/* ── TABLE HEADER (col-labels) ── */
-.col-labels{
-  display:flex;
-  background:linear-gradient(90deg,#1a3a7a 0%,#1e4d9a 100%);
-  color:#fff;
-  font-weight:800;
-  font-size:12px;
-  text-transform:uppercase;
-  letter-spacing:0.8px;
-  border-radius:6px;
-  margin-top:14px;
-  padding:13px 20px;
-  box-shadow:0 4px 14px rgba(0,0,0,0.25);
-  border:1px solid rgba(255,255,255,0.12);
-}
-.col-labels .c-time{width:22%;color:#93C5FD;}
-.col-labels .c-details{flex:1;color:#93C5FD;}
-.col-labels .c-att{width:26%;text-align:right;color:#93C5FD;}
+/* Header */
+header{padding:28px 24px 16px;max-width:960px;margin:0 auto;}
+.header-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.header-left{}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#3AE4C9;margin-bottom:6px;}
+.title-main{font-size:clamp(22px,4vw,36px);font-weight:900;letter-spacing:-1px;line-height:1.1;background:var(--grad-d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.title-sub{font-size:13px;color:var(--muted);margin-top:5px;font-weight:500;}
+.header-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding-top:4px;}
+.btn-edit{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:1.5px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);color:#fff;font-family:'Manrope',sans-serif;transition:all .2s;}
+.btn-edit:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.3);}
+.btn-edit.active{background:var(--grad);border-color:transparent;color:#fff;}
+.btn-save{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:none;background:linear-gradient(135deg,#16a34a,#15803d);color:#fff;font-family:'Manrope',sans-serif;transition:all .2s;}
+.btn-save:hover{opacity:0.85;}
+.btn-cloud-load{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:1.5px solid rgba(58,228,201,0.3);background:rgba(58,228,201,0.07);color:#3AE4C9;font-family:'Manrope',sans-serif;transition:all .2s;}
+.btn-cloud-load:hover{background:rgba(58,228,201,0.14);}
+.sync-status{font-size:11px;color:var(--muted);align-self:center;font-weight:600;}
 
-.location-row{display:flex;align-items:center;gap:8px;margin:16px 0 6px;font-weight:800;font-size:15px;color:#dfe8ff;letter-spacing:0.5px;}
-.location-row .pin{font-size:16px;}
-.loc-text{background:rgba(10,20,50,0.35);padding:6px 14px;border-radius:4px;color:#eaf0ff;}
-.item-row{display:flex;margin:4px 0;border-radius:4px;overflow:hidden;min-height:56px;box-shadow:0 4px 12px rgba(0,0,0,0.18);}
-.item-row .c-time{width:22%;background:rgba(240,245,255,0.94);color:#12275a;padding:12px 14px;font-weight:800;font-size:14px;display:flex;flex-direction:column;justify-content:center;}
-.item-row .c-time .dur{font-weight:600;font-size:11.5px;color:#5a6b8c;margin-top:3px;}
-.item-row .c-details{flex:1;background:rgba(210,225,250,0.5);color:#0e1f42;padding:12px 16px;font-weight:700;font-size:14.5px;display:flex;align-items:center;white-space:pre-line;line-height:1.45;}
-.item-row .c-att{width:26%;background:rgba(10,25,60,0.28);color:#fff;padding:12px 16px;font-size:13.5px;text-align:right;display:flex;align-items:center;justify-content:flex-end;white-space:pre-line;line-height:1.4;}
-.editable[contenteditable="true"]{outline:2px dashed rgba(58,228,201,0.7);outline-offset:2px;cursor:text;min-width:20px;border-radius:3px;}
-.row-controls{display:none;gap:6px;align-items:center;padding-left:8px;flex-shrink:0;}
-.edit-on .row-controls{display:flex;}
-.row-controls button,.loc-controls button{border:none;border-radius:4px;padding:4px 8px;font-size:12px;cursor:pointer;font-weight:700;font-family:'Manrope',sans-serif;}
-.btn-del{background:#e53e3e;color:#fff;}.btn-add{background:#2f9e44;color:#fff;}
-.loc-controls{display:none;}
-.edit-on .loc-controls{display:inline-flex;gap:6px;margin-left:8px;}
-.status-bar{position:fixed;top:0;left:0;right:0;height:3px;z-index:200;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .3s ease;}
-.status-bar.loading{transform:scaleX(0.7);}.status-bar.done{transform:scaleX(1);transition:transform .15s ease;}
-.fab{position:fixed;bottom:80px;right:18px;width:44px;height:44px;border-radius:50%;background:rgba(33,104,253,0.15);border:1px solid rgba(33,104,253,0.35);color:#93C5FD;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;z-index:50;}
-.fab:hover{background:rgba(33,104,253,0.3);color:#3AE4C9;transform:scale(1.08);}
-.edit-toolbar{position:fixed;bottom:0;left:0;right:0;background:rgba(6,16,41,0.97);border-top:1px solid rgba(33,104,253,0.3);padding:12px 16px;display:none;justify-content:center;gap:10px;z-index:60;backdrop-filter:blur(12px);}
-body.editing .edit-toolbar{display:flex;}
-.edit-toolbar button{border:none;border-radius:8px;padding:10px 20px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Manrope',sans-serif;transition:opacity .2s;}
-.edit-toolbar button:hover{opacity:0.85;}
-.btn-save{background:var(--grad);color:#fff;}
-.btn-cancel{background:rgba(255,255,255,0.1);color:#ccc;border:1px solid rgba(255,255,255,0.15)!important;}
-.btn-addloc{background:rgba(33,104,253,0.2);color:#93C5FD;border:1px solid rgba(33,104,253,0.35)!important;}
-.btn-chpass{background:rgba(255,255,255,0.07);color:#aaa;border:1px solid rgba(255,255,255,0.12)!important;}
-.btn-cfg-toggle{background:rgba(58,228,201,0.1);color:#3AE4C9;border:1px solid rgba(58,228,201,0.3)!important;}
-.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-10px);padding:11px 22px;border-radius:8px;font-size:14px;font-weight:600;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,0.4);opacity:0;transition:all .3s ease;pointer-events:none;font-family:'Manrope',sans-serif;}
+/* Table */
+.table-wrap{max-width:960px;margin:0 auto;padding:0 16px 40px;}
+.section-block{margin-bottom:6px;}
+
+/* Zone header row */
+.zone-header-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px;margin-bottom:0;}
+.zone-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#3AE4C9;padding:10px 12px 4px;opacity:0.8;}
+.zone-edit-input{background:rgba(255,255,255,0.08);border:1px solid rgba(58,228,201,0.3);border-radius:6px;color:#3AE4C9;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 10px;font-family:'Manrope',sans-serif;width:220px;}
+.zone-edit-input:focus{outline:none;border-color:#3AE4C9;}
+.zone-actions{display:flex;gap:4px;padding-right:4px;align-items:center;}
+
+/* Column labels */
+.col-labels{display:grid;grid-template-columns:110px 1fr 1fr auto;gap:0;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:1px;}
+.col-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#93C5FD;padding:5px 12px 5px;opacity:0.7;}
+
+/* Data row */
+.data-row{display:grid;grid-template-columns:110px 1fr 1fr auto;gap:0;border-radius:8px;transition:background .15s;}
+.data-row:hover{background:rgba(255,255,255,0.03);}
+.cell{padding:10px 12px;font-size:14px;line-height:1.5;border-bottom:1px solid rgba(255,255,255,0.04);}
+.cell-time{color:#93C5FD;font-weight:700;font-size:13px;white-space:nowrap;}
+.cell-activity{color:#fff;font-weight:600;}
+.cell-detail{color:var(--muted);font-size:13px;white-space:pre-wrap;}
+.cell-actions{padding:8px 6px;display:flex;align-items:center;justify-content:flex-end;gap:3px;border-bottom:1px solid rgba(255,255,255,0.04);}
+
+/* Edit mode cells */
+.edit-mode .cell-time .cell-in,
+.edit-mode .cell-activity .cell-in{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:6px;color:#fff;font-family:'Manrope',sans-serif;padding:6px 9px;width:100%;font-size:13px;font-weight:inherit;}
+.edit-mode .cell-time .cell-in{color:#93C5FD;}
+.edit-mode .cell-time .cell-in:focus,
+.edit-mode .cell-activity .cell-in:focus{outline:none;border-color:#3AE4C9;}
+.edit-mode .cell-detail .cell-ta{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:6px;color:var(--muted);font-family:'Manrope',sans-serif;padding:6px 9px;width:100%;font-size:13px;resize:vertical;min-height:40px;line-height:1.5;}
+.edit-mode .cell-detail .cell-ta:focus{outline:none;border-color:#3AE4C9;}
+
+/* Row buttons */
+.btn-row{width:24px;height:24px;border-radius:5px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;transition:all .15s;}
+.btn-row-add{background:rgba(58,228,201,0.12);color:#3AE4C9;}
+.btn-row-add:hover{background:rgba(58,228,201,0.25);}
+.btn-row-del{background:rgba(229,62,62,0.12);color:#fc8181;}
+.btn-row-del:hover{background:rgba(229,62,62,0.25);}
+.btn-zone-add{background:rgba(58,228,201,0.1);color:#3AE4C9;border:1.5px dashed rgba(58,228,201,0.4);border-radius:6px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .2s;}
+.btn-zone-add:hover{background:rgba(58,228,201,0.18);}
+.btn-zone-del{background:rgba(229,62,62,0.1);color:#fc8181;border:1px solid rgba(229,62,62,0.25);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .2s;}
+.btn-zone-del:hover{background:rgba(229,62,62,0.2);}
+
+/* Insert zone between sections */
+.insert-zone-bar{display:none;text-align:center;padding:4px 0;}
+.edit-mode .insert-zone-bar{display:block;}
+.btn-insert-zone{background:transparent;color:rgba(58,228,201,0.5);border:1px dashed rgba(58,228,201,0.25);border-radius:6px;padding:3px 14px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .2s;}
+.btn-insert-zone:hover{color:#3AE4C9;border-color:rgba(58,228,201,0.5);background:rgba(58,228,201,0.05);}
+
+/* Row controls visibility */
+.row-controls{display:none;}
+.edit-mode .row-controls{display:flex;}
+
+/* Zone header edit toggle */
+.zone-name-view{cursor:default;}
+.zone-name-edit{display:none;}
+.edit-mode .zone-name-view{display:none;}
+.edit-mode .zone-name-edit{display:block;}
+.edit-mode .zone-actions{display:flex;}
+.zone-actions{display:none;}
+
+/* Modal */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:999;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+.modal-box{background:#0d1b3e;border:1px solid rgba(33,104,253,0.3);border-radius:16px;padding:32px;max-width:400px;width:90%;box-shadow:0 0 60px rgba(33,104,253,0.2);}
+.modal-title{font-size:18px;font-weight:800;margin-bottom:8px;background:var(--grad-d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.modal-sub{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.6;}
+.modal-input{width:100%;padding:11px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:#fff;font-family:'Manrope',sans-serif;font-size:14px;margin-bottom:12px;}
+.modal-input:focus{outline:none;border-color:#3AE4C9;}
+.modal-row{display:flex;gap:8px;}
+.btn-modal-ok{flex:1;padding:11px;background:var(--grad);border:none;border-radius:8px;color:#fff;font-weight:700;font-size:14px;cursor:pointer;font-family:'Manrope',sans-serif;}
+.btn-modal-ok:hover{opacity:0.85;}
+.btn-modal-cancel{padding:11px 18px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:var(--muted);font-weight:700;font-size:14px;cursor:pointer;font-family:'Manrope',sans-serif;}
+.btn-modal-cancel:hover{background:rgba(255,255,255,0.12);}
+.modal-err{color:#fc8181;font-size:12px;margin-bottom:10px;min-height:18px;}
+
+/* Toast */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:#0d1b3e;border:1px solid rgba(58,228,201,0.3);border-radius:10px;padding:12px 22px;font-size:13px;font-weight:700;color:#3AE4C9;opacity:0;transition:all .3s;z-index:9999;pointer-events:none;white-space:nowrap;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-.toast.ok{background:rgba(47,158,68,0.95);color:#fff;}.toast.err{background:rgba(229,62,62,0.95);color:#fff;}.toast.info{background:rgba(33,104,253,0.95);color:#fff;}
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(2,5,18,0.85);backdrop-filter:blur(8px);z-index:400;align-items:center;justify-content:center;padding:20px;}
-.modal-overlay.show{display:flex;}
-.modal-box{background:#0d1b3e;border:1px solid rgba(33,104,253,0.35);border-radius:16px;padding:28px 26px;width:100%;max-width:360px;box-shadow:0 30px 70px rgba(0,0,0,0.6);animation:modalIn .25s ease;}
-@keyframes modalIn{from{opacity:0;transform:scale(.95) translateY(8px);}to{opacity:1;transform:none;}}
-.modal-title{font-size:18px;font-weight:800;color:#fff;margin:0 0 6px;}
-.modal-msg{font-size:14px;color:#93C5FD;margin:0 0 18px;line-height:1.55;}
-.modal-input{width:100%;padding:12px 14px;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.15);border-radius:8px;font-size:15px;color:#fff;outline:none;transition:border-color .2s;margin-bottom:18px;font-family:'Manrope',sans-serif;}
-.modal-input:focus{border-color:#3AE4C9;}
-.modal-input::placeholder{color:rgba(255,255,255,0.3);}
-.modal-input.hidden{display:none;}
-.modal-btns{display:flex;gap:10px;justify-content:flex-end;}
-.modal-btns button{border:none;border-radius:8px;padding:10px 20px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Manrope',sans-serif;}
-.modal-ok{background:var(--grad);color:#fff;}
-.modal-cancel-btn{background:rgba(255,255,255,0.08);color:#aaa;}
-.modal-cancel-btn.hidden{display:none;}
-.edit-badge{position:fixed;top:12px;right:12px;background:rgba(58,228,201,0.15);border:1px solid rgba(58,228,201,0.4);color:#3AE4C9;font-weight:700;font-size:11px;padding:5px 12px;border-radius:999px;z-index:70;display:none;letter-spacing:1px;text-transform:uppercase;}
-body.editing .edit-badge{display:block;}
-.loading-screen{position:fixed;inset:0;background:#050d20;z-index:500;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:opacity .4s ease;}
-.loading-screen.hidden{opacity:0;pointer-events:none;}
-.loading-logo{font-size:32px;font-weight:900;color:#fff;letter-spacing:-1px;}
-.loading-logo span{background:var(--grad-d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.loading-bar{width:200px;height:3px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;}
-.loading-bar-inner{height:100%;background:var(--grad);border-radius:2px;animation:loadBar 1.2s ease forwards;}
-@keyframes loadBar{from{width:0%;}to{width:100%;}}
-.loading-sub{font-size:13px;color:rgba(255,255,255,0.4);font-weight:500;}
 
-/* ── MOBILE ── */
 @media(max-width:640px){
-.tabs{padding:14px 10px 2px;gap:6px;}.tab-btn{padding:8px 14px;font-size:12.5px;}
-.page{padding:10px 8px 100px;}.header-card{padding:16px 14px;gap:8px;}
-.agenda-title{font-size:clamp(24px,7vw,32px)!important;}.day-title{font-size:clamp(18px,5.5vw,24px)!important;}
-.header-right{font-size:12px;text-align:left;padding-top:0;}
-/* Show col-labels on mobile too, but smaller */
-.col-labels{padding:9px 10px;font-size:10px;letter-spacing:0.4px;margin-top:10px;}
-.col-labels .c-time{width:26%;}
-.col-labels .c-att{width:32%;}
-.item-row{flex-direction:row;margin:3px 0;min-height:auto;align-items:stretch;}
-.item-row .c-time{width:26%;padding:7px 6px;font-size:10.5px;line-height:1.25;}
-.item-row .c-time .dur{font-size:9px;}
-.item-row .c-details{flex:1;padding:7px 6px;font-size:10.5px;line-height:1.25;align-items:flex-start;}
-.item-row .c-att{width:32%;padding:7px 6px;font-size:9.5px;line-height:1.25;text-align:right;justify-content:flex-end;align-items:flex-start;}
-.fab{bottom:70px;right:12px;width:38px;height:38px;}.cfg-fields{flex-direction:column;}}
+  .col-labels{grid-template-columns:90px 1fr;}
+  .data-row{grid-template-columns:90px 1fr;}
+  .cell-detail,.cell-actions{display:none;}
+  .col-label:nth-child(3),.col-label:nth-child(4){display:none;}
+}
 </style>
 </head>
 <body>
 <div class="bg-art">
-<svg viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice">
-<defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(8)"><path d="M40 0 L0 0 0 40" fill="none" stroke="#ffffff" stroke-width="1"/></pattern></defs>
-<rect width="800" height="800" fill="url(#grid)"/>
-</svg>
+<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg"><circle cx="900" cy="80" r="320" fill="none" stroke="rgba(33,104,253,0.08)" stroke-width="1"/><circle cx="900" cy="80" r="220" fill="none" stroke="rgba(58,228,201,0.06)" stroke-width="1"/><line x1="0" y1="350" x2="1200" y2="350" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></svg>
 </div>
-<div class="loading-screen" id="loadingScreen">
-<div class="loading-logo">AGENDA <span>2026</span></div>
-<div class="loading-bar"><div class="loading-bar-inner"></div></div>
-<div class="loading-sub">WD Leadership Offsite · กำลังโหลด...</div>
-</div>
-<div class="status-bar" id="statusBar"></div>
+
+<!-- Config Panel (hidden until edit mode) -->
 <div class="cfg-panel" id="cfgPanel">
-<span class="cfg-label">⚙ JSONBin</span>
-<div class="cfg-fields">
-<input class="cfg-input" id="cfgBinId" placeholder="BIN ID" spellcheck="false">
-<input class="cfg-input" id="cfgApiKey" placeholder="Master Key" spellcheck="false" type="password">
+  <div class="cfg-fields">
+    <span class="cfg-label">⚙ JSONBin</span>
+    <input class="cfg-input" id="cfgBinId" placeholder="BIN ID (e.g. 64ab...)" />
+    <input class="cfg-input" id="cfgKey" placeholder="Master Key ($2a$10...)" type="password" />
+    <button class="btn-cfg" onclick="saveCfg()">บันทึก &amp; โหลด</button>
+  </div>
 </div>
-<button class="btn-cfg" onclick="saveConfig()">บันทึก &amp; โหลด</button>
+
+<!-- Header -->
+<header>
+  <div class="header-row">
+    <div class="header-left">
+      <div class="eyebrow">Western Digital · Operations Leadership</div>
+      <div class="title-main">WD Leadership Offsite 2026</div>
+      <div class="title-sub" id="subtitleEl">โหลดข้อมูล...</div>
+    </div>
+    <div class="header-actions">
+      <span class="sync-status" id="syncStatus"></span>
+      <button class="btn-cloud-load" onclick="cloudLoad()" title="โหลดจาก Cloud">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        โหลด Cloud
+      </button>
+      <button class="btn-edit" id="btnEdit" onclick="toggleEdit()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        ✎ แก้ไข
+      </button>
+      <button class="btn-save" id="btnSave" onclick="cloudSave()" style="display:none;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        💾 บันทึกขึ้น Cloud
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Table -->
+<div class="table-wrap" id="tableWrap"></div>
+
+<!-- Modals -->
+<div class="modal-bg" id="modalPw" style="display:none;">
+  <div class="modal-box">
+    <div class="modal-title" id="modalPwTitle">ตั้งรหัสผ่าน</div>
+    <div class="modal-sub" id="modalPwSub">กรุณาตั้งรหัสผ่านสำหรับโหมดแก้ไข (ครั้งแรก)</div>
+    <div class="modal-err" id="modalPwErr"></div>
+    <input class="modal-input" id="modalPwInput" type="password" placeholder="รหัสผ่าน..." />
+    <div class="modal-row">
+      <button class="btn-modal-ok" id="modalPwOk" onclick="modalPwConfirm()">ยืนยัน</button>
+      <button class="btn-modal-cancel" onclick="closeModal('modalPw')">ยกเลิก</button>
+    </div>
+  </div>
 </div>
-<div class="tabs" id="tabs"></div>
-<div id="pages"></div>
-<div class="edit-badge">✦ Edit Mode</div>
-<div class="fab" id="fabEdit" title="แก้ไข">
-<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-<path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-</svg>
+
+<div class="modal-bg" id="modalZone" style="display:none;">
+  <div class="modal-box">
+    <div class="modal-title">เพิ่ม Zone ใหม่</div>
+    <div class="modal-sub">ชื่อหัวข้อ Zone (เช่น DAY 1 · AFTERNOON)</div>
+    <div class="modal-err" id="modalZoneErr"></div>
+    <input class="modal-input" id="modalZoneInput" placeholder="ชื่อ Zone..." />
+    <div class="modal-row">
+      <button class="btn-modal-ok" onclick="modalZoneConfirm()">เพิ่ม Zone</button>
+      <button class="btn-modal-cancel" onclick="closeModal('modalZone')">ยกเลิก</button>
+    </div>
+  </div>
 </div>
-<div class="edit-toolbar">
-<button class="btn-cfg-toggle" id="btnCfgToggle">⚙ JSONBin</button>
-<button class="btn-addloc" id="btnAddLoc">+ โซนสถานที่</button>
-<button class="btn-save" id="btnSave">💾 บันทึกขึ้น Cloud</button>
-<button class="btn-cancel" id="btnCancel">ยกเลิก</button>
-<button class="btn-chpass" id="btnChPass">🔑 เปลี่ยนรหัส</button>
-</div>
+
 <div class="toast" id="toast"></div>
-<div class="modal-overlay" id="modalOverlay">
-<div class="modal-box">
-<p class="modal-title" id="modalTitle"></p>
-<p class="modal-msg" id="modalMsg"></p>
-<input type="password" class="modal-input hidden" id="modalInput" autocomplete="off">
-<div class="modal-btns">
-<button class="modal-cancel-btn" id="modalCancel">ยกเลิก</button>
-<button class="modal-ok" id="modalOk">ตกลง</button>
-</div>
-</div>
-</div>
+
 <script>
-const CFG_KEY="agenda_cfg_v1",PASS_KEY="agenda_pass_v3";
-const DEFAULT={day1:{dayLabel:"DAY 1",weekday:"MONDAY",date:"SEPTEMBER.28.2026",time:"09:00 AM - 09:30 PM",rows:[{type:"loc",text:"GRAND BALLROOM"},{type:"item",time:"9:00-9:15 AM",dur:"15 MINS",details:"MC Greeting - Greeting and welcome by P' Sawai & P' Mam",att:"Emcee: Kannika, Monthon"},{type:"item",time:"9:15-9:45 AM",dur:"30 MINS",details:"Opening Speech & FY27 Playbook",att:"Philip"},{type:"item",time:"9:45-10:30 AM",dur:"45 MINS",details:"Innovation talk - Guest speaker",att:""},{type:"item",time:"10:30AM-12:45 PM",dur:"135 MINS",details:"Break + Innovation workshop and exchange",att:""},{type:"loc",text:"FLOW INDOOR"},{type:"item",time:"12:45-1:30 PM",dur:"45 MINS",details:"Lunch",att:""},{type:"loc",text:"GRAND BALLROOM"},{type:"item",time:"1:30-2:00 PM",dur:"30 MINS",details:"Breakaway Leadership",att:"Sridhar\nEmcee: Supaporn, Eakarat"},{type:"item",time:"2:00-2:50 PM",dur:"50 MINS",details:"5 Years Strategy, Factory Master Plan & Exabyte Growth\n(Key message only, 15 mins each)",att:"Dalwinder, Kitamura San, Takahashi San, Vincent, Ragu, Nathalita, Prakash and Aunna"},{type:"item",time:"2:50-3:50 PM",dur:"60 MINS",details:"Breakout session - 3 pillars, 7 groups\n*Exabyte Growth\n  1.Colin / Ishibashi San\n  2.Paweena / Atthaphol\n  3.Kamalam / Sridar\n*Factory Master Plan\n  4.Nathalita, Sawai\n*5 Years Strategy\n  5.Kitamura San, Itou San\n  6.Vincent, Takahashi San\n  7.Ragu",att:""},{type:"item",time:"3:50-5:05 PM",dur:"75 MINS",details:"Break + Presentation, 15 mins per group",att:""},{type:"item",time:"5:05-7:00 PM",dur:"115 MINS",details:"Presentation continued",att:"Group 1,2,3,4 and 7"},{type:"item",time:"7:00-9:00 PM",dur:"120 MINS",details:"Dinner & Engagement Activity",att:""}]},day2:{dayLabel:"DAY 2",weekday:"TUESDAY",date:"SEPTEMBER.29.2026",time:"08:30 AM - 10:00 PM",rows:[{type:"loc",text:"GRAND BALLROOM"},{type:"item",time:"8:30-8:35 AM",dur:"5 MINS",details:"AI Song / MC Greeting",att:"Emcee: Sanan, Sawai T."},{type:"item",time:"8:35-9:05 AM",dur:"30 MINS",details:"Accelerating AI usage in the factory - how senior leaders can enable.",att:"Amit, Dalwinder"},{type:"item",time:"9:05-9:35 AM",dur:"30 MINS",details:"People strategy - especially for the IDL group over the next 5 years.",att:"CW Mak and all HODs"},{type:"item",time:"9:35AM-12:05 PM",dur:"150 MINS",details:"Leadership Training",att:"Sasin\n(coordinated by Nion/Mak)"},{type:"loc",text:"FLOW INDOOR"},{type:"item",time:"12:05-1:05 PM",dur:"60 MINS",details:"Lunch",att:""},{type:"loc",text:"GRAND BALLROOM"},{type:"item",time:"1:05-4:35 PM",dur:"210 MINS",details:"Team Building Activity",att:"Emcee: Monteera, Krongthip"},{type:"item",time:"4:35-7:15 PM",dur:"160 MINS",details:"Break / Personal / Prepare for Dinner",att:""},{type:"loc",text:"NOAH CRUISE"},{type:"item",time:"7:15-10:00 PM",dur:"165 MINS",details:"Dinner on Cruise",att:""}]},day3:{dayLabel:"DAY 3",weekday:"WEDNESDAY",date:"SEPTEMBER.30.2026",time:"08:30 AM - 1:00 PM",rows:[{type:"loc",text:"GRAND BALLROOM"},{type:"item",time:"8:30-9:00 AM",dur:"30 MINS",details:"AI Song / MC Greeting",att:"Emcee: Saowalak, Ekawat"},{type:"item",time:"9:00-9:30 AM",dur:"30 MINS",details:"Presentation, 15 mins per group (2 groups)",att:"Group 5 & 6"},{type:"item",time:"9:30-11:30 AM",dur:"120 MINS",details:"Breakaway in Health & Well Being Inspiration Talk",att:"TBD"},{type:"item",time:"11:30-11:45 AM",dur:"15 MINS",details:"Reflection",att:""},{type:"item",time:"11:45AM-12:00 PM",dur:"15 MINS",details:"Closing by Nathalita and Sawai",att:""},{type:"loc",text:"FLOW INDOOR"},{type:"item",time:"12:00-1:00 PM",dur:"60 MINS",details:"Lunch",att:""}]}};
-const DAY_KEYS=["day1","day2","day3"];
-let appData=null,editing=false,cfgBinId="",cfgApiKey="";
-function hashStr(s){let h=5381;for(let i=0;i<s.length;i++)h=((h<<5)+h)+s.charCodeAt(i);return(h>>>0).toString(36);}
-function getPassHash(){return localStorage.getItem(PASS_KEY);}
-function setPassHash(r){localStorage.setItem(PASS_KEY,hashStr(r));}
-function checkPass(r){return hashStr(r)===getPassHash();}
-function loadCfg(){try{const c=JSON.parse(localStorage.getItem(CFG_KEY)||"{}");cfgBinId=c.binId||"";cfgApiKey=c.apiKey||"";}catch(e){}}
-function saveCfgLocal(){localStorage.setItem(CFG_KEY,JSON.stringify({binId:cfgBinId,apiKey:cfgApiKey}));}
-function barLoading(){document.getElementById('statusBar').className='status-bar loading';}
-function barDone(){const b=document.getElementById('statusBar');b.className='status-bar done';setTimeout(()=>{b.className='status-bar';},600);}
-let toastTid=null;
-function showToast(msg,type){const t=document.getElementById('toast');t.textContent=msg;t.className='toast '+(type||'ok');void t.offsetWidth;t.classList.add('show');clearTimeout(toastTid);toastTid=setTimeout(()=>t.classList.remove('show'),2800);}
-function openModal({title,msg,hasInput,okLabel,cancelLabel,placeholder}){
-return new Promise(resolve=>{
-const ov=document.getElementById('modalOverlay');
-document.getElementById('modalTitle').textContent=title||'';
-document.getElementById('modalMsg').textContent=msg||'';
-const inp=document.getElementById('modalInput');
-inp.value='';inp.placeholder=placeholder||'รหัสผ่าน';
-hasInput?inp.classList.remove('hidden'):inp.classList.add('hidden');
-const ok=document.getElementById('modalOk'),ca=document.getElementById('modalCancel');
-ok.textContent=okLabel||'ตกลง';
-cancelLabel===false?ca.classList.add('hidden'):(ca.classList.remove('hidden'),ca.textContent=cancelLabel||'ยกเลิก');
-ov.classList.add('show');
-if(hasInput)setTimeout(()=>inp.focus(),80);
-function cleanup(v){ov.classList.remove('show');ok.removeEventListener('click',onOk);ca.removeEventListener('click',onCa);inp.removeEventListener('keydown',onKey);resolve(v);}
-function onOk(){cleanup(hasInput?inp.value:true);}
-function onCa(){cleanup(null);}
-function onKey(e){if(e.key==='Enter')onOk();if(e.key==='Escape')onCa();}
-ok.addEventListener('click',onOk);ca.addEventListener('click',onCa);inp.addEventListener('keydown',onKey);
-});}
-async function fetchFromBin(){
-if(!cfgBinId||!cfgApiKey)return null;
-barLoading();
-try{const r=await fetch('https://api.jsonbin.io/v3/b/'+cfgBinId+'/latest',{headers:{'X-Master-Key':cfgApiKey,'X-Bin-Meta':'false'}});barDone();if(!r.ok)throw new Error('fetch failed');return await r.json();}
-catch(e){barDone();return null;}}
-async function saveToBin(d){
-if(!cfgBinId||!cfgApiKey)throw new Error('no config');
-barLoading();
-const r=await fetch('https://api.jsonbin.io/v3/b/'+cfgBinId,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':cfgApiKey},body:JSON.stringify(d)});
-barDone();if(!r.ok)throw new Error('save failed: '+r.status);return true;}
-async function saveConfig(){
-const bid=document.getElementById('cfgBinId').value.trim(),akey=document.getElementById('cfgApiKey').value.trim();
-if(!bid||!akey){showToast('กรุณาใส่ BIN ID และ Master Key','err');return;}
-cfgBinId=bid;cfgApiKey=akey;saveCfgLocal();
-showToast('กำลังเชื่อมต่อ Cloud...','info');
-const remote=await fetchFromBin();
-if(remote&&remote.day1){appData=remote;render();showToast('เชื่อมต่อสำเร็จ','ok');}
-else{await saveToBin(JSON.parse(JSON.stringify(DEFAULT)));appData=JSON.parse(JSON.stringify(DEFAULT));render();showToast('สร้างข้อมูลใหม่บน Cloud สำเร็จ','ok');}
-document.getElementById('cfgPanel').classList.remove('show');}
-function esc(s){s=s||'';const d=document.createElement('div');d.innerText=s;return d.innerHTML;}
-function renderPage(key,d){
-var rows='';
-d.rows.forEach(function(r,i){
-if(r.type==='loc'){
-rows+='<div class="location-row" data-idx="'+i+'">';
-rows+='<span class="pin">📍</span>';
-rows+='<span class="loc-text editable" data-key="'+key+'" data-idx="'+i+'" data-field="text"'+(editing?' contenteditable="true"':'')+'>'+esc(r.text)+'</span>';
-rows+='<span class="loc-controls"><button class="btn-del" data-action="del" data-key="'+key+'" data-idx="'+i+'">ลบโซน</button></span>';
-rows+='</div>';
-}else{
-rows+='<div class="item-row" data-idx="'+i+'">';
-rows+='<div class="c-time">';
-rows+='<span class="editable" data-key="'+key+'" data-idx="'+i+'" data-field="time"'+(editing?' contenteditable="true"':'')+'>'+esc(r.time)+'</span>';
-rows+='<span class="dur editable" data-key="'+key+'" data-idx="'+i+'" data-field="dur"'+(editing?' contenteditable="true"':'')+'>'+esc(r.dur)+'</span>';
-rows+='</div>';
-rows+='<div class="c-details editable" data-key="'+key+'" data-idx="'+i+'" data-field="details"'+(editing?' contenteditable="true"':'')+'>'+esc(r.details)+'</div>';
-rows+='<div class="c-att editable" data-key="'+key+'" data-idx="'+i+'" data-field="att"'+(editing?' contenteditable="true"':'')+'>'+esc(r.att)+'</div>';
-rows+='<div class="row-controls">';
-rows+='<button class="btn-add" data-action="addAfter" data-key="'+key+'" data-idx="'+i+'">+</button>';
-rows+='<button class="btn-del" data-action="del" data-key="'+key+'" data-idx="'+i+'">✕</button>';
-rows+='</div>';
-rows+='</div>';
+// ─── State ───────────────────────────────────────────────────────────────────
+let editMode = false;
+let pwHash = localStorage.getItem('agenda_pw_hash') || null;
+let binId = localStorage.getItem('agenda_bin_id') || '';
+let masterKey = localStorage.getItem('agenda_master_key') || '';
+let pendingInsertAfterZone = -1; // zone index to insert after (-1 = append)
+let pendingPwAction = null; // 'edit' or 'setup'
+
+let agendaData = {
+  subtitle: "Venue · Date",
+  zones: [
+    {
+      name: "DAY 1 · MORNING",
+      rows: [
+        { time: "08:00–09:00", activity: "ลงทะเบียน & รับประทานอาหารเช้า", detail: "Registration & Breakfast" },
+        { time: "09:00–09:30", activity: "เปิดงาน & Welcome Remarks", detail: "โดย VP Operations" },
+        { time: "09:30–10:30", activity: "Strategic Direction 2026", detail: "Key priorities, OKRs, and roadmap overview" },
+        { time: "10:30–10:45", activity: "Coffee Break", detail: "" }
+      ]
+    },
+    {
+      name: "DAY 1 · AFTERNOON",
+      rows: [
+        { time: "13:00–14:30", activity: "Workshop: Operations Excellence", detail: "Group activity · แบ่ง 4 กลุ่ม" },
+        { time: "14:30–15:00", activity: "นำเสนอผลลัพธ์", detail: "Each team presents findings" },
+        { time: "15:00–15:15", activity: "Coffee Break", detail: "" },
+        { time: "15:15–17:00", activity: "Action Planning", detail: "Define owners, timelines, and KPIs" }
+      ]
+    },
+    {
+      name: "DAY 2 · MORNING",
+      rows: [
+        { time: "08:30–09:00", activity: "Morning Check-in", detail: "Recap Day 1 highlights" },
+        { time: "09:00–11:00", activity: "Leadership Forum", detail: "Open discussion · Q&A session" },
+        { time: "11:00–12:00", activity: "Closing & Next Steps", detail: "Commitments, follow-up schedule, wrap-up" }
+      ]
+    }
+  ]
+};
+
+// ─── Hash ─────────────────────────────────────────────────────────────────────
+async function hashPw(pw) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
 }
+
+// ─── Toast ────────────────────────────────────────────────────────────────────
+function showToast(msg, dur=2800) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), dur);
+}
+
+// ─── Modal helpers ────────────────────────────────────────────────────────────
+function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+// ─── Password Modal ───────────────────────────────────────────────────────────
+function openPwModal(action) {
+  pendingPwAction = action;
+  const isSetup = !pwHash;
+  document.getElementById('modalPwTitle').textContent = isSetup ? 'ตั้งรหัสผ่าน' : 'ใส่รหัสผ่าน';
+  document.getElementById('modalPwSub').textContent = isSetup ? 'ตั้งรหัสผ่านสำหรับโหมดแก้ไข (ครั้งแรก)' : 'กรุณาใส่รหัสผ่านเพื่อเข้าโหมดแก้ไข';
+  document.getElementById('modalPwErr').textContent = '';
+  document.getElementById('modalPwInput').value = '';
+  document.getElementById('modalPw').style.display = 'flex';
+  setTimeout(() => document.getElementById('modalPwInput').focus(), 100);
+}
+
+async function modalPwConfirm() {
+  const val = document.getElementById('modalPwInput').value.trim();
+  if (!val) { document.getElementById('modalPwErr').textContent = 'กรุณาใส่รหัสผ่าน'; return; }
+  const h = await hashPw(val);
+  if (!pwHash) {
+    pwHash = h; localStorage.setItem('agenda_pw_hash', h);
+    closeModal('modalPw'); showToast('✅ ตั้งรหัสผ่านเรียบร้อยแล้ว');
+    activateEdit();
+  } else {
+    if (h === pwHash) { closeModal('modalPw'); activateEdit(); }
+    else { document.getElementById('modalPwErr').textContent = 'รหัสผ่านไม่ถูกต้อง ลองใหม่'; }
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && document.getElementById('modalPw').style.display !== 'none') modalPwConfirm();
 });
-var html='';
-html+='<div class="header-card">';
-html+='<div class="header-left"><p class="agenda-title">AGENDA</p><p class="day-title">'+esc(d.dayLabel)+'</p></div>';
-html+='<div class="header-right">';
-html+='<div class="weekday editable" data-key="'+key+'" data-field="weekday"'+(editing?' contenteditable="true"':'')+'>'+esc(d.weekday)+'</div>';
-html+='<div class="editable" data-key="'+key+'" data-field="date"'+(editing?' contenteditable="true"':'')+'>'+esc(d.date)+'</div>';
-html+='<div class="editable" data-key="'+key+'" data-field="time"'+(editing?' contenteditable="true"':'')+'>'+esc(d.time)+'</div>';
-html+='</div></div>';
-html+='<div class="col-labels">';
-html+='<div class="c-time">Time</div>';
-html+='<div class="c-details">Details</div>';
-html+='<div class="c-att">Attendee / Presenter</div>';
-html+='</div>';
-html+=rows;
-return html;
-}
-function render(){
-var activeKey=document.querySelector('.tab-btn.active');
-activeKey=activeKey?activeKey.dataset.key:DAY_KEYS[0];
-var tabsEl=document.getElementById('tabs'),pagesEl=document.getElementById('pages');
-tabsEl.innerHTML='';pagesEl.innerHTML='';
-DAY_KEYS.forEach(function(key){
-var d=(appData||DEFAULT)[key];
-var btn=document.createElement('button');
-btn.className='tab-btn'+(key===activeKey?' active':'');
-btn.textContent=d.dayLabel;btn.dataset.key=key;btn.onclick=function(){switchTab(key);};
-tabsEl.appendChild(btn);
-var page=document.createElement('div');
-page.className='page'+(key===activeKey?' active':'');
-page.id='page-'+key;page.innerHTML=renderPage(key,d);
-pagesEl.appendChild(page);
-});
-document.body.classList.toggle('editing',editing);
-document.querySelectorAll('.page').forEach(function(p){p.classList.toggle('edit-on',editing);});
-attachHandlers();}
-function switchTab(key){
-document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active',b.dataset.key===key);});
-document.querySelectorAll('.page').forEach(function(p){p.classList.toggle('active',p.id==='page-'+key);});}
-function attachHandlers(){
-document.querySelectorAll('.editable').forEach(function(el){el.addEventListener('blur',onBlur);});
-document.querySelectorAll('[data-action]').forEach(function(el){el.addEventListener('click',onAction);});}
-function onBlur(e){var el=e.target,key=el.dataset.key,field=el.dataset.field,idx=el.dataset.idx;if(!appData)return;idx===undefined?appData[key][field]=el.innerText:appData[key].rows[parseInt(idx,10)][field]=el.innerText;}
-function onAction(e){
-var btn=e.currentTarget,action=btn.dataset.action,key=btn.dataset.key,idx=parseInt(btn.dataset.idx,10);
-if(!appData)return;
-if(action==='del')appData[key].rows.splice(idx,1);
-else if(action==='addAfter')appData[key].rows.splice(idx+1,0,{type:'item',time:'00:00-00:00',dur:'0 MINS',details:'หัวข้อใหม่',att:''});
-render();}
-async function enterEdit(){
-var stored=getPassHash();
-if(!stored){
-var p1=await openModal({title:'ตั้งรหัสผ่านแก้ไข',msg:'ยังไม่มีรหัสผ่าน กรุณาตั้งครั้งแรก',hasInput:true,placeholder:'รหัสผ่านใหม่'});
-if(!p1)return;
-var p2=await openModal({title:'ยืนยันรหัสผ่าน',msg:'กรอกรหัสผ่านอีกครั้ง',hasInput:true,placeholder:'ยืนยันรหัสผ่าน'});
-if(!p2)return;
-if(p1!==p2){showToast('รหัสผ่านไม่ตรงกัน','err');return;}
-setPassHash(p1);showToast('ตั้งรหัสผ่านเรียบร้อย','ok');
-}else{
-var p=await openModal({title:'เข้าสู่โหมดแก้ไข',msg:'กรอกรหัสผ่านเพื่อแก้ไข Agenda',hasInput:true,placeholder:'รหัสผ่าน'});
-if(p===null)return;
-if(!checkPass(p)){showToast('รหัสผ่านไม่ถูกต้อง','err');return;}
-}
-editing=true;render();showToast('เข้าสู่โหมดแก้ไข','info');}
-async function saveCloud(){
-if(!appData){showToast('ไม่มีข้อมูล','err');return;}
-if(!cfgBinId||!cfgApiKey){showToast('กรุณาตั้งค่า JSONBin ก่อน','err');document.getElementById('cfgPanel').classList.add('show');return;}
-try{await saveToBin(appData);editing=false;render();showToast('บันทึกขึ้น Cloud เรียบร้อย','ok');}
-catch(e){showToast('บันทึกไม่สำเร็จ: '+e.message,'err');}}
-function cancelEdit(){editing=false;if(cfgBinId&&cfgApiKey){fetchFromBin().then(function(r){if(r&&r.day1)appData=r;render();});}else render();document.getElementById('cfgPanel').classList.remove('show');}
-async function changePassword(){
-var p=await openModal({title:'ยืนยันตัวตน',msg:'กรอกรหัสผ่านปัจจุบัน',hasInput:true});
-if(p===null)return;if(!checkPass(p)){showToast('รหัสผ่านไม่ถูกต้อง','err');return;}
-var np1=await openModal({title:'รหัสผ่านใหม่',msg:'',hasInput:true,placeholder:'รหัสผ่านใหม่'});if(!np1)return;
-var np2=await openModal({title:'ยืนยัน',msg:'',hasInput:true,placeholder:'ยืนยันรหัสผ่านใหม่'});
-if(np1!==np2){showToast('รหัสผ่านไม่ตรงกัน','err');return;}
-setPassHash(np1);showToast('เปลี่ยนรหัสผ่านสำเร็จ','ok');}
-document.getElementById('fabEdit').addEventListener('click',enterEdit);
-document.getElementById('btnSave').addEventListener('click',saveCloud);
-document.getElementById('btnCancel').addEventListener('click',cancelEdit);
-document.getElementById('btnChPass').addEventListener('click',changePassword);
-document.getElementById('btnCfgToggle').addEventListener('click',function(){
-var p=document.getElementById('cfgPanel');p.classList.toggle('show');
-if(p.classList.contains('show')){if(cfgBinId)document.getElementById('cfgBinId').value=cfgBinId;if(cfgApiKey)document.getElementById('cfgApiKey').value=cfgApiKey;}});
-document.getElementById('btnAddLoc').addEventListener('click',function(){
-if(!appData)return;var key=document.querySelector('.tab-btn.active').dataset.key;
-appData[key].rows.push({type:'loc',text:'สถานที่ใหม่'});render();});
-async function init(){
-loadCfg();
-if(cfgBinId&&cfgApiKey){var remote=await fetchFromBin();appData=(remote&&remote.day1)?remote:JSON.parse(JSON.stringify(DEFAULT));}
-else{appData=JSON.parse(JSON.stringify(DEFAULT));}
-render();
-setTimeout(function(){var ls=document.getElementById('loadingScreen');ls.classList.add('hidden');setTimeout(function(){ls.remove();},500);},1200);}
-init();
-</script>
-</body>
-</html>
+
+// ─── Edit Mode ────────────────────────────────────────────────────────────────
+function toggleEdit() {
+  if (editMode) { deactivateEdit(); }
+  else { collectFromDOM(); openPwModal('edit'); }
