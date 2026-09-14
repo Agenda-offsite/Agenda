@@ -6,139 +6,130 @@
 <title>Agenda – WD Leadership Offsite 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--navy-deep:#0a1a3a;--navy:#12275a;--accent:#1a4fd6;--pin-red:#e53e3e;--grad:linear-gradient(90deg,#2168FD 0%,#1E71FA 22%,#37B1D3 55%,#39D6CB 78%,#3AE4C9 100%);--grad-d:linear-gradient(135deg,#2168FD 0%,#37B1D3 50%,#3AE4C9 100%);--border:rgba(255,255,255,0.1);--muted:rgba(255,255,255,0.55);}
+:root{--navy-deep:#0a1a3a;--navy:#12275a;--accent:#1a4fd6;--grad:linear-gradient(90deg,#2168FD 0%,#1E71FA 22%,#37B1D3 55%,#39D6CB 78%,#3AE4C9 100%);--grad-d:linear-gradient(135deg,#2168FD 0%,#37B1D3 50%,#3AE4C9 100%);--border:rgba(255,255,255,0.1);--muted:rgba(255,255,255,0.55);}
 *{box-sizing:border-box;}html,body{margin:0;padding:0;}
 body{font-family:'Manrope','Arial',sans-serif;background:#050d20;color:#fff;min-height:100vh;-webkit-font-smoothing:antialiased;}
 .bg-art{position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 85% 0%,rgba(120,170,255,0.35),transparent 45%),linear-gradient(160deg,#060e22 0%,#0a1a3a 60%,#091530 100%);}
 .bg-art svg{position:absolute;inset:0;width:100%;height:100%;opacity:0.15;}
 
-/* Config panel */
-.cfg-panel{display:none;background:linear-gradient(90deg,rgba(33,104,253,.18),rgba(58,228,201,.08));border-bottom:1px solid rgba(33,104,253,.3);padding:12px 20px 14px;}
+.cfg-panel{display:none;background:linear-gradient(90deg,rgba(33,104,253,.18),rgba(58,228,201,.08));border-bottom:1px solid rgba(33,104,253,.3);padding:12px 20px 14px;align-items:center;gap:10px;flex-wrap:wrap;}
 .cfg-panel.show{display:flex;}
-.cfg-fields{display:flex;gap:10px;flex:1;flex-wrap:wrap;}
+.cfg-fields{display:flex;gap:10px;flex:1;flex-wrap:wrap;align-items:center;}
 .cfg-input{flex:1;min-width:160px;padding:9px 13px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.2);border-radius:8px;color:#fff;font-family:'Manrope',sans-serif;font-size:13px;}
 .cfg-input:focus{outline:none;border-color:#3AE4C9;}
 .cfg-input::placeholder{color:rgba(255,255,255,0.35);}
-.cfg-label{font-size:12px;font-weight:700;color:#93C5FD;letter-spacing:1px;white-space:nowrap;align-self:center;}
+.cfg-label{font-size:12px;font-weight:700;color:#93C5FD;letter-spacing:1px;white-space:nowrap;}
 .btn-cfg{background:var(--grad);color:#fff;border:none;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:'Manrope',sans-serif;}
 .btn-cfg:hover{opacity:0.85;}
 
-/* Header */
 header{padding:28px 24px 16px;max-width:960px;margin:0 auto;}
 .header-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;}
-.header-left{}
 .eyebrow{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#3AE4C9;margin-bottom:6px;}
 .title-main{font-size:clamp(22px,4vw,36px);font-weight:900;letter-spacing:-1px;line-height:1.1;background:var(--grad-d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .title-sub{font-size:13px;color:var(--muted);margin-top:5px;font-weight:500;}
 .header-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding-top:4px;}
-.btn-edit{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:1.5px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);color:#fff;font-family:'Manrope',sans-serif;transition:all .2s;}
-.btn-edit:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.3);}
-.btn-edit.active{background:var(--grad);border-color:transparent;color:#fff;}
+.btn-edit{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:1.5px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.07);color:#fff;font-family:'Manrope',sans-serif;transition:all .2s;}
+.btn-edit:hover{background:rgba(255,255,255,0.14);border-color:rgba(255,255,255,0.35);}
+.btn-edit.active{background:var(--grad);border-color:transparent;}
 .btn-save{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:none;background:linear-gradient(135deg,#16a34a,#15803d);color:#fff;font-family:'Manrope',sans-serif;transition:all .2s;}
 .btn-save:hover{opacity:0.85;}
 .btn-cloud-load{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:1.5px solid rgba(58,228,201,0.3);background:rgba(58,228,201,0.07);color:#3AE4C9;font-family:'Manrope',sans-serif;transition:all .2s;}
 .btn-cloud-load:hover{background:rgba(58,228,201,0.14);}
 .sync-status{font-size:11px;color:var(--muted);align-self:center;font-weight:600;}
 
-/* Table */
 .table-wrap{max-width:960px;margin:0 auto;padding:0 16px 40px;}
-.section-block{margin-bottom:6px;}
+.section-block{margin-bottom:4px;}
 
-/* Zone header row */
-.zone-header-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px;margin-bottom:0;}
-.zone-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#3AE4C9;padding:10px 12px 4px;opacity:0.8;}
-.zone-edit-input{background:rgba(255,255,255,0.08);border:1px solid rgba(58,228,201,0.3);border-radius:6px;color:#3AE4C9;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 10px;font-family:'Manrope',sans-serif;width:220px;}
+.zone-header-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 4px 4px;}
+.zone-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#3AE4C9;opacity:0.85;}
+.zone-edit-input{background:rgba(255,255,255,0.08);border:1px solid rgba(58,228,201,0.3);border-radius:6px;color:#3AE4C9;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 10px;font-family:'Manrope',sans-serif;width:240px;}
 .zone-edit-input:focus{outline:none;border-color:#3AE4C9;}
-.zone-actions{display:flex;gap:4px;padding-right:4px;align-items:center;}
+.zone-actions{display:none;gap:4px;}
+.edit-mode .zone-actions{display:flex;}
 
-/* Column labels */
-.col-labels{display:grid;grid-template-columns:110px 1fr 1fr auto;gap:0;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:1px;}
-.col-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#93C5FD;padding:5px 12px 5px;opacity:0.7;}
+.col-labels{display:grid;grid-template-columns:120px 1fr 1fr 70px;gap:0;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:1px;}
+.col-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#93C5FD;padding:5px 12px;opacity:0.7;}
 
-/* Data row */
-.data-row{display:grid;grid-template-columns:110px 1fr 1fr auto;gap:0;border-radius:8px;transition:background .15s;}
+.data-row{display:grid;grid-template-columns:120px 1fr 1fr 70px;gap:0;border-radius:8px;transition:background .15s;}
 .data-row:hover{background:rgba(255,255,255,0.03);}
 .cell{padding:10px 12px;font-size:14px;line-height:1.5;border-bottom:1px solid rgba(255,255,255,0.04);}
-.cell-time{color:#93C5FD;font-weight:700;font-size:13px;white-space:nowrap;}
+.cell-time{color:#93C5FD;font-weight:700;font-size:13px;}
 .cell-activity{color:#fff;font-weight:600;}
 .cell-detail{color:var(--muted);font-size:13px;white-space:pre-wrap;}
-.cell-actions{padding:8px 6px;display:flex;align-items:center;justify-content:flex-end;gap:3px;border-bottom:1px solid rgba(255,255,255,0.04);}
+.cell-actions{padding:8px 6px;display:flex;align-items:center;justify-content:center;gap:3px;border-bottom:1px solid rgba(255,255,255,0.04);}
 
-/* Edit mode cells */
-.edit-mode .cell-time .cell-in,
-.edit-mode .cell-activity .cell-in{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:6px;color:#fff;font-family:'Manrope',sans-serif;padding:6px 9px;width:100%;font-size:13px;font-weight:inherit;}
-.edit-mode .cell-time .cell-in{color:#93C5FD;}
-.edit-mode .cell-time .cell-in:focus,
-.edit-mode .cell-activity .cell-in:focus{outline:none;border-color:#3AE4C9;}
-.edit-mode .cell-detail .cell-ta{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:6px;color:var(--muted);font-family:'Manrope',sans-serif;padding:6px 9px;width:100%;font-size:13px;resize:vertical;min-height:40px;line-height:1.5;}
-.edit-mode .cell-detail .cell-ta:focus{outline:none;border-color:#3AE4C9;}
+.edit-mode .cell-time input,
+.edit-mode .cell-activity input{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:6px;color:#fff;font-family:'Manrope',sans-serif;padding:6px 9px;font-size:13px;font-weight:600;}
+.edit-mode .cell-time input{color:#93C5FD;}
+.edit-mode .cell-time input:focus,
+.edit-mode .cell-activity input:focus{outline:none;border-color:#3AE4C9;}
+.edit-mode .cell-detail textarea{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:6px;color:rgba(255,255,255,0.6);font-family:'Manrope',sans-serif;padding:6px 9px;font-size:13px;resize:vertical;min-height:38px;line-height:1.5;}
+.edit-mode .cell-detail textarea:focus{outline:none;border-color:#3AE4C9;}
 
-/* Row buttons */
-.btn-row{width:24px;height:24px;border-radius:5px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;transition:all .15s;}
+.btn-row{width:26px;height:26px;border-radius:5px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;line-height:1;transition:all .15s;}
 .btn-row-add{background:rgba(58,228,201,0.12);color:#3AE4C9;}
-.btn-row-add:hover{background:rgba(58,228,201,0.25);}
+.btn-row-add:hover{background:rgba(58,228,201,0.28);}
 .btn-row-del{background:rgba(229,62,62,0.12);color:#fc8181;}
-.btn-row-del:hover{background:rgba(229,62,62,0.25);}
-.btn-zone-add{background:rgba(58,228,201,0.1);color:#3AE4C9;border:1.5px dashed rgba(58,228,201,0.4);border-radius:6px;padding:5px 12px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .2s;}
-.btn-zone-add:hover{background:rgba(58,228,201,0.18);}
-.btn-zone-del{background:rgba(229,62,62,0.1);color:#fc8181;border:1px solid rgba(229,62,62,0.25);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .2s;}
-.btn-zone-del:hover{background:rgba(229,62,62,0.2);}
-
-/* Insert zone between sections */
-.insert-zone-bar{display:none;text-align:center;padding:4px 0;}
-.edit-mode .insert-zone-bar{display:block;}
-.btn-insert-zone{background:transparent;color:rgba(58,228,201,0.5);border:1px dashed rgba(58,228,201,0.25);border-radius:6px;padding:3px 14px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .2s;}
-.btn-insert-zone:hover{color:#3AE4C9;border-color:rgba(58,228,201,0.5);background:rgba(58,228,201,0.05);}
-
-/* Row controls visibility */
+.btn-row-del:hover{background:rgba(229,62,62,0.28);}
 .row-controls{display:none;}
 .edit-mode .row-controls{display:flex;}
 
-/* Zone header edit toggle */
-.zone-name-view{cursor:default;}
-.zone-name-edit{display:none;}
-.edit-mode .zone-name-view{display:none;}
-.edit-mode .zone-name-edit{display:block;}
-.edit-mode .zone-actions{display:flex;}
-.zone-actions{display:none;}
+.btn-zone-add{background:rgba(58,228,201,0.1);color:#3AE4C9;border:1.5px dashed rgba(58,228,201,0.4);border-radius:6px;padding:5px 13px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .2s;}
+.btn-zone-add:hover{background:rgba(58,228,201,0.2);}
+.btn-zone-del{background:rgba(229,62,62,0.1);color:#fc8181;border:1px solid rgba(229,62,62,0.25);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .2s;}
+.btn-zone-del:hover{background:rgba(229,62,62,0.22);}
 
-/* Modal */
-.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:999;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
-.modal-box{background:#0d1b3e;border:1px solid rgba(33,104,253,0.3);border-radius:16px;padding:32px;max-width:400px;width:90%;box-shadow:0 0 60px rgba(33,104,253,0.2);}
-.modal-title{font-size:18px;font-weight:800;margin-bottom:8px;background:var(--grad-d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.modal-sub{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.6;}
-.modal-input{width:100%;padding:11px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:#fff;font-family:'Manrope',sans-serif;font-size:14px;margin-bottom:12px;}
+.insert-zone-bar{display:none;text-align:center;padding:5px 0;}
+.edit-mode .insert-zone-bar{display:block;}
+.btn-insert-zone{background:transparent;color:rgba(58,228,201,0.45);border:1px dashed rgba(58,228,201,0.2);border-radius:6px;padding:3px 16px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .2s;}
+.btn-insert-zone:hover{color:#3AE4C9;border-color:rgba(58,228,201,0.5);background:rgba(58,228,201,0.06);}
+
+.zone-name-view{}
+.zone-name-edit-wrap{display:none;}
+.edit-mode .zone-name-view{display:none;}
+.edit-mode .zone-name-edit-wrap{display:block;}
+
+/* ── Modal ── */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:9000;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
+.modal-box{background:#0d1b3e;border:1px solid rgba(33,104,253,0.35);border-radius:16px;padding:32px;max-width:380px;width:92%;box-shadow:0 0 80px rgba(33,104,253,0.25);}
+.modal-title{font-size:19px;font-weight:800;margin-bottom:8px;background:var(--grad-d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.modal-sub{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:20px;line-height:1.6;}
+.modal-input{width:100%;padding:11px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);border-radius:8px;color:#fff;font-family:'Manrope',sans-serif;font-size:14px;margin-bottom:10px;}
 .modal-input:focus{outline:none;border-color:#3AE4C9;}
-.modal-row{display:flex;gap:8px;}
+.modal-row{display:flex;gap:8px;margin-top:4px;}
 .btn-modal-ok{flex:1;padding:11px;background:var(--grad);border:none;border-radius:8px;color:#fff;font-weight:700;font-size:14px;cursor:pointer;font-family:'Manrope',sans-serif;}
 .btn-modal-ok:hover{opacity:0.85;}
-.btn-modal-cancel{padding:11px 18px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:var(--muted);font-weight:700;font-size:14px;cursor:pointer;font-family:'Manrope',sans-serif;}
-.btn-modal-cancel:hover{background:rgba(255,255,255,0.12);}
-.modal-err{color:#fc8181;font-size:12px;margin-bottom:10px;min-height:18px;}
+.btn-modal-cancel{padding:11px 18px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:rgba(255,255,255,0.55);font-weight:700;font-size:14px;cursor:pointer;font-family:'Manrope',sans-serif;}
+.btn-modal-cancel:hover{background:rgba(255,255,255,0.13);}
+.modal-err{color:#fc8181;font-size:12px;margin-bottom:8px;min-height:16px;font-weight:600;}
 
-/* Toast */
-.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:#0d1b3e;border:1px solid rgba(58,228,201,0.3);border-radius:10px;padding:12px 22px;font-size:13px;font-weight:700;color:#3AE4C9;opacity:0;transition:all .3s;z-index:9999;pointer-events:none;white-space:nowrap;}
+/* ── Toast ── */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(16px);background:#0d1b3e;border:1px solid rgba(58,228,201,0.35);border-radius:10px;padding:12px 24px;font-size:13px;font-weight:700;color:#3AE4C9;opacity:0;transition:all .35s;z-index:9999;pointer-events:none;white-space:nowrap;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
 @media(max-width:640px){
-  .col-labels{grid-template-columns:90px 1fr;}
-  .data-row{grid-template-columns:90px 1fr;}
-  .cell-detail,.cell-actions{display:none;}
-  .col-label:nth-child(3),.col-label:nth-child(4){display:none;}
+  .col-labels{grid-template-columns:90px 1fr 48px;}
+  .data-row{grid-template-columns:90px 1fr 48px;}
+  .col-label:nth-child(3){display:none;}
+  .cell-detail{display:none;}
 }
 </style>
 </head>
 <body>
 <div class="bg-art">
-<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg"><circle cx="900" cy="80" r="320" fill="none" stroke="rgba(33,104,253,0.08)" stroke-width="1"/><circle cx="900" cy="80" r="220" fill="none" stroke="rgba(58,228,201,0.06)" stroke-width="1"/><line x1="0" y1="350" x2="1200" y2="350" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></svg>
+  <svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="900" cy="80" r="320" fill="none" stroke="rgba(33,104,253,0.07)" stroke-width="1"/>
+    <circle cx="900" cy="80" r="220" fill="none" stroke="rgba(58,228,201,0.05)" stroke-width="1"/>
+    <line x1="0" y1="350" x2="1200" y2="350" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+  </svg>
 </div>
 
-<!-- Config Panel (hidden until edit mode) -->
+<!-- Config Panel -->
 <div class="cfg-panel" id="cfgPanel">
   <div class="cfg-fields">
     <span class="cfg-label">⚙ JSONBin</span>
-    <input class="cfg-input" id="cfgBinId" placeholder="BIN ID (e.g. 64ab...)" />
-    <input class="cfg-input" id="cfgKey" placeholder="Master Key ($2a$10...)" type="password" />
+    <input class="cfg-input" id="cfgBinId" placeholder="BIN ID" />
+    <input class="cfg-input" id="cfgKey" placeholder="Master Key" type="password" />
     <button class="btn-cfg" onclick="saveCfg()">บันทึก &amp; โหลด</button>
   </div>
 </div>
@@ -149,20 +140,20 @@ header{padding:28px 24px 16px;max-width:960px;margin:0 auto;}
     <div class="header-left">
       <div class="eyebrow">Western Digital · Operations Leadership</div>
       <div class="title-main">WD Leadership Offsite 2026</div>
-      <div class="title-sub" id="subtitleEl">โหลดข้อมูล...</div>
+      <div class="title-sub" id="subtitleEl" contenteditable="false">Venue · Date</div>
     </div>
     <div class="header-actions">
       <span class="sync-status" id="syncStatus"></span>
-      <button class="btn-cloud-load" onclick="cloudLoad()" title="โหลดจาก Cloud">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+      <button class="btn-cloud-load" onclick="cloudLoad()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
         โหลด Cloud
       </button>
       <button class="btn-edit" id="btnEdit" onclick="toggleEdit()">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
         ✎ แก้ไข
       </button>
       <button class="btn-save" id="btnSave" onclick="cloudSave()" style="display:none;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         💾 บันทึกขึ้น Cloud
       </button>
     </div>
@@ -172,29 +163,30 @@ header{padding:28px 24px 16px;max-width:960px;margin:0 auto;}
 <!-- Table -->
 <div class="table-wrap" id="tableWrap"></div>
 
-<!-- Modals -->
+<!-- Password Modal -->
 <div class="modal-bg" id="modalPw" style="display:none;">
   <div class="modal-box">
-    <div class="modal-title" id="modalPwTitle">ตั้งรหัสผ่าน</div>
-    <div class="modal-sub" id="modalPwSub">กรุณาตั้งรหัสผ่านสำหรับโหมดแก้ไข (ครั้งแรก)</div>
+    <div class="modal-title" id="modalPwTitle">ใส่รหัสผ่าน</div>
+    <div class="modal-sub" id="modalPwSub">กรุณาใส่รหัสผ่านเพื่อเข้าโหมดแก้ไข</div>
     <div class="modal-err" id="modalPwErr"></div>
-    <input class="modal-input" id="modalPwInput" type="password" placeholder="รหัสผ่าน..." />
+    <input class="modal-input" id="modalPwInput" type="password" placeholder="รหัสผ่าน..." autocomplete="current-password" />
     <div class="modal-row">
-      <button class="btn-modal-ok" id="modalPwOk" onclick="modalPwConfirm()">ยืนยัน</button>
-      <button class="btn-modal-cancel" onclick="closeModal('modalPw')">ยกเลิก</button>
+      <button class="btn-modal-ok" onclick="modalPwConfirm()">ยืนยัน</button>
+      <button class="btn-modal-cancel" onclick="document.getElementById('modalPw').style.display='none'">ยกเลิก</button>
     </div>
   </div>
 </div>
 
+<!-- Zone Name Modal -->
 <div class="modal-bg" id="modalZone" style="display:none;">
   <div class="modal-box">
     <div class="modal-title">เพิ่ม Zone ใหม่</div>
-    <div class="modal-sub">ชื่อหัวข้อ Zone (เช่น DAY 1 · AFTERNOON)</div>
+    <div class="modal-sub">ใส่ชื่อหัวข้อ Zone เช่น DAY 1 · AFTERNOON</div>
     <div class="modal-err" id="modalZoneErr"></div>
     <input class="modal-input" id="modalZoneInput" placeholder="ชื่อ Zone..." />
     <div class="modal-row">
       <button class="btn-modal-ok" onclick="modalZoneConfirm()">เพิ่ม Zone</button>
-      <button class="btn-modal-cancel" onclick="closeModal('modalZone')">ยกเลิก</button>
+      <button class="btn-modal-cancel" onclick="document.getElementById('modalZone').style.display='none'">ยกเลิก</button>
     </div>
   </div>
 </div>
@@ -202,15 +194,14 @@ header{padding:28px 24px 16px;max-width:960px;margin:0 auto;}
 <div class="toast" id="toast"></div>
 
 <script>
-// ─── State ───────────────────────────────────────────────────────────────────
-let editMode = false;
-let pwHash = localStorage.getItem('agenda_pw_hash') || null;
-let binId = localStorage.getItem('agenda_bin_id') || '';
-let masterKey = localStorage.getItem('agenda_master_key') || '';
-let pendingInsertAfterZone = -1; // zone index to insert after (-1 = append)
-let pendingPwAction = null; // 'edit' or 'setup'
+// ─── Data ─────────────────────────────────────────────────────────────────────
+var editMode = false;
+var pwHash = localStorage.getItem('agenda_pw_hash') || '';
+var binId = localStorage.getItem('agenda_bin_id') || '';
+var masterKey = localStorage.getItem('agenda_master_key') || '';
+var insertZoneAt_index = 0;
 
-let agendaData = {
+var agendaData = {
   subtitle: "Venue · Date",
   zones: [
     {
@@ -242,53 +233,327 @@ let agendaData = {
   ]
 };
 
+// ─── Utility ──────────────────────────────────────────────────────────────────
+function esc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function showToast(msg, dur) {
+  dur = dur || 2800;
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, dur);
+}
+
 // ─── Hash ─────────────────────────────────────────────────────────────────────
 async function hashPw(pw) {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw));
-  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+  var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw));
+  return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
 }
-
-// ─── Toast ────────────────────────────────────────────────────────────────────
-function showToast(msg, dur=2800) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), dur);
-}
-
-// ─── Modal helpers ────────────────────────────────────────────────────────────
-function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
 // ─── Password Modal ───────────────────────────────────────────────────────────
-function openPwModal(action) {
-  pendingPwAction = action;
-  const isSetup = !pwHash;
+function openPwModal() {
+  var isSetup = !pwHash;
   document.getElementById('modalPwTitle').textContent = isSetup ? 'ตั้งรหัสผ่าน' : 'ใส่รหัสผ่าน';
-  document.getElementById('modalPwSub').textContent = isSetup ? 'ตั้งรหัสผ่านสำหรับโหมดแก้ไข (ครั้งแรก)' : 'กรุณาใส่รหัสผ่านเพื่อเข้าโหมดแก้ไข';
+  document.getElementById('modalPwSub').textContent = isSetup
+    ? 'ตั้งรหัสผ่านสำหรับโหมดแก้ไข (ครั้งแรก)'
+    : 'กรุณาใส่รหัสผ่านเพื่อเข้าโหมดแก้ไข';
   document.getElementById('modalPwErr').textContent = '';
   document.getElementById('modalPwInput').value = '';
   document.getElementById('modalPw').style.display = 'flex';
-  setTimeout(() => document.getElementById('modalPwInput').focus(), 100);
+  setTimeout(function(){ document.getElementById('modalPwInput').focus(); }, 120);
 }
 
 async function modalPwConfirm() {
-  const val = document.getElementById('modalPwInput').value.trim();
+  var val = document.getElementById('modalPwInput').value;
   if (!val) { document.getElementById('modalPwErr').textContent = 'กรุณาใส่รหัสผ่าน'; return; }
-  const h = await hashPw(val);
+  var h = await hashPw(val);
   if (!pwHash) {
-    pwHash = h; localStorage.setItem('agenda_pw_hash', h);
-    closeModal('modalPw'); showToast('✅ ตั้งรหัสผ่านเรียบร้อยแล้ว');
+    pwHash = h;
+    localStorage.setItem('agenda_pw_hash', h);
+    document.getElementById('modalPw').style.display = 'none';
+    showToast('✅ ตั้งรหัสผ่านเรียบร้อย');
     activateEdit();
   } else {
-    if (h === pwHash) { closeModal('modalPw'); activateEdit(); }
-    else { document.getElementById('modalPwErr').textContent = 'รหัสผ่านไม่ถูกต้อง ลองใหม่'; }
+    if (h === pwHash) {
+      document.getElementById('modalPw').style.display = 'none';
+      activateEdit();
+    } else {
+      document.getElementById('modalPwErr').textContent = '❌ รหัสผ่านไม่ถูกต้อง ลองใหม่';
+      document.getElementById('modalPwInput').value = '';
+      document.getElementById('modalPwInput').focus();
+    }
   }
 }
 
-document.addEventListener('keydown', e => {
-  if (e.key === 'Enter' && document.getElementById('modalPw').style.display !== 'none') modalPwConfirm();
-});
-
 // ─── Edit Mode ────────────────────────────────────────────────────────────────
 function toggleEdit() {
-  if (editMode) { deactivateEdit(); }
-  else { collectFromDOM(); openPwModal('edit'); }
+  if (editMode) {
+    deactivateEdit();
+  } else {
+    openPwModal();
+  }
+}
+
+function activateEdit() {
+  editMode = true;
+  document.getElementById('btnEdit').classList.add('active');
+  document.getElementById('btnEdit').innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> ออกจากแก้ไข';
+  document.getElementById('btnSave').style.display = 'inline-flex';
+  document.getElementById('cfgPanel').classList.add('show');
+  document.getElementById('cfgBinId').value = binId;
+  document.getElementById('cfgKey').value = masterKey;
+  var sub = document.getElementById('subtitleEl');
+  sub.contentEditable = 'true';
+  sub.style.cursor = 'text';
+  sub.style.background = 'rgba(255,255,255,0.06)';
+  sub.style.borderRadius = '6px';
+  sub.style.padding = '2px 7px';
+  renderTable();
+  showToast('✏️ เข้าสู่โหมดแก้ไข');
+}
+
+function deactivateEdit() {
+  collectFromDOM();
+  editMode = false;
+  document.getElementById('btnEdit').classList.remove('active');
+  document.getElementById('btnEdit').innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> ✎ แก้ไข';
+  document.getElementById('btnSave').style.display = 'none';
+  document.getElementById('cfgPanel').classList.remove('show');
+  var sub = document.getElementById('subtitleEl');
+  sub.contentEditable = 'false';
+  sub.style.cursor = '';
+  sub.style.background = '';
+  sub.style.borderRadius = '';
+  sub.style.padding = '';
+  agendaData.subtitle = sub.textContent;
+  renderTable();
+  showToast('👁 โหมดดูข้อมูล');
+}
+
+// ─── Collect from DOM ─────────────────────────────────────────────────────────
+function collectFromDOM() {
+  if (!editMode) return;
+  var blocks = document.querySelectorAll('#tableWrap .section-block');
+  var zones = [];
+  blocks.forEach(function(block) {
+    var nameInput = block.querySelector('.zone-edit-input');
+    var nameView  = block.querySelector('.zone-name-view');
+    var zoneName  = nameInput ? nameInput.value : (nameView ? nameView.textContent.trim() : 'Zone');
+    var rows = [];
+    block.querySelectorAll('.data-row').forEach(function(row) {
+      var ti = row.querySelector('input[data-f="time"]');
+      var ai = row.querySelector('input[data-f="activity"]');
+      var dt = row.querySelector('textarea[data-f="detail"]');
+      rows.push({
+        time:     ti ? ti.value : '',
+        activity: ai ? ai.value : '',
+        detail:   dt ? dt.value : ''
+      });
+    });
+    zones.push({ name: zoneName, rows: rows });
+  });
+  agendaData.zones = zones;
+  agendaData.subtitle = document.getElementById('subtitleEl').textContent;
+}
+
+// ─── Render ───────────────────────────────────────────────────────────────────
+function renderTable() {
+  var wrap = document.getElementById('tableWrap');
+  wrap.innerHTML = '';
+  if (editMode) { wrap.classList.add('edit-mode'); } else { wrap.classList.remove('edit-mode'); }
+
+  // Top bar in edit mode
+  if (editMode) {
+    var topBar = document.createElement('div');
+    topBar.style.cssText = 'padding:0 0 12px;display:flex;gap:8px;';
+    topBar.innerHTML = '<button class="btn-zone-add" onclick="doInsertZone(0)">+ เพิ่ม Zone ที่ต้น</button>';
+    wrap.appendChild(topBar);
+  }
+
+  agendaData.zones.forEach(function(zone, zi) {
+    // Insert bar between zones
+    if (zi > 0) {
+      var ibar = document.createElement('div');
+      ibar.className = 'insert-zone-bar';
+      ibar.innerHTML = '<button class="btn-insert-zone" onclick="doInsertZone(' + zi + ')">+ เพิ่ม Zone ที่นี่</button>';
+      wrap.appendChild(ibar);
+    }
+
+    var block = document.createElement('div');
+    block.className = 'section-block';
+
+    // Zone header
+    var zh = document.createElement('div');
+    zh.className = 'zone-header-row';
+    zh.innerHTML =
+      '<div>' +
+        '<div class="zone-name-view zone-label">' + esc(zone.name) + '</div>' +
+        '<div class="zone-name-edit-wrap"><input class="zone-edit-input" value="' + esc(zone.name) + '" /></div>' +
+      '</div>' +
+      '<div class="zone-actions">' +
+        '<button class="btn-zone-del" onclick="deleteZone(' + zi + ')">✕ ลบ Zone</button>' +
+      '</div>';
+    block.appendChild(zh);
+
+    // Column labels
+    var cl = document.createElement('div');
+    cl.className = 'col-labels';
+    cl.innerHTML = '<div class="col-label">TIME</div><div class="col-label">ACTIVITY</div><div class="col-label">DETAIL</div><div class="col-label"></div>';
+    block.appendChild(cl);
+
+    // Rows
+    zone.rows.forEach(function(row, ri) {
+      block.appendChild(makeRow(row, zi, ri));
+    });
+
+    // Add row at bottom of zone
+    var addBar = document.createElement('div');
+    addBar.className = 'row-controls';
+    addBar.style.cssText = 'padding:4px 8px 12px;';
+    addBar.innerHTML = '<button class="btn-zone-add" onclick="addRow(' + zi + ',' + zone.rows.length + ')">+ เพิ่มแถว</button>';
+    block.appendChild(addBar);
+
+    wrap.appendChild(block);
+  });
+
+  // Insert bar at end
+  var ibarEnd = document.createElement('div');
+  ibarEnd.className = 'insert-zone-bar';
+  ibarEnd.innerHTML = '<button class="btn-insert-zone" onclick="doInsertZone(' + agendaData.zones.length + ')">+ เพิ่ม Zone ที่ท้าย</button>';
+  wrap.appendChild(ibarEnd);
+}
+
+function makeRow(row, zi, ri) {
+  var div = document.createElement('div');
+  div.className = 'data-row';
+  if (editMode) {
+    div.innerHTML =
+      '<div class="cell cell-time"><input data-f="time" value="' + esc(row.time) + '" /></div>' +
+      '<div class="cell cell-activity"><input data-f="activity" value="' + esc(row.activity) + '" /></div>' +
+      '<div class="cell cell-detail"><textarea data-f="detail" rows="2">' + esc(row.detail) + '</textarea></div>' +
+      '<div class="cell cell-actions">' +
+        '<button class="btn-row btn-row-add" title="เพิ่มแถวด้านล่าง" onclick="addRow(' + zi + ',' + (ri+1) + ')">+</button>' +
+        '<button class="btn-row btn-row-del" title="ลบแถวนี้" onclick="delRow(' + zi + ',' + ri + ')">×</button>' +
+      '</div>';
+  } else {
+    div.innerHTML =
+      '<div class="cell cell-time">' + esc(row.time) + '</div>' +
+      '<div class="cell cell-activity">' + esc(row.activity) + '</div>' +
+      '<div class="cell cell-detail">' + esc(row.detail) + '</div>' +
+      '<div class="cell cell-actions"></div>';
+  }
+  return div;
+}
+
+// ─── Row Operations ───────────────────────────────────────────────────────────
+function addRow(zi, ri) {
+  collectFromDOM();
+  agendaData.zones[zi].rows.splice(ri, 0, { time: '', activity: '', detail: '' });
+  renderTable();
+}
+
+function delRow(zi, ri) {
+  if (agendaData.zones[zi].rows.length <= 1) { showToast('⚠️ ต้องมีอย่างน้อย 1 แถว'); return; }
+  collectFromDOM();
+  agendaData.zones[zi].rows.splice(ri, 1);
+  renderTable();
+}
+
+// ─── Zone Operations ──────────────────────────────────────────────────────────
+function deleteZone(zi) {
+  if (agendaData.zones.length <= 1) { showToast('⚠️ ต้องมีอย่างน้อย 1 Zone'); return; }
+  collectFromDOM();
+  agendaData.zones.splice(zi, 1);
+  renderTable();
+}
+
+function doInsertZone(idx) {
+  insertZoneAt_index = idx;
+  document.getElementById('modalZoneInput').value = '';
+  document.getElementById('modalZoneErr').textContent = '';
+  document.getElementById('modalZone').style.display = 'flex';
+  setTimeout(function(){ document.getElementById('modalZoneInput').focus(); }, 120);
+}
+
+function modalZoneConfirm() {
+  var name = document.getElementById('modalZoneInput').value.trim();
+  if (!name) { document.getElementById('modalZoneErr').textContent = 'กรุณาใส่ชื่อ Zone'; return; }
+  collectFromDOM();
+  agendaData.zones.splice(insertZoneAt_index, 0, { name: name, rows: [{ time: '', activity: '', detail: '' }] });
+  document.getElementById('modalZone').style.display = 'none';
+  renderTable();
+  showToast('✅ เพิ่ม Zone "' + name + '" แล้ว');
+}
+
+// ─── Enter key in modals ──────────────────────────────────────────────────────
+document.addEventListener('keydown', function(e) {
+  if (e.key !== 'Enter') return;
+  if (document.getElementById('modalPw').style.display !== 'none') { e.preventDefault(); modalPwConfirm(); }
+  if (document.getElementById('modalZone').style.display !== 'none') { e.preventDefault(); modalZoneConfirm(); }
+});
+
+// ─── Config ───────────────────────────────────────────────────────────────────
+function saveCfg() {
+  binId = document.getElementById('cfgBinId').value.trim();
+  masterKey = document.getElementById('cfgKey').value.trim();
+  localStorage.setItem('agenda_bin_id', binId);
+  localStorage.setItem('agenda_master_key', masterKey);
+  showToast('⚙️ บันทึก Config แล้ว');
+  if (binId && masterKey) cloudLoad();
+}
+
+// ─── Cloud Load ───────────────────────────────────────────────────────────────
+async function cloudLoad() {
+  if (!binId || !masterKey) { showToast('⚠️ ยังไม่ได้ตั้งค่า BIN ID / Key'); return; }
+  document.getElementById('syncStatus').textContent = '⟳ โหลด...';
+  try {
+    var r = await fetch('https://api.jsonbin.io/v3/b/' + binId + '/latest', {
+      headers: { 'X-Master-Key': masterKey }
+    });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    var j = await r.json();
+    var d = j.record;
+    if (d && d.zones) {
+      agendaData = d;
+      document.getElementById('subtitleEl').textContent = agendaData.subtitle || 'Venue · Date';
+      renderTable();
+      var ts = (j.metadata && j.metadata.createdAt) ? new Date(j.metadata.createdAt).toLocaleString('th-TH') : '';
+      document.getElementById('syncStatus').textContent = ts ? 'อัปเดต: ' + ts : '✅ โหลดแล้ว';
+      showToast('✅ โหลดข้อมูลจาก Cloud แล้ว');
+    } else { throw new Error('format ไม่ถูกต้อง'); }
+  } catch(e) {
+    document.getElementById('syncStatus').textContent = '❌ โหลดไม่สำเร็จ';
+    showToast('❌ ' + e.message, 4000);
+  }
+}
+
+// ─── Cloud Save ───────────────────────────────────────────────────────────────
+async function cloudSave() {
+  if (!binId || !masterKey) { showToast('⚠️ กรุณาตั้งค่า JSONBin ก่อน'); return; }
+  collectFromDOM();
+  document.getElementById('syncStatus').textContent = '⟳ กำลังบันทึก...';
+  try {
+    var r = await fetch('https://api.jsonbin.io/v3/b/' + binId, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'X-Master-Key': masterKey },
+      body: JSON.stringify(agendaData)
+    });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    document.getElementById('syncStatus').textContent = '✅ ' + new Date().toLocaleTimeString('th-TH');
+    showToast('✅ บันทึกขึ้น Cloud สำเร็จ!');
+  } catch(e) {
+    document.getElementById('syncStatus').textContent = '❌ บันทึกไม่สำเร็จ';
+    showToast('❌ ' + e.message, 4000);
+  }
+}
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
+document.getElementById('subtitleEl').textContent = agendaData.subtitle;
+renderTable();
+if (binId && masterKey) { cloudLoad(); }
+else { document.getElementById('syncStatus').textContent = 'ยังไม่ได้ตั้งค่า Cloud'; }
+</script>
+</body>
+</html>
