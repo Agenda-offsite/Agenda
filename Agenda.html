@@ -17,18 +17,24 @@ body{font-family:'Manrope','Arial',sans-serif;background:#050d20;color:#fff;min-
 .tab-btn.active{background:#fff;color:var(--navy-deep);border-color:#fff;}
 .page{max-width:1080px;margin:0 auto;padding:18px 16px 100px;display:none;}
 .page.active{display:block;}
+
+/* ── Header card ── */
 .header-card{background:linear-gradient(120deg,#f4f7fc 0%,#dbe6f5 100%);border-radius:8px;padding:26px 30px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;box-shadow:0 10px 30px rgba(0,0,0,0.3);}
 .agenda-title{font-size:44px;font-weight:900;color:var(--accent);letter-spacing:1px;line-height:1;margin:0;}
 .day-title{font-size:34px;font-weight:900;color:#1c2b4a;line-height:1.1;margin:6px 0 0;}
 .header-right{text-align:right;color:#2a3a5c;font-size:15px;line-height:1.5;padding-top:6px;}
 .header-right .weekday{font-size:18px;font-weight:700;text-transform:uppercase;}
-.header-edit-area{background:rgba(255,255,255,0.85);border-radius:8px;padding:16px 20px;margin-top:12px;display:flex;flex-wrap:wrap;gap:12px;border:2px dashed rgba(33,104,253,0.4);}
+
+/* ── Header edit area ── */
+.header-edit-area{background:rgba(255,255,255,0.85);border-radius:8px;padding:16px 20px;margin-top:12px;display:flex;flex-wrap:wrap;gap:12px;border:2px dashed rgba(33,104,253,0.4);width:100%;}
 .header-edit-area label{font-size:11px;font-weight:800;color:#5a6b8c;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:4px;}
 .header-edit-area input{width:100%;padding:7px 10px;border-radius:5px;border:1px solid rgba(33,104,253,0.3);background:#fff;color:#0e1f42;font-size:14px;font-weight:600;font-family:'Manrope',sans-serif;}
 .header-edit-area input:focus{outline:none;border-color:#2168FD;}
 .hef-label{flex:0 0 120px;}
-.hef-title{flex:1;min-width:200px;}
-.hef-date{flex:1;min-width:200px;}
+.hef-title{flex:1;min-width:180px;}
+.hef-date{flex:1;min-width:180px;}
+
+/* ── Column header bar ── */
 .col-labels{display:flex;background:linear-gradient(90deg,#1c2e5e 0%,#162348 100%);color:#93C5FD;font-weight:800;font-size:11.5px;text-transform:uppercase;letter-spacing:1.5px;border-radius:6px;margin-top:14px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.3);border:1px solid rgba(33,104,253,0.3);}
 .col-labels span{padding:13px 16px;position:relative;}
 .col-labels span+span::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:1px;background:rgba(147,197,253,0.25);}
@@ -36,15 +42,42 @@ body{font-family:'Manrope','Arial',sans-serif;background:#050d20;color:#fff;min-
 .col-labels .c-details{flex:1;}
 .col-labels .c-att{width:22%;}
 .col-labels .c-note{width:20%;}
+
+/* ── Location row ── */
 .location-row{display:flex;align-items:center;gap:8px;margin:16px 0 6px;font-weight:800;font-size:15px;color:#dfe8ff;letter-spacing:0.5px;}
-.location-row .pin{color:var(--pin-red);font-size:16px;}
-.loc-text{background:rgba(10,20,50,0.35);padding:6px 14px;border-radius:4px;color:#eaf0ff;}
+.location-row .pin{color:var(--pin-red);font-size:16px;flex-shrink:0;}
+.loc-text{background:rgba(10,20,50,0.35);padding:6px 14px;border-radius:4px;color:#eaf0ff;word-break:break-word;}
+
+/* ── Item rows ── */
 .item-row{display:flex;margin:8px 0;border-radius:4px;overflow:hidden;min-height:56px;box-shadow:0 4px 12px rgba(0,0,0,0.18);}
-.item-row .c-time{width:18%;background:rgba(240,245,255,0.94);color:#12275a;padding:12px 14px;font-weight:800;font-size:14px;display:flex;flex-direction:column;justify-content:center;}
+.item-row .c-time{width:18%;background:rgba(240,245,255,0.94);color:#12275a;padding:12px 14px;font-weight:800;font-size:14px;display:flex;flex-direction:column;justify-content:center;flex-shrink:0;}
 .item-row .c-time .dur{font-weight:600;font-size:11.5px;color:#5a6b8c;margin-top:3px;}
-.item-row .c-details{flex:1;background:rgba(210,225,250,0.5);color:#0e1f42;padding:12px 16px;font-weight:700;font-size:14.5px;display:flex;align-items:center;white-space:pre-line;line-height:1.45;}
-.item-row .c-att{width:22%;background:rgba(10,25,60,0.28);color:#fff;padding:12px 16px;font-size:13.5px;text-align:right;display:flex;align-items:center;justify-content:flex-end;white-space:pre-line;line-height:1.4;}
-.item-row .c-note{width:20%;background:rgba(5,40,20,0.28);color:#c8f5e0;padding:12px 14px;font-size:13px;display:flex;align-items:center;white-space:pre-line;line-height:1.4;border-left:1px solid rgba(58,228,201,0.15);}
+.item-row .c-details{flex:1;background:rgba(210,225,250,0.5);color:#0e1f42;padding:12px 16px;font-weight:700;font-size:14.5px;display:flex;align-items:center;white-space:pre-line;line-height:1.45;word-break:break-word;min-width:0;}
+.item-row .c-att{width:22%;background:rgba(10,25,60,0.28);color:#fff;padding:12px 16px;font-size:13.5px;display:flex;align-items:center;justify-content:flex-end;white-space:pre-line;line-height:1.4;word-break:break-word;min-width:0;text-align:right;flex-shrink:0;}
+.item-row .c-note{width:20%;background:rgba(5,40,20,0.28);color:#c8f5e0;padding:12px 14px;font-size:13px;display:flex;align-items:center;white-space:pre-line;line-height:1.4;border-left:1px solid rgba(58,228,201,0.15);word-break:break-word;min-width:0;flex-shrink:0;}
+
+/* ── Mobile responsive ── */
+@media(max-width:700px){
+  .page{padding:14px 10px 80px;}
+  .header-card{padding:18px 16px;}
+  .agenda-title{font-size:28px;}
+  .day-title{font-size:22px;}
+  .header-right{font-size:13px;}
+  .header-right .weekday{font-size:15px;}
+  .col-labels{display:none;}
+  .item-row{flex-direction:column;border-radius:8px;margin:10px 0;}
+  .item-row .c-time{width:100%;flex-direction:row;gap:8px;align-items:center;padding:10px 14px;border-radius:0;font-size:13px;}
+  .item-row .c-time .dur{margin-top:0;font-size:11px;}
+  .item-row .c-details{width:100%;font-size:13.5px;padding:10px 14px;border-left:3px solid rgba(33,104,253,0.4);}
+  .item-row .c-att{width:100%;font-size:12px;padding:8px 14px;text-align:left;justify-content:flex-start;border-left:3px solid rgba(147,197,253,0.3);}
+  .item-row .c-note{width:100%;font-size:12px;padding:8px 14px;border-left:3px solid rgba(58,228,201,0.3);}
+  .item-row .c-att:not(:empty)::before{content:"👤 ";font-size:11px;opacity:0.7;}
+  .item-row .c-note:not(:empty)::before{content:"📝 ";font-size:11px;opacity:0.7;}
+  .location-row{font-size:13px;}
+  .row-controls{flex-wrap:wrap;}
+}
+
+/* ── Edit controls ── */
 .editable[contenteditable="true"]{outline:2px dashed rgba(58,228,201,0.7);outline-offset:2px;cursor:text;min-width:20px;border-radius:3px;}
 .row-controls{display:none;gap:6px;align-items:center;padding-left:8px;flex-shrink:0;}
 .edit-on .row-controls{display:flex;}
@@ -57,14 +90,21 @@ body{font-family:'Manrope','Arial',sans-serif;background:#050d20;color:#fff;min-
 .btn-del:hover{background:rgba(200,50,50,0.32);}
 .loc-controls{display:none;gap:6px;align-items:center;margin-left:10px;}
 .edit-on .loc-controls{display:flex;}
-.toolbar{display:flex;justify-content:flex-end;gap:10px;padding:14px 0 6px;flex-wrap:wrap;}
-.toolbar button{border:none;border-radius:6px;padding:8px 18px;font-weight:700;font-size:13px;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .18s;}
-.btn-edit{background:var(--grad);color:#fff;}
-.btn-edit:hover{opacity:0.88;}
+
+/* ── Toolbar ── */
+.toolbar{display:flex;justify-content:flex-end;gap:10px;padding:14px 0 6px;flex-wrap:wrap;align-items:center;}
+.toolbar button{border:none;border-radius:6px;padding:8px 18px;font-weight:700;font-size:13px;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .25s;}
+
+/* ปุ่มแก้ไข — จางปกติ โชว์เต็มเมื่อ hover */
+.btn-edit{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.35);border:1px solid rgba(255,255,255,0.12);}
+.btn-edit:hover{background:var(--grad);color:#fff;border-color:transparent;opacity:1;}
+
 .btn-save{background:#16a34a;color:#fff;}
 .btn-save:hover{background:#15803d;}
 .btn-cancel{background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.25);}
 .btn-cancel:hover{background:rgba(255,255,255,0.2);}
+
+/* ── Modal ── */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;}
 .modal-overlay.show{display:flex;}
 .modal-box{background:#0d1f4d;border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:32px;max-width:380px;width:90%;text-align:center;}
@@ -76,7 +116,7 @@ body{font-family:'Manrope','Arial',sans-serif;background:#050d20;color:#fff;min-
 .modal-btns button{border:none;border-radius:6px;padding:9px 24px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Manrope',sans-serif;}
 .btn-confirm{background:var(--grad);color:#fff;}
 .btn-close-modal{background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);}
-.sync-status{font-size:12px;color:#64748b;padding:4px 0 0;text-align:right;}
+.sync-status{font-size:12px;color:#64748b;padding:4px 0 0;}
 .sync-ok{color:#3AE4C9;}
 .sync-err{color:#fc8181;}
 </style>
@@ -305,7 +345,7 @@ function renderAll(){
       </div>
       <div class="toolbar">
         <span class="sync-status" id="sync-${di}"></span>
-        <button class="toolbar button btn-edit" onclick="startEdit(${di})">✏️ แก้ไข</button>
+        <button class="btn-edit" onclick="startEdit(${di})">✏️ แก้ไข</button>
       </div>
       <div class="col-labels">
         <span class="c-time">TIME</span>
@@ -323,12 +363,10 @@ function renderAll(){
 function renderHeaderEdit(di){
   const day=data.days[di];
   const hcard=document.getElementById('hcard-'+di);
-  // inject edit fields below the existing header display
   let existing=hcard.querySelector('.header-edit-area');
   if(existing)existing.remove();
   const ea=document.createElement('div');
   ea.className='header-edit-area';
-  ea.style.width='100%';
   ea.innerHTML=`
     <div class="hef-label">
       <label>Tab Label</label>
@@ -344,8 +382,6 @@ function renderHeaderEdit(di){
     </div>
   `;
   hcard.appendChild(ea);
-
-  // live preview as user types
   document.getElementById('hef-label-'+di).addEventListener('input',function(){
     day.label=this.value;
     const tb=document.getElementById('tab-btn-'+di);
@@ -368,10 +404,7 @@ function renderHeaderEdit(di){
 
 function removeHeaderEdit(di){
   const hcard=document.getElementById('hcard-'+di);
-  if(hcard){
-    const ea=hcard.querySelector('.header-edit-area');
-    if(ea)ea.remove();
-  }
+  if(hcard){const ea=hcard.querySelector('.header-edit-area');if(ea)ea.remove();}
 }
 
 function renderBody(di){
@@ -442,7 +475,7 @@ function renderBody(di){
 
   if(isEdit){
     const addBtns=document.createElement('div');
-    addBtns.style.cssText='display:flex;gap:10px;margin-top:14px;';
+    addBtns.style.cssText='display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;';
     addBtns.innerHTML=`
       <button class="btn-add-row" style="padding:8px 18px;font-size:13px;" onclick="addRow(${di},-1)">+ เพิ่มรายการ</button>
       <button class="btn-add-zone" style="padding:8px 18px;font-size:13px;" onclick="addZone(${di},-1)">+ เพิ่มโซนสถานที่</button>`;
@@ -469,19 +502,14 @@ function delItem(di,idx){
 
 async function startEdit(di){
   const stored=localStorage.getItem('agenda_pw_hash');
-  if(!stored){
-    const ok=await openPwModal('setup');
-    if(!ok)return;
-  } else {
-    const ok=await openPwModal('verify');
-    if(!ok)return;
-  }
+  if(!stored){const ok=await openPwModal('setup');if(!ok)return;}
+  else{const ok=await openPwModal('verify');if(!ok)return;}
   editingDay=di;
   const pg=document.getElementById('page-'+di);
   pg.querySelector('.toolbar').innerHTML=`
     <span class="sync-status" id="sync-${di}"></span>
-    <button class="toolbar button btn-save" onclick="saveEdit(${di})">💾 บันทึก</button>
-    <button class="toolbar button btn-cancel" onclick="cancelEdit(${di})">ยกเลิก</button>`;
+    <button class="btn-save" onclick="saveEdit(${di})">💾 บันทึก</button>
+    <button class="btn-cancel" onclick="cancelEdit(${di})">ยกเลิก</button>`;
   renderHeaderEdit(di);
   renderBody(di);
 }
@@ -495,11 +523,11 @@ async function saveEdit(di){
   else{stat.textContent='⚠ บันทึก Cloud ไม่สำเร็จ';stat.className='sync-status sync-err';}
   editingDay=null;
   removeHeaderEdit(di);
-  const pg=document.getElementById('page-'+di);
   const savedMsg=stat.textContent;
+  const pg=document.getElementById('page-'+di);
   pg.querySelector('.toolbar').innerHTML=`
     <span class="sync-status" id="sync-${di}">${savedMsg}</span>
-    <button class="toolbar button btn-edit" onclick="startEdit(${di})">✏️ แก้ไข</button>`;
+    <button class="btn-edit" onclick="startEdit(${di})">✏️ แก้ไข</button>`;
   renderBody(di);
 }
 
@@ -509,21 +537,17 @@ async function cancelEdit(di){
   const pg=document.getElementById('page-'+di);
   pg.querySelector('.toolbar').innerHTML=`
     <span class="sync-status" id="sync-${di}">กำลังโหลดข้อมูลจาก Cloud...</span>
-    <button class="toolbar button btn-edit" onclick="startEdit(${di})" disabled>✏️ แก้ไข</button>`;
+    <button class="btn-edit" onclick="startEdit(${di})" disabled>✏️ แก้ไข</button>`;
   const cloud=await cloudGet();
   if(cloud&&cloud.days){
     data=cloud;
-    data.days.forEach(day=>{
-      day.items.forEach(item=>{
-        if(item.type==='row'&&item.note===undefined)item.note='';
-      });
-    });
+    data.days.forEach(day=>{day.items.forEach(item=>{if(item.type==='row'&&item.note===undefined)item.note='';});});
     renderAll();
   } else {
     renderBody(di);
     pg.querySelector('.toolbar').innerHTML=`
       <span class="sync-status" id="sync-${di}">ใช้ข้อมูล Local</span>
-      <button class="toolbar button btn-edit" onclick="startEdit(${di})">✏️ แก้ไข</button>`;
+      <button class="btn-edit" onclick="startEdit(${di})">✏️ แก้ไข</button>`;
   }
 }
 
@@ -532,11 +556,7 @@ async function init(){
   const cloud=await cloudGet();
   if(cloud&&cloud.days){
     data=cloud;
-    data.days.forEach(day=>{
-      day.items.forEach(item=>{
-        if(item.type==='row'&&item.note===undefined)item.note='';
-      });
-    });
+    data.days.forEach(day=>{day.items.forEach(item=>{if(item.type==='row'&&item.note===undefined)item.note='';});});
     if(editingDay===null)renderAll();
   }
 }
