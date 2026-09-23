@@ -22,38 +22,20 @@ body{font-family:'Manrope','Arial',sans-serif;background:#050d20;color:#fff;min-
 .day-title{font-size:34px;font-weight:900;color:#1c2b4a;line-height:1.1;margin:6px 0 0;}
 .header-right{text-align:right;color:#2a3a5c;font-size:15px;line-height:1.5;padding-top:6px;}
 .header-right .weekday{font-size:18px;font-weight:700;text-transform:uppercase;}
-
-/* ── Column header bar with dividers ── */
-.col-labels{
-  display:flex;
-  background:linear-gradient(90deg,#1c2e5e 0%,#162348 100%);
-  color:#93C5FD;
-  font-weight:800;
-  font-size:11.5px;
-  text-transform:uppercase;
-  letter-spacing:1.5px;
-  border-radius:6px;
-  margin-top:14px;
-  overflow:hidden;
-  box-shadow:0 4px 14px rgba(0,0,0,0.3);
-  border:1px solid rgba(33,104,253,0.3);
-}
-.col-labels span{
-  padding:13px 16px;
-  position:relative;
-}
-.col-labels span + span::before{
-  content:'';
-  position:absolute;
-  left:0; top:20%; bottom:20%;
-  width:1px;
-  background:rgba(147,197,253,0.25);
-}
+.header-edit-area{background:rgba(255,255,255,0.85);border-radius:8px;padding:16px 20px;margin-top:12px;display:flex;flex-wrap:wrap;gap:12px;border:2px dashed rgba(33,104,253,0.4);}
+.header-edit-area label{font-size:11px;font-weight:800;color:#5a6b8c;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:4px;}
+.header-edit-area input{width:100%;padding:7px 10px;border-radius:5px;border:1px solid rgba(33,104,253,0.3);background:#fff;color:#0e1f42;font-size:14px;font-weight:600;font-family:'Manrope',sans-serif;}
+.header-edit-area input:focus{outline:none;border-color:#2168FD;}
+.hef-label{flex:0 0 120px;}
+.hef-title{flex:1;min-width:200px;}
+.hef-date{flex:1;min-width:200px;}
+.col-labels{display:flex;background:linear-gradient(90deg,#1c2e5e 0%,#162348 100%);color:#93C5FD;font-weight:800;font-size:11.5px;text-transform:uppercase;letter-spacing:1.5px;border-radius:6px;margin-top:14px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.3);border:1px solid rgba(33,104,253,0.3);}
+.col-labels span{padding:13px 16px;position:relative;}
+.col-labels span+span::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:1px;background:rgba(147,197,253,0.25);}
 .col-labels .c-time{width:18%;}
 .col-labels .c-details{flex:1;}
 .col-labels .c-att{width:22%;}
 .col-labels .c-note{width:20%;}
-
 .location-row{display:flex;align-items:center;gap:8px;margin:16px 0 6px;font-weight:800;font-size:15px;color:#dfe8ff;letter-spacing:0.5px;}
 .location-row .pin{color:var(--pin-red);font-size:16px;}
 .loc-text{background:rgba(10,20,50,0.35);padding:6px 14px;border-radius:4px;color:#eaf0ff;}
@@ -111,7 +93,6 @@ body{font-family:'Manrope','Arial',sans-serif;background:#050d20;color:#fff;min-
 <div class="tabs" id="tabBar"></div>
 <div id="pages"></div>
 
-<!-- Password Modal -->
 <div class="modal-overlay" id="pwModal">
   <div class="modal-box">
     <h3 id="pwTitle">🔐 ใส่รหัสผ่าน</h3>
@@ -297,6 +278,7 @@ function renderAll(){
   data.days.forEach((day,di)=>{
     const tb=document.createElement('button');
     tb.className='tab-btn'+(di===0?' active':'');
+    tb.id='tab-btn-'+di;
     tb.textContent=day.label;
     tb.onclick=()=>{
       document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
@@ -310,14 +292,14 @@ function renderAll(){
     pg.className='page'+(di===0?' active':'');
     pg.id='page-'+di;
     pg.innerHTML=`
-      <div class="header-card">
+      <div class="header-card" id="hcard-${di}">
         <div>
           <div class="agenda-title">AGENDA</div>
-          <div class="day-title">${day.title}</div>
+          <div class="day-title" id="hday-title-${di}">${day.title}</div>
         </div>
         <div class="header-right">
-          <div class="weekday">${day.date.split(',')[0]||''}</div>
-          <div>${day.date.split(',').slice(1).join(',').trim()}</div>
+          <div class="weekday" id="hday-weekday-${di}">${day.date.split(',')[0]||''}</div>
+          <div id="hday-daterest-${di}">${day.date.split(',').slice(1).join(',').trim()}</div>
           <div style="margin-top:6px;font-size:12px;color:#5a7aaa;">WD Leadership Offsite 2026</div>
         </div>
       </div>
@@ -338,6 +320,60 @@ function renderAll(){
   });
 }
 
+function renderHeaderEdit(di){
+  const day=data.days[di];
+  const hcard=document.getElementById('hcard-'+di);
+  // inject edit fields below the existing header display
+  let existing=hcard.querySelector('.header-edit-area');
+  if(existing)existing.remove();
+  const ea=document.createElement('div');
+  ea.className='header-edit-area';
+  ea.style.width='100%';
+  ea.innerHTML=`
+    <div class="hef-label">
+      <label>Tab Label</label>
+      <input id="hef-label-${di}" type="text" value="${day.label}" placeholder="Day 1" />
+    </div>
+    <div class="hef-title">
+      <label>Title หัวข้อหลัก</label>
+      <input id="hef-title-${di}" type="text" value="${day.title}" placeholder="Day 1 – Leadership Kick-Off" />
+    </div>
+    <div class="hef-date">
+      <label>วันที่</label>
+      <input id="hef-date-${di}" type="text" value="${day.date}" placeholder="Monday, 20 October 2026" />
+    </div>
+  `;
+  hcard.appendChild(ea);
+
+  // live preview as user types
+  document.getElementById('hef-label-'+di).addEventListener('input',function(){
+    day.label=this.value;
+    const tb=document.getElementById('tab-btn-'+di);
+    if(tb)tb.textContent=this.value;
+  });
+  document.getElementById('hef-title-'+di).addEventListener('input',function(){
+    day.title=this.value;
+    const el=document.getElementById('hday-title-'+di);
+    if(el)el.textContent=this.value;
+  });
+  document.getElementById('hef-date-'+di).addEventListener('input',function(){
+    day.date=this.value;
+    const parts=this.value.split(',');
+    const wk=document.getElementById('hday-weekday-'+di);
+    const dr=document.getElementById('hday-daterest-'+di);
+    if(wk)wk.textContent=parts[0]||'';
+    if(dr)dr.textContent=parts.slice(1).join(',').trim();
+  });
+}
+
+function removeHeaderEdit(di){
+  const hcard=document.getElementById('hcard-'+di);
+  if(hcard){
+    const ea=hcard.querySelector('.header-edit-area');
+    if(ea)ea.remove();
+  }
+}
+
 function renderBody(di){
   const day=data.days[di];
   const container=document.getElementById('body-'+di);
@@ -351,9 +387,8 @@ function renderBody(di){
       const zr=document.createElement('div');
       zr.className='location-row';
       zr.innerHTML=`<span class="pin">📍</span>
-        <span class="loc-text editable${isEdit?' ':''}" id="loc-${di}-${idx}"
-          ${isEdit?'contenteditable="true"':''}
-          data-di="${di}" data-idx="${idx}" data-field="loc">${item.loc||''}</span>
+        <span class="loc-text${isEdit?' editable':''}" id="loc-${di}-${idx}"
+          ${isEdit?'contenteditable="true"':''}>${item.loc||''}</span>
         <div class="loc-controls">
           <button class="btn-del" onclick="delItem(${di},${idx})">✕ ลบโซน</button>
         </div>`;
@@ -368,22 +403,17 @@ function renderBody(di){
       row.className='item-row';
       row.innerHTML=`
         <div class="c-time">
-          <span class="editable${isEdit?' ':''}" id="time-${di}-${idx}"
-            ${isEdit?'contenteditable="true"':''}
-            data-di="${di}" data-idx="${idx}" data-field="time">${item.time||''}</span>
-          <span class="dur editable${isEdit?' ':''}" id="dur-${di}-${idx}"
-            ${isEdit?'contenteditable="true"':''}
-            data-di="${di}" data-idx="${idx}" data-field="dur">${item.dur||''}</span>
+          <span${isEdit?' class="editable"':''} id="time-${di}-${idx}"
+            ${isEdit?'contenteditable="true"':''}>${item.time||''}</span>
+          <span class="dur${isEdit?' editable':''}" id="dur-${di}-${idx}"
+            ${isEdit?'contenteditable="true"':''}>${item.dur||''}</span>
         </div>
-        <div class="c-details editable${isEdit?' ':''}" id="det-${di}-${idx}"
-          ${isEdit?'contenteditable="true"':''}
-          data-di="${di}" data-idx="${idx}" data-field="detail">${item.detail||''}</div>
-        <div class="c-att editable${isEdit?' ':''}" id="att-${di}-${idx}"
-          ${isEdit?'contenteditable="true"':''}
-          data-di="${di}" data-idx="${idx}" data-field="att">${item.att||''}</div>
-        <div class="c-note editable${isEdit?' ':''}" id="note-${di}-${idx}"
-          ${isEdit?'contenteditable="true"':''}
-          data-di="${di}" data-idx="${idx}" data-field="note">${item.note||''}</div>
+        <div class="c-details${isEdit?' editable':''}" id="det-${di}-${idx}"
+          ${isEdit?'contenteditable="true"':''}>${item.detail||''}</div>
+        <div class="c-att${isEdit?' editable':''}" id="att-${di}-${idx}"
+          ${isEdit?'contenteditable="true"':''}>${item.att||''}</div>
+        <div class="c-note${isEdit?' editable':''}" id="note-${di}-${idx}"
+          ${isEdit?'contenteditable="true"':''}>${item.note||''}</div>
         <div class="row-controls">
           <button class="btn-add-row" onclick="addRow(${di},${idx})">+ แถว</button>
           <button class="btn-add-zone" onclick="addZone(${di},${idx})">+ โซน</button>
@@ -452,6 +482,7 @@ async function startEdit(di){
     <span class="sync-status" id="sync-${di}"></span>
     <button class="toolbar button btn-save" onclick="saveEdit(${di})">💾 บันทึก</button>
     <button class="toolbar button btn-cancel" onclick="cancelEdit(${di})">ยกเลิก</button>`;
+  renderHeaderEdit(di);
   renderBody(di);
 }
 
@@ -463,15 +494,18 @@ async function saveEdit(di){
   if(ok){stat.textContent='✓ บันทึกแล้ว';stat.className='sync-status sync-ok';}
   else{stat.textContent='⚠ บันทึก Cloud ไม่สำเร็จ';stat.className='sync-status sync-err';}
   editingDay=null;
+  removeHeaderEdit(di);
   const pg=document.getElementById('page-'+di);
+  const savedMsg=stat.textContent;
   pg.querySelector('.toolbar').innerHTML=`
-    <span class="sync-status" id="sync-${di}">${stat.textContent}</span>
+    <span class="sync-status" id="sync-${di}">${savedMsg}</span>
     <button class="toolbar button btn-edit" onclick="startEdit(${di})">✏️ แก้ไข</button>`;
   renderBody(di);
 }
 
 async function cancelEdit(di){
   editingDay=null;
+  removeHeaderEdit(di);
   const pg=document.getElementById('page-'+di);
   pg.querySelector('.toolbar').innerHTML=`
     <span class="sync-status" id="sync-${di}">กำลังโหลดข้อมูลจาก Cloud...</span>
@@ -484,11 +518,13 @@ async function cancelEdit(di){
         if(item.type==='row'&&item.note===undefined)item.note='';
       });
     });
+    renderAll();
+  } else {
+    renderBody(di);
+    pg.querySelector('.toolbar').innerHTML=`
+      <span class="sync-status" id="sync-${di}">ใช้ข้อมูล Local</span>
+      <button class="toolbar button btn-edit" onclick="startEdit(${di})">✏️ แก้ไข</button>`;
   }
-  pg.querySelector('.toolbar').innerHTML=`
-    <span class="sync-status" id="sync-${di}">✓ โหลดข้อมูลล่าสุดแล้ว</span>
-    <button class="toolbar button btn-edit" onclick="startEdit(${di})">✏️ แก้ไข</button>`;
-  renderBody(di);
 }
 
 async function init(){
