@@ -18,24 +18,31 @@ body{font-family:'Manrope','Arial',sans-serif;background:#050d20;color:#fff;min-
 .page{max-width:1080px;margin:0 auto;padding:18px 16px 100px;display:none;}
 .page.active{display:block;}
 
-/* ── Header card — desktop ── */
 .header-card{background:linear-gradient(120deg,#f4f7fc 0%,#dbe6f5 100%);border-radius:8px;padding:26px 30px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;box-shadow:0 10px 30px rgba(0,0,0,0.3);}
 .agenda-title{font-size:44px;font-weight:900;color:var(--accent);letter-spacing:1px;line-height:1;margin:0;}
 .day-title{font-size:34px;font-weight:900;color:#1c2b4a;line-height:1.1;margin:6px 0 0;}
 .header-right{text-align:right;color:#2a3a5c;font-size:15px;line-height:1.5;padding-top:6px;}
 .header-right .weekday{font-size:18px;font-weight:700;text-transform:uppercase;}
 
-/* ── Header edit area ── */
 .header-edit-area{background:rgba(255,255,255,0.85);border-radius:8px;padding:16px 20px;margin-top:12px;display:flex;flex-wrap:wrap;gap:12px;border:2px dashed rgba(33,104,253,0.4);width:100%;}
 .header-edit-area label{font-size:11px;font-weight:800;color:#5a6b8c;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:4px;}
 .header-edit-area input{width:100%;padding:7px 10px;border-radius:5px;border:1px solid rgba(33,104,253,0.3);background:#fff;color:#0e1f42;font-size:14px;font-weight:600;font-family:'Manrope',sans-serif;}
 .header-edit-area input:focus{outline:none;border-color:#2168FD;}
-.hef-label{flex:0 0 120px;}
-.hef-title{flex:1;min-width:180px;}
-.hef-date{flex:1;min-width:180px;}
+.hef-label{flex:0 0 110px;}
+.hef-title{flex:1;min-width:160px;}
+.hef-date{flex:1;min-width:160px;}
 
-/* ── Column header bar ── */
-.col-labels{display:flex;background:linear-gradient(90deg,#1c2e5e 0%,#162348 100%);color:#93C5FD;font-weight:800;font-size:11.5px;text-transform:uppercase;letter-spacing:1.5px;border-radius:6px;margin-top:14px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.3);border:1px solid rgba(33,104,253,0.3);}
+.col-header-edit{background:rgba(255,255,255,0.06);border:1px dashed rgba(147,197,253,0.35);border-radius:6px;padding:12px 16px;margin-top:8px;display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;}
+.col-header-edit .section-label{flex:0 0 100%;font-size:10px;font-weight:800;color:rgba(147,197,253,0.7);letter-spacing:2px;text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid rgba(147,197,253,0.1);}
+.col-header-edit label{font-size:10px;font-weight:800;color:#93C5FD;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:3px;}
+.col-header-edit input{padding:5px 8px;border-radius:4px;border:1px solid rgba(147,197,253,0.3);background:rgba(22,35,72,0.8);color:#fff;font-size:12px;font-weight:700;font-family:'Manrope',sans-serif;width:100%;}
+.col-header-edit input:focus{outline:none;border-color:#3AE4C9;}
+.che-time{flex:0 0 100px;}
+.che-detail{flex:1;min-width:120px;}
+.che-att{flex:0 0 190px;}
+.che-note{flex:0 0 120px;}
+
+.col-labels{display:flex;background:linear-gradient(90deg,#1c2e5e 0%,#162348 100%);color:#93C5FD;font-weight:800;font-size:11.5px;text-transform:uppercase;letter-spacing:1.5px;border-radius:6px;margin-top:8px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.3);border:1px solid rgba(33,104,253,0.3);}
 .col-labels span{padding:13px 16px;position:relative;white-space:nowrap;}
 .col-labels span+span::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:1px;background:rgba(147,197,253,0.25);}
 .col-labels .c-time{width:18%;}
@@ -43,57 +50,24 @@ body{font-family:'Manrope','Arial',sans-serif;background:#050d20;color:#fff;min-
 .col-labels .c-att{width:22%;}
 .col-labels .c-note{width:20%;}
 
-/* ── Scroll wrapper for table on mobile ── */
+/* Scroll hint — English, visible on mobile */
+.scroll-hint{display:none;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#93C5FD;letter-spacing:0.5px;padding:7px 4px 3px;opacity:0.9;}
+.scroll-hint svg{flex-shrink:0;}
+
 .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:6px;}
 .table-scroll::-webkit-scrollbar{height:3px;}
-.table-scroll::-webkit-scrollbar-thumb{background:rgba(147,197,253,0.3);border-radius:2px;}
+.table-scroll::-webkit-scrollbar-thumb{background:rgba(147,197,253,0.35);border-radius:2px;}
+.table-inner{min-width:620px;}
 
-/* ── Location row ── */
 .location-row{display:flex;align-items:center;gap:8px;margin:16px 0 6px;font-weight:800;font-size:15px;color:#dfe8ff;letter-spacing:0.5px;}
 .location-row .pin{color:var(--pin-red);font-size:16px;flex-shrink:0;}
 .loc-text{background:rgba(10,20,50,0.35);padding:6px 14px;border-radius:4px;color:#eaf0ff;word-break:break-word;}
-
-/* ── Item rows ── */
-.table-inner{min-width:640px;}
 .item-row{display:flex;margin:8px 0;border-radius:4px;overflow:hidden;min-height:56px;box-shadow:0 4px 12px rgba(0,0,0,0.18);}
 .item-row .c-time{width:18%;background:rgba(240,245,255,0.94);color:#12275a;padding:12px 14px;font-weight:800;font-size:14px;display:flex;flex-direction:column;justify-content:center;flex-shrink:0;}
 .item-row .c-time .dur{font-weight:600;font-size:11.5px;color:#5a6b8c;margin-top:3px;}
 .item-row .c-details{flex:1;background:rgba(210,225,250,0.5);color:#0e1f42;padding:12px 16px;font-weight:700;font-size:14.5px;display:flex;align-items:center;white-space:pre-line;line-height:1.45;word-break:break-word;min-width:0;}
 .item-row .c-att{width:22%;background:rgba(10,25,60,0.28);color:#fff;padding:12px 16px;font-size:13.5px;display:flex;align-items:center;justify-content:flex-end;white-space:pre-line;line-height:1.4;word-break:break-word;min-width:0;text-align:right;flex-shrink:0;}
 .item-row .c-note{width:20%;background:rgba(5,40,20,0.28);color:#c8f5e0;padding:12px 14px;font-size:13px;display:flex;align-items:center;white-space:pre-line;line-height:1.4;border-left:1px solid rgba(58,228,201,0.15);word-break:break-word;min-width:0;flex-shrink:0;}
-
-/* ── Mobile ── */
-@media(max-width:700px){
-  .page{padding:14px 10px 80px;}
-
-  /* Header: stack แนวตั้ง + center */
-  .header-card{flex-direction:column;align-items:center;text-align:center;padding:22px 18px;gap:10px;}
-  .agenda-title{font-size:32px;}
-  .day-title{font-size:22px;}
-  .header-right{text-align:center;font-size:14px;padding-top:0;border-top:1px solid rgba(26,79,214,0.15);width:100%;padding-top:10px;}
-  .header-right .weekday{font-size:16px;}
-
-  /* Table: horizontal scroll — ตารางยังครบทุก col */
-  .table-scroll{margin-top:12px;border-radius:6px;border:1px solid rgba(33,104,253,0.15);}
-  .table-inner{min-width:640px;}
-  .col-labels{border-radius:0;margin-top:0;border:none;border-bottom:1px solid rgba(33,104,253,0.3);}
-
-  /* Location row */
-  .location-row{font-size:13px;padding:0 4px;}
-
-  /* Scroll hint */
-  .scroll-hint{display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(147,197,253,0.6);padding:6px 0 4px;justify-content:flex-end;}
-
-  /* Header edit */
-  .hef-label,.hef-title,.hef-date{flex:0 0 100%;}
-
-  .row-controls{flex-wrap:wrap;}
-}
-@media(min-width:701px){
-  .scroll-hint{display:none;}
-}
-
-/* ── Edit controls ── */
 .editable[contenteditable="true"]{outline:2px dashed rgba(58,228,201,0.7);outline-offset:2px;cursor:text;min-width:20px;border-radius:3px;}
 .row-controls{display:none;gap:6px;align-items:center;padding-left:8px;flex-shrink:0;}
 .edit-on .row-controls{display:flex;}
@@ -107,7 +81,6 @@ body{font-family:'Manrope','Arial',sans-serif;background:#050d20;color:#fff;min-
 .loc-controls{display:none;gap:6px;align-items:center;margin-left:10px;}
 .edit-on .loc-controls{display:flex;}
 
-/* ── Toolbar ── */
 .toolbar{display:flex;justify-content:flex-end;gap:10px;padding:14px 0 6px;flex-wrap:wrap;align-items:center;}
 .toolbar button{border:none;border-radius:6px;padding:8px 18px;font-weight:700;font-size:13px;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .25s;}
 .btn-edit{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.35);border:1px solid rgba(255,255,255,0.12);}
@@ -116,8 +89,6 @@ body{font-family:'Manrope','Arial',sans-serif;background:#050d20;color:#fff;min-
 .btn-save:hover{background:#15803d;}
 .btn-cancel{background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.25);}
 .btn-cancel:hover{background:rgba(255,255,255,0.2);}
-
-/* ── Modal ── */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;}
 .modal-overlay.show{display:flex;}
 .modal-box{background:#0d1f4d;border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:32px;max-width:380px;width:90%;text-align:center;}
@@ -132,6 +103,18 @@ body{font-family:'Manrope','Arial',sans-serif;background:#050d20;color:#fff;min-
 .sync-status{font-size:12px;color:#64748b;padding:4px 0 0;}
 .sync-ok{color:#3AE4C9;}
 .sync-err{color:#fc8181;}
+
+@media(max-width:700px){
+  .page{padding:14px 10px 80px;}
+  .header-card{flex-direction:column;align-items:center;text-align:center;padding:20px 16px;gap:10px;}
+  .agenda-title{font-size:30px;}
+  .day-title{font-size:20px;}
+  .header-right{text-align:center;font-size:13px;padding-top:8px;border-top:1px solid rgba(26,79,214,0.15);width:100%;}
+  .header-right .weekday{font-size:15px;}
+  .scroll-hint{display:flex;}
+  .hef-label,.hef-title,.hef-date{flex:0 0 100%;}
+  .che-att,.che-note{flex:0 0 100%;}
+}
 </style>
 </head>
 <body>
@@ -142,10 +125,8 @@ body{font-family:'Manrope','Arial',sans-serif;background:#050d20;color:#fff;min-
     <circle cx="460" cy="250" r="300" fill="rgba(33,104,253,0.06)"/>
   </svg>
 </div>
-
 <div class="tabs" id="tabBar"></div>
 <div id="pages"></div>
-
 <div class="modal-overlay" id="pwModal">
   <div class="modal-box">
     <h3 id="pwTitle">🔐 ใส่รหัสผ่าน</h3>
@@ -158,104 +139,80 @@ body{font-family:'Manrope','Arial',sans-serif;background:#050d20;color:#fff;min-
     </div>
   </div>
 </div>
-
 <script>
-const BIN_ID = '6aa257b4ffd5d16053f51497';
-const MASTER_KEY = '$2a$10$FOsDpGTD1GW8FUA8gqIvK.jURHj4eK/04TVaPGaY2XFXHDewKJDly';
-const API_URL = 'https://api.jsonbin.io/v3/b/' + BIN_ID;
-
-const DEFAULT = {
+const BIN_ID='6aa257b4ffd5d16053f51497';
+const MASTER_KEY='$2a$10$FOsDpGTD1GW8FUA8gqIvK.jURHj4eK/04TVaPGaY2XFXHDewKJDly';
+const API_URL='https://api.jsonbin.io/v3/b/'+BIN_ID;
+const DEFAULT={
+  colHeaders:{time:'TIME',detail:'DETAIL',att:'ATTENDEE / PRESENTER & EMCEE',note:'NOTE'},
   days:[
-    {
-      label:"Day 1",
-      title:"Day 1 – Leadership Kick-Off",
-      date:"Monday, 20 October 2026",
-      items:[
-        {type:"zone",loc:"Lobby — Grand Ballroom Foyer"},
-        {type:"row",time:"07:30",dur:"30 min",detail:"Registration & Welcome Coffee",att:"All Participants",note:""},
-        {type:"row",time:"08:00",dur:"15 min",detail:"Opening Remarks",att:"CEO / Site Director",note:""},
-        {type:"zone",loc:"Grand Ballroom — Main Stage"},
-        {type:"row",time:"08:15",dur:"45 min",detail:"WD Strategy 2026 – Global Priorities & Direction",att:"VP Operations",note:""},
-        {type:"row",time:"09:00",dur:"60 min",detail:"HDD Operations Review — Q3 Performance & Gap Analysis",att:"HDD Ops Leadership Team",note:""},
-        {type:"row",time:"10:00",dur:"15 min",detail:"Break",att:"",note:""},
-        {type:"row",time:"10:15",dur:"60 min",detail:"Manufacturing Excellence — TDC & Yield Improvement Roadmap",att:"Sr. Director Manufacturing",note:""},
-        {type:"row",time:"11:15",dur:"45 min",detail:"Quality & Reliability Deep Dive",att:"Director Quality Assurance",note:""},
-        {type:"zone",loc:"Orchid Room — Round Tables"},
-        {type:"row",time:"12:00",dur:"60 min",detail:"Lunch & Networking",att:"All",note:""},
-        {type:"zone",loc:"Grand Ballroom — Main Stage"},
-        {type:"row",time:"13:00",dur:"90 min",detail:"Workshop: Process Innovation & Kaizen Showcase",att:"Operations Training / IE Teams",note:""},
-        {type:"row",time:"14:30",dur:"60 min",detail:"Supply Chain Resilience — Risk Mitigation Strategies",att:"Supply Chain Director",note:""},
-        {type:"row",time:"15:30",dur:"15 min",detail:"Break",att:"",note:""},
-        {type:"row",time:"15:45",dur:"75 min",detail:"People & Culture Forum — Talent Pipeline & Engagement",att:"HR Director / HRBP",note:""},
-        {type:"row",time:"17:00",dur:"30 min",detail:"Day 1 Wrap-Up & Key Takeaways",att:"Facilitator",note:""},
-        {type:"zone",loc:"Rooftop Terrace — Pool Deck"},
-        {type:"row",time:"18:00",dur:"120 min",detail:"Welcome Dinner & Team Building Activity",att:"All Participants",note:""}
-      ]
-    },
-    {
-      label:"Day 2",
-      title:"Day 2 – Innovation & Execution",
-      date:"Tuesday, 21 October 2026",
-      items:[
-        {type:"zone",loc:"Grand Ballroom — Main Stage"},
-        {type:"row",time:"08:00",dur:"15 min",detail:"Morning Briefing & Day 1 Recap",att:"Facilitator",note:""},
-        {type:"row",time:"08:15",dur:"60 min",detail:"Technology Roadmap 2027 — Next-Gen HDD Platform",att:"VP Technology & Engineering",note:""},
-        {type:"row",time:"09:15",dur:"60 min",detail:"AI & Automation in Manufacturing — Pilot Results",att:"Digital Transformation Lead",note:""},
-        {type:"row",time:"10:15",dur:"15 min",detail:"Break",att:"",note:""},
-        {type:"zone",loc:"Breakout Rooms A / B / C"},
-        {type:"row",time:"10:30",dur:"90 min",detail:"Parallel Breakout Sessions — Ops / Quality / Supply Chain Focus Groups",att:"Department Leads",note:""},
-        {type:"zone",loc:"Orchid Room — Round Tables"},
-        {type:"row",time:"12:00",dur:"60 min",detail:"Lunch",att:"All",note:""},
-        {type:"zone",loc:"Grand Ballroom — Main Stage"},
-        {type:"row",time:"13:00",dur:"60 min",detail:"Breakout Readouts & Cross-Functional Alignment",att:"All Department Leads",note:""},
-        {type:"row",time:"14:00",dur:"60 min",detail:"EHS & Sustainability — 2026 Targets Review",att:"EHS Manager",note:""},
-        {type:"row",time:"15:00",dur:"15 min",detail:"Break",att:"",note:""},
-        {type:"row",time:"15:15",dur:"75 min",detail:"Finance & Cost Reduction Initiatives — OpEx Deep Dive",att:"Finance Director",note:""},
-        {type:"row",time:"16:30",dur:"30 min",detail:"Innovation Awards Ceremony",att:"Site Leadership",note:""},
-        {type:"zone",loc:"Pavilion Garden"},
-        {type:"row",time:"17:00",dur:"60 min",detail:"Sunset Networking Reception",att:"All Participants",note:""},
-        {type:"zone",loc:"Jade Ballroom"},
-        {type:"row",time:"19:00",dur:"150 min",detail:"Leadership Gala Dinner",att:"All Participants",note:""}
-      ]
-    },
-    {
-      label:"Day 3",
-      title:"Day 3 – Commitments & Closing",
-      date:"Wednesday, 22 October 2026",
-      items:[
-        {type:"zone",loc:"Grand Ballroom — Main Stage"},
-        {type:"row",time:"08:00",dur:"15 min",detail:"Morning Briefing",att:"Facilitator",note:""},
-        {type:"row",time:"08:15",dur:"75 min",detail:"Strategic Planning 2027 — OKR Setting by Function",att:"All Directors & Sr. Managers",note:""},
-        {type:"row",time:"09:30",dur:"60 min",detail:"Commitments Panel — Pledges from Each Function",att:"Department Heads",note:""},
-        {type:"zone",loc:"Orchid Room"},
-        {type:"row",time:"10:30",dur:"30 min",detail:"Break & Group Photo",att:"All Participants",note:""},
-        {type:"zone",loc:"Grand Ballroom — Main Stage"},
-        {type:"row",time:"11:00",dur:"45 min",detail:"Site Update — Thailand Operations Outlook",att:"Site Director",note:""},
-        {type:"row",time:"11:45",dur:"30 min",detail:"Closing Ceremony & Leadership Address",att:"CEO",note:""},
-        {type:"zone",loc:"Orchid Room — Round Tables"},
-        {type:"row",time:"12:15",dur:"75 min",detail:"Closing Luncheon",att:"All Participants",note:""},
-        {type:"zone",loc:"Hotel Lobby"},
-        {type:"row",time:"13:30",dur:"",detail:"Departure & Transfer",att:"All Participants",note:""}
-      ]
-    }
+    {label:'Day 1',title:'Day 1 – Leadership Kick-Off',date:'Monday, 20 October 2026',items:[
+      {type:'zone',loc:'Lobby — Grand Ballroom Foyer'},
+      {type:'row',time:'07:30',dur:'30 min',detail:'Registration & Welcome Coffee',att:'All Participants',note:''},
+      {type:'row',time:'08:00',dur:'15 min',detail:'Opening Remarks',att:'CEO / Site Director',note:''},
+      {type:'zone',loc:'Grand Ballroom — Main Stage'},
+      {type:'row',time:'08:15',dur:'45 min',detail:'WD Strategy 2026 – Global Priorities & Direction',att:'VP Operations',note:''},
+      {type:'row',time:'09:00',dur:'60 min',detail:'HDD Operations Review — Q3 Performance & Gap Analysis',att:'HDD Ops Leadership Team',note:''},
+      {type:'row',time:'10:00',dur:'15 min',detail:'Break',att:'',note:''},
+      {type:'row',time:'10:15',dur:'60 min',detail:'Manufacturing Excellence — TDC & Yield Improvement Roadmap',att:'Sr. Director Manufacturing',note:''},
+      {type:'row',time:'11:15',dur:'45 min',detail:'Quality & Reliability Deep Dive',att:'Director Quality Assurance',note:''},
+      {type:'zone',loc:'Orchid Room — Round Tables'},
+      {type:'row',time:'12:00',dur:'60 min',detail:'Lunch & Networking',att:'All',note:''},
+      {type:'zone',loc:'Grand Ballroom — Main Stage'},
+      {type:'row',time:'13:00',dur:'90 min',detail:'Workshop: Process Innovation & Kaizen Showcase',att:'Operations Training / IE Teams',note:''},
+      {type:'row',time:'14:30',dur:'60 min',detail:'Supply Chain Resilience — Risk Mitigation Strategies',att:'Supply Chain Director',note:''},
+      {type:'row',time:'15:30',dur:'15 min',detail:'Break',att:'',note:''},
+      {type:'row',time:'15:45',dur:'75 min',detail:'People & Culture Forum — Talent Pipeline & Engagement',att:'HR Director / HRBP',note:''},
+      {type:'row',time:'17:00',dur:'30 min',detail:'Day 1 Wrap-Up & Key Takeaways',att:'Facilitator',note:''},
+      {type:'zone',loc:'Rooftop Terrace — Pool Deck'},
+      {type:'row',time:'18:00',dur:'120 min',detail:'Welcome Dinner & Team Building Activity',att:'All Participants',note:''}
+    ]},
+    {label:'Day 2',title:'Day 2 – Innovation & Execution',date:'Tuesday, 21 October 2026',items:[
+      {type:'zone',loc:'Grand Ballroom — Main Stage'},
+      {type:'row',time:'08:00',dur:'15 min',detail:'Morning Briefing & Day 1 Recap',att:'Facilitator',note:''},
+      {type:'row',time:'08:15',dur:'60 min',detail:'Technology Roadmap 2027 — Next-Gen HDD Platform',att:'VP Technology & Engineering',note:''},
+      {type:'row',time:'09:15',dur:'60 min',detail:'AI & Automation in Manufacturing — Pilot Results',att:'Digital Transformation Lead',note:''},
+      {type:'row',time:'10:15',dur:'15 min',detail:'Break',att:'',note:''},
+      {type:'zone',loc:'Breakout Rooms A / B / C'},
+      {type:'row',time:'10:30',dur:'90 min',detail:'Parallel Breakout Sessions — Ops / Quality / Supply Chain Focus Groups',att:'Department Leads',note:''},
+      {type:'zone',loc:'Orchid Room — Round Tables'},
+      {type:'row',time:'12:00',dur:'60 min',detail:'Lunch',att:'All',note:''},
+      {type:'zone',loc:'Grand Ballroom — Main Stage'},
+      {type:'row',time:'13:00',dur:'60 min',detail:'Breakout Readouts & Cross-Functional Alignment',att:'All Department Leads',note:''},
+      {type:'row',time:'14:00',dur:'60 min',detail:'EHS & Sustainability — 2026 Targets Review',att:'EHS Manager',note:''},
+      {type:'row',time:'15:00',dur:'15 min',detail:'Break',att:'',note:''},
+      {type:'row',time:'15:15',dur:'75 min',detail:'Finance & Cost Reduction Initiatives — OpEx Deep Dive',att:'Finance Director',note:''},
+      {type:'row',time:'16:30',dur:'30 min',detail:'Innovation Awards Ceremony',att:'Site Leadership',note:''},
+      {type:'zone',loc:'Pavilion Garden'},
+      {type:'row',time:'17:00',dur:'60 min',detail:'Sunset Networking Reception',att:'All Participants',note:''},
+      {type:'zone',loc:'Jade Ballroom'},
+      {type:'row',time:'19:00',dur:'150 min',detail:'Leadership Gala Dinner',att:'All Participants',note:''}
+    ]},
+    {label:'Day 3',title:'Day 3 – Commitments & Closing',date:'Wednesday, 22 October 2026',items:[
+      {type:'zone',loc:'Grand Ballroom — Main Stage'},
+      {type:'row',time:'08:00',dur:'15 min',detail:'Morning Briefing',att:'Facilitator',note:''},
+      {type:'row',time:'08:15',dur:'75 min',detail:'Strategic Planning 2027 — OKR Setting by Function',att:'All Directors & Sr. Managers',note:''},
+      {type:'row',time:'09:30',dur:'60 min',detail:'Commitments Panel — Pledges from Each Function',att:'Department Heads',note:''},
+      {type:'zone',loc:'Orchid Room'},
+      {type:'row',time:'10:30',dur:'30 min',detail:'Break & Group Photo',att:'All Participants',note:''},
+      {type:'zone',loc:'Grand Ballroom — Main Stage'},
+      {type:'row',time:'11:00',dur:'45 min',detail:'Site Update — Thailand Operations Outlook',att:'Site Director',note:''},
+      {type:'row',time:'11:45',dur:'30 min',detail:'Closing Ceremony & Leadership Address',att:'CEO',note:''},
+      {type:'zone',loc:'Orchid Room — Round Tables'},
+      {type:'row',time:'12:15',dur:'75 min',detail:'Closing Luncheon',att:'All Participants',note:''},
+      {type:'zone',loc:'Hotel Lobby'},
+      {type:'row',time:'13:30',dur:'',detail:'Departure & Transfer',att:'All Participants',note:''}
+    ]}
   ]
 };
 
-async function sha256(msg){
-  const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(msg));
-  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
-}
+async function sha256(msg){const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(msg));return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');}
 let data=JSON.parse(JSON.stringify(DEFAULT));
-let editingDay=null;
-let pwMode='';
-let pwResolve=null;
+let editingDay=null,pwMode='',pwResolve=null;
 
-async function cloudGet(){
-  try{const r=await fetch(API_URL+'/latest',{headers:{'X-Master-Key':MASTER_KEY}});if(!r.ok)return null;const j=await r.json();return j.record||null;}catch(e){return null;}
-}
-async function cloudPut(d){
-  try{const r=await fetch(API_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':MASTER_KEY},body:JSON.stringify(d)});return r.ok;}catch(e){return false;}
-}
+async function cloudGet(){try{const r=await fetch(API_URL+'/latest',{headers:{'X-Master-Key':MASTER_KEY}});if(!r.ok)return null;const j=await r.json();return j.record||null;}catch(e){return null;}}
+async function cloudPut(d){try{const r=await fetch(API_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':MASTER_KEY},body:JSON.stringify(d)});return r.ok;}catch(e){return false;}}
+function getColHeaders(){return data.colHeaders||DEFAULT.colHeaders;}
 
 function openPwModal(mode){
   pwMode=mode;
@@ -267,22 +224,11 @@ function openPwModal(mode){
   setTimeout(()=>document.getElementById('pwInput').focus(),100);
   return new Promise(res=>{pwResolve=res;});
 }
-function closePwModal(){
-  document.getElementById('pwModal').classList.remove('show');
-  if(pwResolve)pwResolve(false);pwResolve=null;
-}
+function closePwModal(){document.getElementById('pwModal').classList.remove('show');if(pwResolve)pwResolve(false);pwResolve=null;}
 async function submitPw(){
-  const val=document.getElementById('pwInput').value;
-  if(!val)return;
-  if(pwMode==='setup'){
-    const h=await sha256(val);localStorage.setItem('agenda_pw_hash',h);
-    document.getElementById('pwModal').classList.remove('show');
-    if(pwResolve)pwResolve(true);pwResolve=null;
-  } else {
-    const stored=localStorage.getItem('agenda_pw_hash');const h=await sha256(val);
-    if(h===stored){document.getElementById('pwModal').classList.remove('show');if(pwResolve)pwResolve(true);pwResolve=null;}
-    else{document.getElementById('pwError').style.display='block';}
-  }
+  const val=document.getElementById('pwInput').value;if(!val)return;
+  if(pwMode==='setup'){const h=await sha256(val);localStorage.setItem('agenda_pw_hash',h);document.getElementById('pwModal').classList.remove('show');if(pwResolve)pwResolve(true);pwResolve=null;}
+  else{const stored=localStorage.getItem('agenda_pw_hash');const h=await sha256(val);if(h===stored){document.getElementById('pwModal').classList.remove('show');if(pwResolve)pwResolve(true);pwResolve=null;}else{document.getElementById('pwError').style.display='block';}}
 }
 document.getElementById('pwInput').addEventListener('keydown',e=>{if(e.key==='Enter')submitPw();});
 
@@ -293,11 +239,17 @@ function trapEnterKey(el,multiline){
       e.preventDefault();
       const sel=window.getSelection();if(!sel.rangeCount)return;
       const range=sel.getRangeAt(0);range.deleteContents();
-      const textNode=document.createTextNode('\n');range.insertNode(textNode);
-      range.setStartAfter(textNode);range.setEndAfter(textNode);
+      const tn=document.createTextNode('\n');range.insertNode(tn);
+      range.setStartAfter(tn);range.setEndAfter(tn);
       sel.removeAllRanges();sel.addRange(range);
     }
   });
+}
+
+function renderColLabels(di){
+  const ch=getColHeaders();
+  const el=document.getElementById('col-labels-'+di);
+  if(el)el.innerHTML=`<span class="c-time">${ch.time}</span><span class="c-details">${ch.detail}</span><span class="c-att">${ch.att}</span><span class="c-note">${ch.note}</span>`;
 }
 
 function renderAll(){
@@ -307,19 +259,16 @@ function renderAll(){
   data.days.forEach((day,di)=>{
     const tb=document.createElement('button');
     tb.className='tab-btn'+(di===0?' active':'');
-    tb.id='tab-btn-'+di;
-    tb.textContent=day.label;
+    tb.id='tab-btn-'+di;tb.textContent=day.label;
     tb.onclick=()=>{
       document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
       document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-      tb.classList.add('active');
-      document.getElementById('page-'+di).classList.add('active');
+      tb.classList.add('active');document.getElementById('page-'+di).classList.add('active');
     };
     tabBar.appendChild(tb);
-
     const pg=document.createElement('div');
-    pg.className='page'+(di===0?' active':'');
-    pg.id='page-'+di;
+    pg.className='page'+(di===0?' active':'');pg.id='page-'+di;
+    const ch=getColHeaders();
     pg.innerHTML=`
       <div class="header-card" id="hcard-${di}">
         <div>
@@ -336,34 +285,47 @@ function renderAll(){
         <span class="sync-status" id="sync-${di}"></span>
         <button class="btn-edit" onclick="startEdit(${di})">✏️ แก้ไข</button>
       </div>
-      <div class="scroll-hint">← เลื่อนดูได้ →</div>
+      <div class="scroll-hint">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Scroll to see all columns
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
       <div class="table-scroll">
         <div class="table-inner">
-          <div class="col-labels">
-            <span class="c-time">TIME</span>
-            <span class="c-details">DETAIL</span>
-            <span class="c-att">ATTENDEE / PRESENTER &amp; EMCEE</span>
-            <span class="c-note">NOTE</span>
+          <div class="col-labels" id="col-labels-${di}">
+            <span class="c-time">${ch.time}</span>
+            <span class="c-details">${ch.detail}</span>
+            <span class="c-att">${ch.att}</span>
+            <span class="c-note">${ch.note}</span>
           </div>
           <div class="day-body" id="body-${di}"></div>
         </div>
-      </div>
-    `;
+      </div>`;
     pages.appendChild(pg);
     renderBody(di);
   });
 }
 
 function renderHeaderEdit(di){
-  const day=data.days[di];
+  const day=data.days[di];const ch=getColHeaders();
   const hcard=document.getElementById('hcard-'+di);
-  let existing=hcard.querySelector('.header-edit-area');if(existing)existing.remove();
+  let ex=hcard.querySelector('.header-edit-area');if(ex)ex.remove();
+  let ex2=document.getElementById('col-header-edit-'+di);if(ex2)ex2.remove();
   const ea=document.createElement('div');ea.className='header-edit-area';
   ea.innerHTML=`
-    <div class="hef-label"><label>Tab Label</label><input id="hef-label-${di}" type="text" value="${day.label}" /></div>
-    <div class="hef-title"><label>Title หัวข้อหลัก</label><input id="hef-title-${di}" type="text" value="${day.title}" /></div>
-    <div class="hef-date"><label>วันที่</label><input id="hef-date-${di}" type="text" value="${day.date}" /></div>`;
+    <div class="hef-label"><label>Tab Label</label><input id="hef-label-${di}" type="text" value="${day.label}"/></div>
+    <div class="hef-title"><label>Title</label><input id="hef-title-${di}" type="text" value="${day.title}"/></div>
+    <div class="hef-date"><label>Date</label><input id="hef-date-${di}" type="text" value="${day.date}"/></div>`;
   hcard.appendChild(ea);
+  const tableScroll=document.querySelector('#page-'+di+' .table-scroll');
+  const che=document.createElement('div');che.className='col-header-edit';che.id='col-header-edit-'+di;
+  che.innerHTML=`
+    <div class="section-label">Edit Column Headers</div>
+    <div class="che-time"><label>Col 1</label><input id="che-time-${di}" type="text" value="${ch.time}"/></div>
+    <div class="che-detail"><label>Col 2</label><input id="che-detail-${di}" type="text" value="${ch.detail}"/></div>
+    <div class="che-att"><label>Col 3</label><input id="che-att-${di}" type="text" value="${ch.att}"/></div>
+    <div class="che-note"><label>Col 4</label><input id="che-note-${di}" type="text" value="${ch.note}"/></div>`;
+  tableScroll.parentNode.insertBefore(che,tableScroll);
   document.getElementById('hef-label-'+di).addEventListener('input',function(){day.label=this.value;const tb=document.getElementById('tab-btn-'+di);if(tb)tb.textContent=this.value;});
   document.getElementById('hef-title-'+di).addEventListener('input',function(){day.title=this.value;const el=document.getElementById('hday-title-'+di);if(el)el.textContent=this.value;});
   document.getElementById('hef-date-'+di).addEventListener('input',function(){
@@ -371,10 +333,14 @@ function renderHeaderEdit(di){
     const wk=document.getElementById('hday-weekday-'+di);const dr=document.getElementById('hday-daterest-'+di);
     if(wk)wk.textContent=parts[0]||'';if(dr)dr.textContent=parts.slice(1).join(',').trim();
   });
+  document.getElementById('che-time-'+di).addEventListener('input',function(){if(!data.colHeaders)data.colHeaders={...DEFAULT.colHeaders};data.colHeaders.time=this.value;renderColLabels(di);});
+  document.getElementById('che-detail-'+di).addEventListener('input',function(){if(!data.colHeaders)data.colHeaders={...DEFAULT.colHeaders};data.colHeaders.detail=this.value;renderColLabels(di);});
+  document.getElementById('che-att-'+di).addEventListener('input',function(){if(!data.colHeaders)data.colHeaders={...DEFAULT.colHeaders};data.colHeaders.att=this.value;renderColLabels(di);});
+  document.getElementById('che-note-'+di).addEventListener('input',function(){if(!data.colHeaders)data.colHeaders={...DEFAULT.colHeaders};data.colHeaders.note=this.value;renderColLabels(di);});
 }
 function removeHeaderEdit(di){
-  const hcard=document.getElementById('hcard-'+di);
-  if(hcard){const ea=hcard.querySelector('.header-edit-area');if(ea)ea.remove();}
+  const hcard=document.getElementById('hcard-'+di);if(hcard){const ea=hcard.querySelector('.header-edit-area');if(ea)ea.remove();}
+  const che=document.getElementById('col-header-edit-'+di);if(che)che.remove();
 }
 
 function renderBody(di){
@@ -382,21 +348,15 @@ function renderBody(di){
   const container=document.getElementById('body-'+di);
   container.innerHTML='';
   const isEdit=editingDay===di;
-  if(isEdit)container.classList.add('edit-on');
-  else container.classList.remove('edit-on');
-
+  if(isEdit)container.classList.add('edit-on');else container.classList.remove('edit-on');
   day.items.forEach((item,idx)=>{
     if(item.type==='zone'){
-      const zr=document.createElement('div');
-      zr.className='location-row';
-      zr.innerHTML=`<span class="pin">📍</span>
-        <span class="loc-text${isEdit?' editable':''}" id="loc-${di}-${idx}" ${isEdit?'contenteditable="true"':''}>${item.loc||''}</span>
-        <div class="loc-controls"><button class="btn-del" onclick="delItem(${di},${idx})">✕ ลบโซน</button></div>`;
+      const zr=document.createElement('div');zr.className='location-row';
+      zr.innerHTML=`<span class="pin">📍</span><span class="loc-text${isEdit?' editable':''}" id="loc-${di}-${idx}" ${isEdit?'contenteditable="true"':''}>${item.loc||''}</span><div class="loc-controls"><button class="btn-del" onclick="delItem(${di},${idx})">✕ ลบโซน</button></div>`;
       container.appendChild(zr);
       if(isEdit){const el=zr.querySelector('.loc-text');trapEnterKey(el,false);el.addEventListener('input',()=>{item.loc=el.innerText.trim();});}
     } else {
-      const row=document.createElement('div');
-      row.className='item-row';
+      const row=document.createElement('div');row.className='item-row';
       row.innerHTML=`
         <div class="c-time">
           <span${isEdit?' class="editable"':''} id="time-${di}-${idx}" ${isEdit?'contenteditable="true"':''}>${item.time||''}</span>
@@ -412,44 +372,26 @@ function renderBody(di){
         </div>`;
       container.appendChild(row);
       if(isEdit){
-        const timeEl=document.getElementById('time-'+di+'-'+idx);
-        const durEl=document.getElementById('dur-'+di+'-'+idx);
-        const detEl=document.getElementById('det-'+di+'-'+idx);
-        const attEl=document.getElementById('att-'+di+'-'+idx);
-        const noteEl=document.getElementById('note-'+di+'-'+idx);
-        trapEnterKey(timeEl,false);trapEnterKey(durEl,false);
-        trapEnterKey(detEl,true);trapEnterKey(attEl,true);trapEnterKey(noteEl,true);
-        timeEl.addEventListener('input',()=>{item.time=timeEl.innerText.trim();});
-        durEl.addEventListener('input',()=>{item.dur=durEl.innerText.trim();});
-        detEl.addEventListener('input',()=>{item.detail=detEl.innerText;});
-        attEl.addEventListener('input',()=>{item.att=attEl.innerText;});
-        noteEl.addEventListener('input',()=>{item.note=noteEl.innerText;});
+        const tE=document.getElementById('time-'+di+'-'+idx),dE=document.getElementById('dur-'+di+'-'+idx);
+        const detE=document.getElementById('det-'+di+'-'+idx),aE=document.getElementById('att-'+di+'-'+idx),nE=document.getElementById('note-'+di+'-'+idx);
+        trapEnterKey(tE,false);trapEnterKey(dE,false);trapEnterKey(detE,true);trapEnterKey(aE,true);trapEnterKey(nE,true);
+        tE.addEventListener('input',()=>{item.time=tE.innerText.trim();});
+        dE.addEventListener('input',()=>{item.dur=dE.innerText.trim();});
+        detE.addEventListener('input',()=>{item.detail=detE.innerText;});
+        aE.addEventListener('input',()=>{item.att=aE.innerText;});
+        nE.addEventListener('input',()=>{item.note=nE.innerText;});
       }
     }
   });
-
   if(isEdit){
-    const addBtns=document.createElement('div');
-    addBtns.style.cssText='display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;';
-    addBtns.innerHTML=`
-      <button class="btn-add-row" style="padding:8px 18px;font-size:13px;" onclick="addRow(${di},-1)">+ เพิ่มรายการ</button>
-      <button class="btn-add-zone" style="padding:8px 18px;font-size:13px;" onclick="addZone(${di},-1)">+ เพิ่มโซนสถานที่</button>`;
+    const addBtns=document.createElement('div');addBtns.style.cssText='display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;';
+    addBtns.innerHTML=`<button class="btn-add-row" style="padding:8px 18px;font-size:13px;" onclick="addRow(${di},-1)">+ เพิ่มรายการ</button><button class="btn-add-zone" style="padding:8px 18px;font-size:13px;" onclick="addZone(${di},-1)">+ เพิ่มโซนสถานที่</button>`;
     container.appendChild(addBtns);
   }
 }
 
-function addRow(di,afterIdx){
-  const newItem={type:'row',time:'',dur:'',detail:'',att:'',note:''};
-  if(afterIdx===-1)data.days[di].items.push(newItem);
-  else data.days[di].items.splice(afterIdx+1,0,newItem);
-  renderBody(di);
-}
-function addZone(di,afterIdx){
-  const newItem={type:'zone',loc:'สถานที่...'};
-  if(afterIdx===-1)data.days[di].items.push(newItem);
-  else data.days[di].items.splice(afterIdx+1,0,newItem);
-  renderBody(di);
-}
+function addRow(di,ai){const n={type:'row',time:'',dur:'',detail:'',att:'',note:''};if(ai===-1)data.days[di].items.push(n);else data.days[di].items.splice(ai+1,0,n);renderBody(di);}
+function addZone(di,ai){const n={type:'zone',loc:'สถานที่...'};if(ai===-1)data.days[di].items.push(n);else data.days[di].items.splice(ai+1,0,n);renderBody(di);}
 function delItem(di,idx){data.days[di].items.splice(idx,1);renderBody(di);}
 
 async function startEdit(di){
@@ -457,53 +399,40 @@ async function startEdit(di){
   if(!stored){const ok=await openPwModal('setup');if(!ok)return;}
   else{const ok=await openPwModal('verify');if(!ok)return;}
   editingDay=di;
-  const pg=document.getElementById('page-'+di);
-  pg.querySelector('.toolbar').innerHTML=`
-    <span class="sync-status" id="sync-${di}"></span>
-    <button class="btn-save" onclick="saveEdit(${di})">💾 บันทึก</button>
-    <button class="btn-cancel" onclick="cancelEdit(${di})">ยกเลิก</button>`;
+  document.getElementById('page-'+di).querySelector('.toolbar').innerHTML=`<span class="sync-status" id="sync-${di}"></span><button class="btn-save" onclick="saveEdit(${di})">💾 บันทึก</button><button class="btn-cancel" onclick="cancelEdit(${di})">ยกเลิก</button>`;
   renderHeaderEdit(di);renderBody(di);
 }
-
 async function saveEdit(di){
-  const stat=document.getElementById('sync-'+di);
-  stat.textContent='กำลังบันทึก...';stat.className='sync-status';
+  const stat=document.getElementById('sync-'+di);stat.textContent='กำลังบันทึก...';stat.className='sync-status';
   const ok=await cloudPut(data);
   if(ok){stat.textContent='✓ บันทึกแล้ว';stat.className='sync-status sync-ok';}
   else{stat.textContent='⚠ บันทึก Cloud ไม่สำเร็จ';stat.className='sync-status sync-err';}
   editingDay=null;removeHeaderEdit(di);
-  const savedMsg=stat.textContent;
-  const pg=document.getElementById('page-'+di);
-  pg.querySelector('.toolbar').innerHTML=`
-    <span class="sync-status" id="sync-${di}">${savedMsg}</span>
-    <button class="btn-edit" onclick="startEdit(${di})">✏️ แก้ไข</button>`;
+  const msg=stat.textContent;
+  document.getElementById('page-'+di).querySelector('.toolbar').innerHTML=`<span class="sync-status" id="sync-${di}">${msg}</span><button class="btn-edit" onclick="startEdit(${di})">✏️ แก้ไข</button>`;
   renderBody(di);
 }
-
 async function cancelEdit(di){
   editingDay=null;removeHeaderEdit(di);
   const pg=document.getElementById('page-'+di);
-  pg.querySelector('.toolbar').innerHTML=`
-    <span class="sync-status" id="sync-${di}">กำลังโหลดข้อมูลจาก Cloud...</span>
-    <button class="btn-edit" onclick="startEdit(${di})" disabled>✏️ แก้ไข</button>`;
+  pg.querySelector('.toolbar').innerHTML=`<span class="sync-status" id="sync-${di}">Loading latest data...</span><button class="btn-edit" onclick="startEdit(${di})" disabled>✏️ แก้ไข</button>`;
   const cloud=await cloudGet();
   if(cloud&&cloud.days){
     data=cloud;
+    if(!data.colHeaders)data.colHeaders={...DEFAULT.colHeaders};
     data.days.forEach(day=>{day.items.forEach(item=>{if(item.type==='row'&&item.note===undefined)item.note='';});});
     renderAll();
   } else {
     renderBody(di);
-    pg.querySelector('.toolbar').innerHTML=`
-      <span class="sync-status" id="sync-${di}">ใช้ข้อมูล Local</span>
-      <button class="btn-edit" onclick="startEdit(${di})">✏️ แก้ไข</button>`;
+    pg.querySelector('.toolbar').innerHTML=`<span class="sync-status" id="sync-${di}">Using local data</span><button class="btn-edit" onclick="startEdit(${di})">✏️ แก้ไข</button>`;
   }
 }
-
 async function init(){
   renderAll();
   const cloud=await cloudGet();
   if(cloud&&cloud.days){
     data=cloud;
+    if(!data.colHeaders)data.colHeaders={...DEFAULT.colHeaders};
     data.days.forEach(day=>{day.items.forEach(item=>{if(item.type==='row'&&item.note===undefined)item.note='';});});
     if(editingDay===null)renderAll();
   }
