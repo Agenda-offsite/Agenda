@@ -18,7 +18,7 @@ body{font-family:'Manrope','Arial',sans-serif;background:#050d20;color:#fff;min-
 .page{max-width:1080px;margin:0 auto;padding:18px 16px 100px;display:none;}
 .page.active{display:block;}
 
-/* ── Header card ── */
+/* ── Header card — desktop ── */
 .header-card{background:linear-gradient(120deg,#f4f7fc 0%,#dbe6f5 100%);border-radius:8px;padding:26px 30px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;box-shadow:0 10px 30px rgba(0,0,0,0.3);}
 .agenda-title{font-size:44px;font-weight:900;color:var(--accent);letter-spacing:1px;line-height:1;margin:0;}
 .day-title{font-size:34px;font-weight:900;color:#1c2b4a;line-height:1.1;margin:6px 0 0;}
@@ -36,12 +36,17 @@ body{font-family:'Manrope','Arial',sans-serif;background:#050d20;color:#fff;min-
 
 /* ── Column header bar ── */
 .col-labels{display:flex;background:linear-gradient(90deg,#1c2e5e 0%,#162348 100%);color:#93C5FD;font-weight:800;font-size:11.5px;text-transform:uppercase;letter-spacing:1.5px;border-radius:6px;margin-top:14px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.3);border:1px solid rgba(33,104,253,0.3);}
-.col-labels span{padding:13px 16px;position:relative;}
+.col-labels span{padding:13px 16px;position:relative;white-space:nowrap;}
 .col-labels span+span::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:1px;background:rgba(147,197,253,0.25);}
 .col-labels .c-time{width:18%;}
 .col-labels .c-details{flex:1;}
 .col-labels .c-att{width:22%;}
 .col-labels .c-note{width:20%;}
+
+/* ── Scroll wrapper for table on mobile ── */
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:6px;}
+.table-scroll::-webkit-scrollbar{height:3px;}
+.table-scroll::-webkit-scrollbar-thumb{background:rgba(147,197,253,0.3);border-radius:2px;}
 
 /* ── Location row ── */
 .location-row{display:flex;align-items:center;gap:8px;margin:16px 0 6px;font-weight:800;font-size:15px;color:#dfe8ff;letter-spacing:0.5px;}
@@ -49,6 +54,7 @@ body{font-family:'Manrope','Arial',sans-serif;background:#050d20;color:#fff;min-
 .loc-text{background:rgba(10,20,50,0.35);padding:6px 14px;border-radius:4px;color:#eaf0ff;word-break:break-word;}
 
 /* ── Item rows ── */
+.table-inner{min-width:640px;}
 .item-row{display:flex;margin:8px 0;border-radius:4px;overflow:hidden;min-height:56px;box-shadow:0 4px 12px rgba(0,0,0,0.18);}
 .item-row .c-time{width:18%;background:rgba(240,245,255,0.94);color:#12275a;padding:12px 14px;font-weight:800;font-size:14px;display:flex;flex-direction:column;justify-content:center;flex-shrink:0;}
 .item-row .c-time .dur{font-weight:600;font-size:11.5px;color:#5a6b8c;margin-top:3px;}
@@ -56,25 +62,35 @@ body{font-family:'Manrope','Arial',sans-serif;background:#050d20;color:#fff;min-
 .item-row .c-att{width:22%;background:rgba(10,25,60,0.28);color:#fff;padding:12px 16px;font-size:13.5px;display:flex;align-items:center;justify-content:flex-end;white-space:pre-line;line-height:1.4;word-break:break-word;min-width:0;text-align:right;flex-shrink:0;}
 .item-row .c-note{width:20%;background:rgba(5,40,20,0.28);color:#c8f5e0;padding:12px 14px;font-size:13px;display:flex;align-items:center;white-space:pre-line;line-height:1.4;border-left:1px solid rgba(58,228,201,0.15);word-break:break-word;min-width:0;flex-shrink:0;}
 
-/* ── Mobile responsive ── */
+/* ── Mobile ── */
 @media(max-width:700px){
   .page{padding:14px 10px 80px;}
-  .header-card{padding:18px 16px;}
-  .agenda-title{font-size:28px;}
+
+  /* Header: stack แนวตั้ง + center */
+  .header-card{flex-direction:column;align-items:center;text-align:center;padding:22px 18px;gap:10px;}
+  .agenda-title{font-size:32px;}
   .day-title{font-size:22px;}
-  .header-right{font-size:13px;}
-  .header-right .weekday{font-size:15px;}
-  .col-labels{display:none;}
-  .item-row{flex-direction:column;border-radius:8px;margin:10px 0;}
-  .item-row .c-time{width:100%;flex-direction:row;gap:8px;align-items:center;padding:10px 14px;border-radius:0;font-size:13px;}
-  .item-row .c-time .dur{margin-top:0;font-size:11px;}
-  .item-row .c-details{width:100%;font-size:13.5px;padding:10px 14px;border-left:3px solid rgba(33,104,253,0.4);}
-  .item-row .c-att{width:100%;font-size:12px;padding:8px 14px;text-align:left;justify-content:flex-start;border-left:3px solid rgba(147,197,253,0.3);}
-  .item-row .c-note{width:100%;font-size:12px;padding:8px 14px;border-left:3px solid rgba(58,228,201,0.3);}
-  .item-row .c-att:not(:empty)::before{content:"👤 ";font-size:11px;opacity:0.7;}
-  .item-row .c-note:not(:empty)::before{content:"📝 ";font-size:11px;opacity:0.7;}
-  .location-row{font-size:13px;}
+  .header-right{text-align:center;font-size:14px;padding-top:0;border-top:1px solid rgba(26,79,214,0.15);width:100%;padding-top:10px;}
+  .header-right .weekday{font-size:16px;}
+
+  /* Table: horizontal scroll — ตารางยังครบทุก col */
+  .table-scroll{margin-top:12px;border-radius:6px;border:1px solid rgba(33,104,253,0.15);}
+  .table-inner{min-width:640px;}
+  .col-labels{border-radius:0;margin-top:0;border:none;border-bottom:1px solid rgba(33,104,253,0.3);}
+
+  /* Location row */
+  .location-row{font-size:13px;padding:0 4px;}
+
+  /* Scroll hint */
+  .scroll-hint{display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(147,197,253,0.6);padding:6px 0 4px;justify-content:flex-end;}
+
+  /* Header edit */
+  .hef-label,.hef-title,.hef-date{flex:0 0 100%;}
+
   .row-controls{flex-wrap:wrap;}
+}
+@media(min-width:701px){
+  .scroll-hint{display:none;}
 }
 
 /* ── Edit controls ── */
@@ -94,11 +110,8 @@ body{font-family:'Manrope','Arial',sans-serif;background:#050d20;color:#fff;min-
 /* ── Toolbar ── */
 .toolbar{display:flex;justify-content:flex-end;gap:10px;padding:14px 0 6px;flex-wrap:wrap;align-items:center;}
 .toolbar button{border:none;border-radius:6px;padding:8px 18px;font-weight:700;font-size:13px;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .25s;}
-
-/* ปุ่มแก้ไข — จางปกติ โชว์เต็มเมื่อ hover */
 .btn-edit{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.35);border:1px solid rgba(255,255,255,0.12);}
-.btn-edit:hover{background:var(--grad);color:#fff;border-color:transparent;opacity:1;}
-
+.btn-edit:hover{background:var(--grad);color:#fff;border-color:transparent;}
 .btn-save{background:#16a34a;color:#fff;}
 .btn-save:hover{background:#15803d;}
 .btn-cancel{background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.25);}
@@ -232,25 +245,16 @@ async function sha256(msg){
   const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(msg));
   return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
 }
-
 let data=JSON.parse(JSON.stringify(DEFAULT));
 let editingDay=null;
 let pwMode='';
 let pwResolve=null;
 
 async function cloudGet(){
-  try{
-    const r=await fetch(API_URL+'/latest',{headers:{'X-Master-Key':MASTER_KEY}});
-    if(!r.ok)return null;
-    const j=await r.json();
-    return j.record||null;
-  }catch(e){return null;}
+  try{const r=await fetch(API_URL+'/latest',{headers:{'X-Master-Key':MASTER_KEY}});if(!r.ok)return null;const j=await r.json();return j.record||null;}catch(e){return null;}
 }
 async function cloudPut(d){
-  try{
-    const r=await fetch(API_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':MASTER_KEY},body:JSON.stringify(d)});
-    return r.ok;
-  }catch(e){return false;}
+  try{const r=await fetch(API_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':MASTER_KEY},body:JSON.stringify(d)});return r.ok;}catch(e){return false;}
 }
 
 function openPwModal(mode){
@@ -265,28 +269,19 @@ function openPwModal(mode){
 }
 function closePwModal(){
   document.getElementById('pwModal').classList.remove('show');
-  if(pwResolve)pwResolve(false);
-  pwResolve=null;
+  if(pwResolve)pwResolve(false);pwResolve=null;
 }
 async function submitPw(){
   const val=document.getElementById('pwInput').value;
   if(!val)return;
   if(pwMode==='setup'){
-    const h=await sha256(val);
-    localStorage.setItem('agenda_pw_hash',h);
+    const h=await sha256(val);localStorage.setItem('agenda_pw_hash',h);
     document.getElementById('pwModal').classList.remove('show');
-    if(pwResolve)pwResolve(true);
-    pwResolve=null;
+    if(pwResolve)pwResolve(true);pwResolve=null;
   } else {
-    const stored=localStorage.getItem('agenda_pw_hash');
-    const h=await sha256(val);
-    if(h===stored){
-      document.getElementById('pwModal').classList.remove('show');
-      if(pwResolve)pwResolve(true);
-      pwResolve=null;
-    } else {
-      document.getElementById('pwError').style.display='block';
-    }
+    const stored=localStorage.getItem('agenda_pw_hash');const h=await sha256(val);
+    if(h===stored){document.getElementById('pwModal').classList.remove('show');if(pwResolve)pwResolve(true);pwResolve=null;}
+    else{document.getElementById('pwError').style.display='block';}
   }
 }
 document.getElementById('pwInput').addEventListener('keydown',e=>{if(e.key==='Enter')submitPw();});
@@ -296,16 +291,11 @@ function trapEnterKey(el,multiline){
     if(e.key==='Enter'){
       if(!multiline){e.preventDefault();el.blur();return;}
       e.preventDefault();
-      const sel=window.getSelection();
-      if(!sel.rangeCount)return;
-      const range=sel.getRangeAt(0);
-      range.deleteContents();
-      const textNode=document.createTextNode('\n');
-      range.insertNode(textNode);
-      range.setStartAfter(textNode);
-      range.setEndAfter(textNode);
-      sel.removeAllRanges();
-      sel.addRange(range);
+      const sel=window.getSelection();if(!sel.rangeCount)return;
+      const range=sel.getRangeAt(0);range.deleteContents();
+      const textNode=document.createTextNode('\n');range.insertNode(textNode);
+      range.setStartAfter(textNode);range.setEndAfter(textNode);
+      sel.removeAllRanges();sel.addRange(range);
     }
   });
 }
@@ -313,8 +303,7 @@ function trapEnterKey(el,multiline){
 function renderAll(){
   const tabBar=document.getElementById('tabBar');
   const pages=document.getElementById('pages');
-  tabBar.innerHTML='';
-  pages.innerHTML='';
+  tabBar.innerHTML='';pages.innerHTML='';
   data.days.forEach((day,di)=>{
     const tb=document.createElement('button');
     tb.className='tab-btn'+(di===0?' active':'');
@@ -347,13 +336,18 @@ function renderAll(){
         <span class="sync-status" id="sync-${di}"></span>
         <button class="btn-edit" onclick="startEdit(${di})">✏️ แก้ไข</button>
       </div>
-      <div class="col-labels">
-        <span class="c-time">TIME</span>
-        <span class="c-details">DETAIL</span>
-        <span class="c-att">ATTENDEE / PRESENTER &amp; EMCEE</span>
-        <span class="c-note">NOTE</span>
+      <div class="scroll-hint">← เลื่อนดูได้ →</div>
+      <div class="table-scroll">
+        <div class="table-inner">
+          <div class="col-labels">
+            <span class="c-time">TIME</span>
+            <span class="c-details">DETAIL</span>
+            <span class="c-att">ATTENDEE / PRESENTER &amp; EMCEE</span>
+            <span class="c-note">NOTE</span>
+          </div>
+          <div class="day-body" id="body-${di}"></div>
+        </div>
       </div>
-      <div class="day-body" id="body-${di}"></div>
     `;
     pages.appendChild(pg);
     renderBody(di);
@@ -363,45 +357,21 @@ function renderAll(){
 function renderHeaderEdit(di){
   const day=data.days[di];
   const hcard=document.getElementById('hcard-'+di);
-  let existing=hcard.querySelector('.header-edit-area');
-  if(existing)existing.remove();
-  const ea=document.createElement('div');
-  ea.className='header-edit-area';
+  let existing=hcard.querySelector('.header-edit-area');if(existing)existing.remove();
+  const ea=document.createElement('div');ea.className='header-edit-area';
   ea.innerHTML=`
-    <div class="hef-label">
-      <label>Tab Label</label>
-      <input id="hef-label-${di}" type="text" value="${day.label}" placeholder="Day 1" />
-    </div>
-    <div class="hef-title">
-      <label>Title หัวข้อหลัก</label>
-      <input id="hef-title-${di}" type="text" value="${day.title}" placeholder="Day 1 – Leadership Kick-Off" />
-    </div>
-    <div class="hef-date">
-      <label>วันที่</label>
-      <input id="hef-date-${di}" type="text" value="${day.date}" placeholder="Monday, 20 October 2026" />
-    </div>
-  `;
+    <div class="hef-label"><label>Tab Label</label><input id="hef-label-${di}" type="text" value="${day.label}" /></div>
+    <div class="hef-title"><label>Title หัวข้อหลัก</label><input id="hef-title-${di}" type="text" value="${day.title}" /></div>
+    <div class="hef-date"><label>วันที่</label><input id="hef-date-${di}" type="text" value="${day.date}" /></div>`;
   hcard.appendChild(ea);
-  document.getElementById('hef-label-'+di).addEventListener('input',function(){
-    day.label=this.value;
-    const tb=document.getElementById('tab-btn-'+di);
-    if(tb)tb.textContent=this.value;
-  });
-  document.getElementById('hef-title-'+di).addEventListener('input',function(){
-    day.title=this.value;
-    const el=document.getElementById('hday-title-'+di);
-    if(el)el.textContent=this.value;
-  });
+  document.getElementById('hef-label-'+di).addEventListener('input',function(){day.label=this.value;const tb=document.getElementById('tab-btn-'+di);if(tb)tb.textContent=this.value;});
+  document.getElementById('hef-title-'+di).addEventListener('input',function(){day.title=this.value;const el=document.getElementById('hday-title-'+di);if(el)el.textContent=this.value;});
   document.getElementById('hef-date-'+di).addEventListener('input',function(){
-    day.date=this.value;
-    const parts=this.value.split(',');
-    const wk=document.getElementById('hday-weekday-'+di);
-    const dr=document.getElementById('hday-daterest-'+di);
-    if(wk)wk.textContent=parts[0]||'';
-    if(dr)dr.textContent=parts.slice(1).join(',').trim();
+    day.date=this.value;const parts=this.value.split(',');
+    const wk=document.getElementById('hday-weekday-'+di);const dr=document.getElementById('hday-daterest-'+di);
+    if(wk)wk.textContent=parts[0]||'';if(dr)dr.textContent=parts.slice(1).join(',').trim();
   });
 }
-
 function removeHeaderEdit(di){
   const hcard=document.getElementById('hcard-'+di);
   if(hcard){const ea=hcard.querySelector('.header-edit-area');if(ea)ea.remove();}
@@ -420,33 +390,21 @@ function renderBody(di){
       const zr=document.createElement('div');
       zr.className='location-row';
       zr.innerHTML=`<span class="pin">📍</span>
-        <span class="loc-text${isEdit?' editable':''}" id="loc-${di}-${idx}"
-          ${isEdit?'contenteditable="true"':''}>${item.loc||''}</span>
-        <div class="loc-controls">
-          <button class="btn-del" onclick="delItem(${di},${idx})">✕ ลบโซน</button>
-        </div>`;
+        <span class="loc-text${isEdit?' editable':''}" id="loc-${di}-${idx}" ${isEdit?'contenteditable="true"':''}>${item.loc||''}</span>
+        <div class="loc-controls"><button class="btn-del" onclick="delItem(${di},${idx})">✕ ลบโซน</button></div>`;
       container.appendChild(zr);
-      if(isEdit){
-        const el=zr.querySelector('.loc-text');
-        trapEnterKey(el,false);
-        el.addEventListener('input',()=>{item.loc=el.innerText.trim();});
-      }
+      if(isEdit){const el=zr.querySelector('.loc-text');trapEnterKey(el,false);el.addEventListener('input',()=>{item.loc=el.innerText.trim();});}
     } else {
       const row=document.createElement('div');
       row.className='item-row';
       row.innerHTML=`
         <div class="c-time">
-          <span${isEdit?' class="editable"':''} id="time-${di}-${idx}"
-            ${isEdit?'contenteditable="true"':''}>${item.time||''}</span>
-          <span class="dur${isEdit?' editable':''}" id="dur-${di}-${idx}"
-            ${isEdit?'contenteditable="true"':''}>${item.dur||''}</span>
+          <span${isEdit?' class="editable"':''} id="time-${di}-${idx}" ${isEdit?'contenteditable="true"':''}>${item.time||''}</span>
+          <span class="dur${isEdit?' editable':''}" id="dur-${di}-${idx}" ${isEdit?'contenteditable="true"':''}>${item.dur||''}</span>
         </div>
-        <div class="c-details${isEdit?' editable':''}" id="det-${di}-${idx}"
-          ${isEdit?'contenteditable="true"':''}>${item.detail||''}</div>
-        <div class="c-att${isEdit?' editable':''}" id="att-${di}-${idx}"
-          ${isEdit?'contenteditable="true"':''}>${item.att||''}</div>
-        <div class="c-note${isEdit?' editable':''}" id="note-${di}-${idx}"
-          ${isEdit?'contenteditable="true"':''}>${item.note||''}</div>
+        <div class="c-details${isEdit?' editable':''}" id="det-${di}-${idx}" ${isEdit?'contenteditable="true"':''}>${item.detail||''}</div>
+        <div class="c-att${isEdit?' editable':''}" id="att-${di}-${idx}" ${isEdit?'contenteditable="true"':''}>${item.att||''}</div>
+        <div class="c-note${isEdit?' editable':''}" id="note-${di}-${idx}" ${isEdit?'contenteditable="true"':''}>${item.note||''}</div>
         <div class="row-controls">
           <button class="btn-add-row" onclick="addRow(${di},${idx})">+ แถว</button>
           <button class="btn-add-zone" onclick="addZone(${di},${idx})">+ โซน</button>
@@ -459,11 +417,8 @@ function renderBody(di){
         const detEl=document.getElementById('det-'+di+'-'+idx);
         const attEl=document.getElementById('att-'+di+'-'+idx);
         const noteEl=document.getElementById('note-'+di+'-'+idx);
-        trapEnterKey(timeEl,false);
-        trapEnterKey(durEl,false);
-        trapEnterKey(detEl,true);
-        trapEnterKey(attEl,true);
-        trapEnterKey(noteEl,true);
+        trapEnterKey(timeEl,false);trapEnterKey(durEl,false);
+        trapEnterKey(detEl,true);trapEnterKey(attEl,true);trapEnterKey(noteEl,true);
         timeEl.addEventListener('input',()=>{item.time=timeEl.innerText.trim();});
         durEl.addEventListener('input',()=>{item.dur=durEl.innerText.trim();});
         detEl.addEventListener('input',()=>{item.detail=detEl.innerText;});
@@ -495,10 +450,7 @@ function addZone(di,afterIdx){
   else data.days[di].items.splice(afterIdx+1,0,newItem);
   renderBody(di);
 }
-function delItem(di,idx){
-  data.days[di].items.splice(idx,1);
-  renderBody(di);
-}
+function delItem(di,idx){data.days[di].items.splice(idx,1);renderBody(di);}
 
 async function startEdit(di){
   const stored=localStorage.getItem('agenda_pw_hash');
@@ -510,19 +462,16 @@ async function startEdit(di){
     <span class="sync-status" id="sync-${di}"></span>
     <button class="btn-save" onclick="saveEdit(${di})">💾 บันทึก</button>
     <button class="btn-cancel" onclick="cancelEdit(${di})">ยกเลิก</button>`;
-  renderHeaderEdit(di);
-  renderBody(di);
+  renderHeaderEdit(di);renderBody(di);
 }
 
 async function saveEdit(di){
   const stat=document.getElementById('sync-'+di);
-  stat.textContent='กำลังบันทึก...';
-  stat.className='sync-status';
+  stat.textContent='กำลังบันทึก...';stat.className='sync-status';
   const ok=await cloudPut(data);
   if(ok){stat.textContent='✓ บันทึกแล้ว';stat.className='sync-status sync-ok';}
   else{stat.textContent='⚠ บันทึก Cloud ไม่สำเร็จ';stat.className='sync-status sync-err';}
-  editingDay=null;
-  removeHeaderEdit(di);
+  editingDay=null;removeHeaderEdit(di);
   const savedMsg=stat.textContent;
   const pg=document.getElementById('page-'+di);
   pg.querySelector('.toolbar').innerHTML=`
@@ -532,8 +481,7 @@ async function saveEdit(di){
 }
 
 async function cancelEdit(di){
-  editingDay=null;
-  removeHeaderEdit(di);
+  editingDay=null;removeHeaderEdit(di);
   const pg=document.getElementById('page-'+di);
   pg.querySelector('.toolbar').innerHTML=`
     <span class="sync-status" id="sync-${di}">กำลังโหลดข้อมูลจาก Cloud...</span>
